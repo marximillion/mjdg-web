@@ -15,24 +15,24 @@ export default function Home() {
       <div className="formContainer">
         <div className="bannerContainer" />
         <form onSubmit={() => { }}>
-          <label htmlFor="firstName" className="fieldLabel">
+          <label id="firstName" className="fieldLabel">
             {"First Name"}
+            <input
+              className="field"
+              type="text"
+              name="firstName"
+              placeholder="Enter first name"
+            />
           </label>
-          <input
-            className="field"
-            type="text"
-            name="firstName"
-            placeholder="Enter first name"
-          />
-          <label htmlFor="lastName" className="fieldLabel">
+          <label id="lastName" className="fieldLabel">
             {"Last Name"}
+            <input
+              className="field"
+              type="text"
+              name="lastName"
+              placeholder="Enter last name"
+            />
           </label>
-          <input
-            className="field"
-            type="text"
-            name="lastName"
-            placeholder="Enter last name"
-          />
           <button type="submit" className="button">
             {"Submit"}
           </button>
