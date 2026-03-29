@@ -1,8 +1,16 @@
-.DS_Store
+# Environment
 .env
 .env.*
+
+# Dependencies
 /node_modules/
+
+# React Router
 /.react-router/
 /build/
 
-/generated/prisma
+# Prisma
+prisma/migrations/migration_lock.toml
+
+# Mac
+.DS_Store
