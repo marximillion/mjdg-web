@@ -11,7 +11,17 @@ export function meta({ }: Route.MetaArgs) {
 export default function Home() {
   const title = "Lab<3 Development";
   return (
+
     <div className="screenContainer">
+      <nav>
+        <a href="#home">Home</a>
+        <a href="#portfolio">Portfolio</a>
+      </nav>
+      <section id="home">
+        <h1>Welcome</h1>
+        <p>Hello! This is your portfolio home page. Share your story, skills, and projects here to showcase your work
+          and expertise to the world.</p>
+      </section>
       <div className="formContainer">
         <div className="bannerContainer" />
         <form onSubmit={() => { }}>

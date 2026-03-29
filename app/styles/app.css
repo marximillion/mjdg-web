@@ -8,20 +8,87 @@ html {
     height: 100%;
   }
 }
+
+:root {
+  /* Core background */
+  --bg-main: #0A0A13;
+  --bg-panel: #191F4A;
+
+  /* Synthwave primaries */
+  --purple: #9F00FF;
+  --cyan: #00E5FF;
+
+  /* CRT accents */
+  --crt-green: #C4F90F;
+  --neon-pink: #FF3EFF;
+
+  /* Text */
+  --text-primary: #E6E6F0;
+  --text-muted: #9CA0C8;
+
+  /* UI accents */
+  --accent-orange: #FF8C42;
+}
+
 body {
   height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-image: url('../assets/retro-computer-4k.jpg');
+  /* background-image: url('../assets/fd2.gif'); */
+  /* background-image: url('../assets/arrows-vertical.gif'); */
+  /* background-image: url('../assets/hi-tech-interface-1-4k.jpg'); */
+  /* background-image: url('../assets/hi-tech-interface-2-4k.jpg'); */
+  /* background-image: url('../assets/microchip.gif'); */
+  background-color: black;
+  background-size: cover;
+  /* cover full screen */
+  background-repeat: no-repeat;
+  /* don't tile */
+  background-position: center;
+  /* center the GIF */
+  background-attachment: fixed;
+  /* optional: keeps it fixed when scrolling */
 }
+
 h1 {
+  /* margin-top: 2rem; */
   font-family: "Black Ops One", sans-serif;
+  padding: 0.75rem;
+  font-size: 3rem;
+  color: var(--neon-pink);
+}
+
+p {
+  padding: 0.75rem;
+  color: var(--crt-green);
 }
 
 /* Home */
 .screenContainer {
-  background-color: #125687;
+  /* background-color: #125687; */
   /* flex: 1; */
   height: 100%;
   padding: 0.75rem;
   width: 100%;
+  height: 100%;
+  color: #333;
+  background-image: url('../assets/retro-computer-4k.jpg');
+  /* background-image: url('../assets/fd2.gif'); */
+  /* background-image: url('../assets/arrows-vertical.gif'); */
+  /* background-image: url('../assets/hi-tech-interface-1-4k.jpg'); */
+  /* background-image: url('../assets/hi-tech-interface-2-4k.jpg'); */
+  /* background-image: url('../assets/microchip.gif'); */
+  background-color: black;
+  background-size: cover;
+  /* cover full screen */
+  background-repeat: no-repeat;
+  /* don't tile */
+  background-position: center;
+  /* center the GIF */
+  background-attachment: fixed;
+  /* optional: keeps it fixed when scrolling */
 }
 
 .bannerContainer {
@@ -35,6 +102,7 @@ h1 {
   margin-bottom: 20px;
 }
 
+/* Form */
 .formContainer {
   background-color: rgb(255, 255, 224, 0.25);
   border-radius: 30px;
@@ -44,6 +112,7 @@ h1 {
 }
 
 .field {
+  color: var(--bg-panel);
   border-width: 1px;
   border-radius: 10px;
   font-family: "Black Ops One", sans-serif;
@@ -52,18 +121,86 @@ h1 {
   width: 100%;
 }
 
+.fieldLabel {
+  color: var(--accent-orange);
+  font-family: "Black Ops One", sans-serif;
+  /* margin-bottom: 5px; */
+}
+
+/* Button */
 .button {
   border-radius: 1rem;
   background-color: chocolate;
-  color: white; /* text-white */
-  cursor: pointer; /* show pointer on hover */
-  display: block; /* make it a block-level element */
-  font-weight: 600; /* font-semibold */
+  color: white;
+  /* text-white */
+  cursor: pointer;
+  /* show pointer on hover */
+  display: block;
+  /* make it a block-level element */
+  font-weight: 600;
+  /* font-semibold */
   margin: auto;
   padding: 0.5rem 1rem 0.5rem 1rem;
-  transition: background-color 0.2s; /* smooth hover transition */
+  transition: background-color 0.2s;
+  /* smooth hover transition */
 }
 
 .button:hover {
-  background-color: #125687; /* hover:bg-blue-600 */
+  background-color: #125687;
+  /* hover:bg-blue-600 */
+}
+
+/* Nav */
+nav {
+  position: sticky;
+  top: 0;
+
+  display: flex;
+  gap: 2rem;
+
+  padding: 1rem 2rem;
+
+  background: rgba(10, 10, 19, 0.75);
+  backdrop-filter: blur(8px);
+
+  border-bottom: 1px solid rgba(159, 0, 255, 0.4);
+  border-radius: 2rem;
+}
+
+nav a {
+  position: relative;
+
+  color: #00E5FF;
+  text-decoration: none;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  font-family: "Black Ops One", sans-serif;
+
+  transition: 0.2s ease;
+}
+
+/* Hover glow */
+nav a:hover {
+  color: #C4F90F;
+  text-shadow:
+    0 0 5px #C4F90F,
+    0 0 15px #C4F90F;
+}
+
+/* Underline animation */
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, #9F00FF, #00E5FF);
+
+  transition: width 0.25s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
 }
