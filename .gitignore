@@ -1,9 +1,8 @@
 .DS_Store
 .env
+.env.*
 /node_modules/
-/app/js/
-.gitignore
-
-# React Router
 /.react-router/
 /build/
+
+/generated/prisma
