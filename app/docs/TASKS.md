@@ -1,69 +1,46 @@
 # mjdg-web — Launch Roadmap
 
-Suggested Order of Attack
-
-[] Set up RDS or Supabase, create users table
-
-[x] Install Prisma, connect to DB
-
-[x] Wire up your login form with a Route action()
-
-[x] Add bcrypt + session handling
-
-[x] Test locally end to end
-
-[x] Launch EC2, deploy manually first
-
-[x] Add GitHub Action for auto-deploy
-
 ## 🗄️ Database Setup
-- [ ] Choose database provider (AWS RDS or Supabase)
-- [ ] Create PostgreSQL instance
-- [ ] Create `users` table (`id`, `email`, `password_hash`, `created_at`)
-- [ ] Whitelist EC2 IP in DB security group / firewall rules
-
-## 🔧 Backend / Auth
-- [ ] Install Prisma and initialize (`npx prisma init`)
+- [x] Install PostgreSQL 18 locally
+- [x] Create database `mjdg`
+- [x] Create user `mjdg_user` with password
+- [x] Grant privileges to `mjdg_user`
+- [x] Install Prisma and initialize (`npx prisma init`)
 - [ ] Configure `DATABASE_URL` in `.env`
 - [ ] Define `User` model in `schema.prisma`
 - [ ] Run first migration (`npx prisma migrate dev`)
+
+## 🔧 Backend / Auth
 - [ ] Install `bcrypt` for password hashing
 - [ ] Wire login form to a React Router `action()`
-- [ ] Hash password on register, compare on login
+- [ ] Compare hashed password on login
 - [ ] Set up session storage (`createCookieSessionStorage`)
 - [ ] Protect routes that require authentication
 - [ ] Test login flow locally end to end
 
-## 🚀 EC2 Setup
-- [ ] Launch EC2 instance (Ubuntu, t3.micro)
-- [ ] Open ports 22 (SSH), 80 (HTTP), 443 (HTTPS) in security group
-- [ ] SSH into instance and install Node.js + yarn
-- [ ] Install PM2 globally (`npm install -g pm2`)
-- [ ] Install nginx
+## 🎨 Frontend
+- [ ] Fix login form (button inside form, correct field names)
+- [ ] Add error display (wrong password, user not found)
+- [ ] Test on mobile screen size
+
+## 🚀 Deployment (Phase 2)
+- [ ] Launch EC2 instance (Ubuntu)
+- [ ] Install Node.js, yarn, PM2, nginx on EC2
 - [ ] Clone repo from GitHub onto EC2
 - [ ] Add `.env` file with production secrets on EC2
 - [ ] Run `yarn install` and `yarn build`
-- [ ] Start app with PM2 (`pm2 start`)
-- [ ] Configure nginx as reverse proxy to app port
-- [ ] Test app loads over HTTP
+- [ ] Start app with PM2
+- [ ] Configure nginx as reverse proxy
+- [ ] Set up PostgreSQL on EC2 (or migrate to RDS)
+- [ ] Add domain + HTTPS via Certbot
 
-## 🌐 Domain & HTTPS (optional but recommended)
-- [ ] Point domain DNS to EC2 public IP
-- [ ] Install Certbot (`sudo apt install certbot`)
-- [ ] Generate SSL certificate (`sudo certbot --nginx`)
-- [ ] Confirm app loads over HTTPS
-
-## 🔄 CI/CD (GitHub Actions)
+## 🔄 CI/CD (Phase 2)
 - [ ] Add EC2 SSH private key as a GitHub secret
 - [ ] Create `.github/workflows/deploy.yml`
-- [ ] Configure action to trigger on push to `main`
-- [ ] Action: SSH into EC2, pull latest, rebuild, restart PM2
-- [ ] Test by pushing a change and confirming auto-deploy
+- [ ] Auto-deploy on push to `main`
 
 ## ✅ Pre-Launch Checklist
-- [ ] `.env` secrets are not committed to GitHub
-- [ ] `.gitignore` includes `.env`, `node_modules`, `.react-router`
-- [ ] Error handling on login (wrong password, user not found)
-- [ ] Basic rate limiting or brute-force protection on login
-- [ ] App tested on mobile screen size
+- [ ] `.env` is in `.gitignore` and not committed
+- [ ] Error handling on all auth flows
+- [ ] Basic brute-force protection on login
 - [ ] PM2 set to auto-restart on reboot (`pm2 startup`)
