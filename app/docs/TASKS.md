@@ -6,9 +6,9 @@
 - [x] Create user `mjdg_user` with password
 - [x] Grant privileges to `mjdg_user`
 - [x] Install Prisma and initialize (`npx prisma init`)
-- [ ] Configure `DATABASE_URL` in `.env`
-- [ ] Define `User` model in `schema.prisma`
-- [ ] Run first migration (`npx prisma migrate dev`)
+- [x] Configure `DATABASE_URL` in `.env`
+- [x] Define `User` model in `schema.prisma`
+- [x] Run first migration (`npx prisma migrate dev`)
 
 ## 🔧 Backend / Auth
 - [ ] Install `bcrypt` for password hashing
