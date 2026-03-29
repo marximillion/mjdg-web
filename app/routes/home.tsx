@@ -1,8 +1,7 @@
 import type { Route } from "./+types/home";
-import { Welcome } from "../welcome/welcome";
 import logo from "../assets/logo-lab3-white.png";
 
-export function meta({}: Route.MetaArgs) {
+export function meta({ }: Route.MetaArgs) {
   return [
     { title: "LAB<3 Development" },
     { name: "description", content: "Development Environment" },
@@ -14,26 +13,30 @@ export default function Home() {
   return (
     <div className="screenContainer">
       <div className="formContainer">
-      <div className="bannerContainer" />
-        <form onSubmit={() => {}}>
-          <h1>{"First Name"}</h1>
+        <div className="bannerContainer" />
+        <form onSubmit={() => { }}>
+          <label htmlFor="firstName" className="fieldLabel">
+            {"First Name"}
+          </label>
           <input
             className="field"
             type="text"
-            name="query"
+            name="firstName"
             placeholder="Enter first name"
           />
-          <h1>{"Last Name"}</h1>
+          <label htmlFor="lastName" className="fieldLabel">
+            {"Last Name"}
+          </label>
           <input
             className="field"
             type="text"
-            name="query"
+            name="lastName"
             placeholder="Enter last name"
           />
+          <button type="submit" className="button">
+            {"Submit"}
+          </button>
         </form>
-        <button type="submit" className="button">
-          {"Submit"}
-        </button>
       </div>
     </div>
   );
