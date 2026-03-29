@@ -22,13 +22,14 @@ A modern, production-ready template for building full-stack React applications u
 - React 19.1.1
 - React Router 7.9.2
 - Windows 11
+- psql (PostgreSQL) 18.3 (Homebrew)
 
 ### Installation
 
 Install the dependencies:
 
 ```bash
-npm install
+yarn install
 ```
 
 ### Development
@@ -36,7 +37,7 @@ npm install
 Start the development server with HMR:
 
 ```bash
-npm run dev
+yarn dev
 ```
 
 Your application will be available at `http://localhost:5173`.
@@ -46,7 +47,7 @@ Your application will be available at `http://localhost:5173`.
 Create a production build:
 
 ```bash
-npm run build
+yarn build
 ```
 
 ## Deployment
