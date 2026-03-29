@@ -2,7 +2,6 @@
 .env
 /node_modules/
 /app/js/
-/app/misc/
 .gitignore
 
 # React Router
