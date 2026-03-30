@@ -8,4 +8,5 @@ export default [
   route("dashboard", "routes/dashboard.tsx"),
   route("logout", "routes/logout.ts"),
   route("profile", "routes/profile.tsx"),
+  route("service-image-generator", "routes/service_image_generator.tsx"),
 ] satisfies RouteConfig;
