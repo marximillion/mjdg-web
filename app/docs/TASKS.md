@@ -2,26 +2,54 @@
 
 ## 🗄️ Database Setup
 - [x] Install PostgreSQL 18 locally
-- [x] Create database `mjdg`
-- [x] Create user `mjdg_user` with password
-- [x] Grant privileges to `mjdg_user`
-- [x] Install Prisma and initialize (`npx prisma init`)
-- [x] Configure `DATABASE_URL` in `.env`
-- [x] Define `User` model in `schema.prisma`
-- [x] Run first migration (`npx prisma migrate dev`)
+- [x] Create database `mjdg-db01`
+- [x] Create `mjdg` user (superuser)
+- [x] Set up pgAdmin for DB GUI
+- [x] Create `User` table
+- [x] Add `username` column (unique)
+- [x] Add `hashed_password` column
+- [x] Rename `firstName` → `first_name`, `lastName` → `last_name`
+- [x] Set correct nullable/not null constraints
+- [x] Create seed script (`app/db/seed.ts`)
 
 ## 🔧 Backend / Auth
-- [ ] Install `bcrypt` for password hashing
-- [ ] Wire login form to a React Router `action()`
-- [ ] Compare hashed password on login
-- [ ] Set up session storage (`createCookieSessionStorage`)
-- [ ] Protect routes that require authentication
-- [ ] Test login flow locally end to end
+- [x] Install `pg` and `@types/pg`
+- [x] Create `app/db/db.server.ts` (connection pool)
+- [x] Install `bcryptjs` for password hashing
+- [x] Wire login form to React Router `action()`
+- [x] Compare hashed password on login
+- [x] Set up session storage (`createCookieSessionStorage`)
+- [x] Set session on successful login
+- [x] Protect authenticated routes (redirect to `/` if not logged in)
+- [x] Redirect logged in users away from public routes
+- [x] Wire up logout (destroy session, redirect to `/`)
+- [x] Registration form with `action()` (hash + insert user)
+- [x] Profile page (load user data, edit fields, save)
+- [ ] Change password on profile page
+- [ ] Email validation
+- [ ] Rate limiting / brute force protection on login
 
-## 🎨 Frontend
-- [ ] Fix login form (button inside form, correct field names)
-- [ ] Add error display (wrong password, user not found)
-- [ ] Test on mobile screen size
+## 🎨 Frontend / UI
+- [x] Home page with login form
+- [x] Registration page (`/register`)
+- [x] Dashboard page (`/dashboard`)
+- [x] Portfolio page (`/portfolio`)
+- [x] Catalogue page (`/catalogue`)
+- [x] Profile page (`/profile`)
+- [x] `PageLayout` base template component
+- [x] `NavBar` component with active state
+- [x] Nav shows different links when logged in vs logged out
+- [x] Logout button styled to match nav links
+- [x] Register link pushed to far right when logged out
+- [x] Profile button in authenticated nav
+- [x] Logout button pushed to far right in authenticated nav
+- [x] Show/hide password toggle on registration form
+- [x] Disabled button until form fields filled
+- [x] Error display on login and registration forms
+- [x] Spawn animation easter egg on home page
+- [ ] Success message after registration
+- [ ] Redirect to dashboard after registration (optional)
+- [ ] Mobile screen size testing
 
 ## 🚀 Deployment (Phase 2)
 - [ ] Launch EC2 instance (Ubuntu)
@@ -31,7 +59,7 @@
 - [ ] Run `yarn install` and `yarn build`
 - [ ] Start app with PM2
 - [ ] Configure nginx as reverse proxy
-- [ ] Set up PostgreSQL on EC2 (or migrate to RDS)
+- [ ] Set up PostgreSQL on EC2
 - [ ] Add domain + HTTPS via Certbot
 
 ## 🔄 CI/CD (Phase 2)
@@ -44,3 +72,4 @@
 - [ ] Error handling on all auth flows
 - [ ] Basic brute-force protection on login
 - [ ] PM2 set to auto-restart on reboot (`pm2 startup`)
+- [ ] App tested on mobile screen size
