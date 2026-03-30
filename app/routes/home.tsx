@@ -1,6 +1,19 @@
 import type { Route } from "./+types/home";
-import logo from "../assets/futuristice-geometric-nutzack-transparent.jpeg";
+import nutzsack from "../assets/futuristice-geometric-nutzack-transparent.jpeg";
 import { useRef, useState } from "react";
+import PageLayout from "~/components/PageLayout";
+import { pool } from "../db/db.server";
+import bcrypt from "bcryptjs";
+import { redirect, data } from "react-router";
+
+interface SpawnItem {
+  id: number;
+  edge: string;
+  top?: string;
+  bottom?: string;
+  left?: string;
+  right?: string;
+}
 
 export function meta({ }: Route.MetaArgs) {
   return [
@@ -9,26 +22,52 @@ export function meta({ }: Route.MetaArgs) {
   ];
 }
 
-export default function Home() {
-  const title = "Lab<3 Development";
-  const [items, setItems] = useState<any[]>([]);
-  const [isSpawning, setIsSpawning] = useState(false);
+export async function action({ request }: Route.ActionArgs) {
+  const formData = await request.formData();
+  const username = String(formData.get("username"));
+  const password = String(formData.get("password"));
+
+  try {
+    const result = await pool.query(
+      `SELECT * FROM "User" WHERE username = $1`,
+      [username]
+    );
+
+    const user = result.rows[0];
+
+    if (!user) {
+      return data({ error: "Invalid username or password" }, { status: 400 });
+    }
+
+    const isValid = await bcrypt.compare(password, user.password);
+
+    if (!isValid) {
+      return data({ error: "Invalid username or password" }, { status: 400 });
+    }
+
+    return redirect("/dashboard");
+  } catch (err) {
+    console.error(err);
+    return data({ error: "Something went wrong" }, { status: 500 });
+  }
+}
+
+export default function Home({ actionData }: Route.ComponentProps) {
+  const [items, setItems] = useState<SpawnItem[]>([]);
   const [clickCount, setClickCount] = useState(0);
   const [isActive, setIsActive] = useState(false);
-  const clickTimeoutRef = useRef<any>(null);
-  const intervalRef = useRef<any>(null);
+  const clickTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const spawnItem = () => {
     const id = Date.now();
-
     const edges = ["top", "bottom", "left", "right"];
     const edge = edges[Math.floor(Math.random() * edges.length)];
-
     const rand = Math.random() * 100;
 
-    let position: any = {};
-
-
+    let position: Partial<SpawnItem> = {};
 
     if (edge === "top") position = { top: "-60px", left: `${rand}%` };
     if (edge === "bottom") position = { bottom: "-60px", left: `${rand}%` };
@@ -43,119 +82,100 @@ export default function Home() {
     }, 1200);
   };
 
+
   const handleWelcomeClick = () => {
-  // 🔴 If active → FULL RESET
-  if (isActive) {
-    clearInterval(intervalRef.current);
-    intervalRef.current = null;
-
-    setIsActive(false);
-    setClickCount(0);
-
-    if (clickTimeoutRef.current) {
-      clearTimeout(clickTimeoutRef.current);
+    if (isActive) {
+      clearInterval(intervalRef.current ?? undefined);
+      intervalRef.current = null;
+      setIsActive(false);
+      setClickCount(0);
+      if (clickTimeoutRef.current) clearTimeout(clickTimeoutRef.current);
+      return;
     }
 
-    return;
-  }
+    const newCount = clickCount + 1;
+    setClickCount(newCount);
 
-  // 🟡 Increment clicks
-  const newCount = clickCount + 1;
-  setClickCount(newCount);
+    if (clickTimeoutRef.current) clearTimeout(clickTimeoutRef.current);
 
-  // ⏱️ Reset timer (must keep clicking fast)
-  if (clickTimeoutRef.current) {
-    clearTimeout(clickTimeoutRef.current);
-  }
+    clickTimeoutRef.current = setTimeout(() => {
+      setClickCount(0);
+    }, 1000);
 
-  clickTimeoutRef.current = setTimeout(() => {
-    setClickCount(0); // ⬅️ reset if too slow
-  }, 1000); // 👈 adjust timing (1s window)
-
-  // 🟢 Activate if fast enough
-  if (newCount >= 5) {
-    setIsActive(true);
-
-    intervalRef.current = setInterval(() => {
-      spawnItem();
-    }, 300);
-
-    clearTimeout(clickTimeoutRef.current);
-  }
-};
+    if (newCount >= 5) {
+      setIsActive(true);
+      intervalRef.current = setInterval(spawnItem, 300);
+      clearTimeout(clickTimeoutRef.current);
+    }
+  };
 
   return (
-
-    <div className="screenContainer">
-      <nav>
-        <a href="#home">Home</a>
-        <a href="#portfolio">Portfolio</a>
-      </nav>
-      <section id="home">
-        {/* <h1>Welcome</h1> */}
-        <h1
+    <PageLayout>
+      <div className="formContainer">
+        <button
           onClick={handleWelcomeClick}
-          
           style={{
+            background: "none",
+            border: "none",
+            padding: 0,
             cursor: "pointer",
-            color: isActive ? "limegreen" : "white",
-            // color: !isUnlocked
-            //   ? "white"
-            //   : isSpawning
-            //   ? "limegreen"
-            //   : "crimson",
-            transition: "0.3s",
           }}
         >
-          Welcome
-        </h1>
-        
-        <p>Hello! This is your portfolio home page. Share your story, skills, and projects here to showcase your work
-          and expertise to the world.</p>
-      </section>
-      <div className="formContainer">
-        <div className="bannerContainer" />
-        <form onSubmit={() => { }}>
-          <label id="firstName" className="fieldLabel">
-            {"First Name"}
-            <input
-              className="field"
-              type="text"
-              name="firstName"
-              placeholder="Enter first name"
-            />
-          </label>
-          <label id="lastName" className="fieldLabel">
-            {"Last Name"}
-            <input
-              className="field"
-              type="text"
-              name="lastName"
-              placeholder="Enter last name"
-            />
-          </label>
-          <button type="submit" className="button">
-            {"Submit"}
-          </button>
-          {/* <button
-            type="button"
-            className="button"
-            onClick={toggleSpawning}
+          <h1
+            style={{
+              color: isActive ? "#FF3EFF" : "white",
+              transition: "0.3s",
+            }}
           >
-            {isSpawning ? "STOP 😈" : "I LOVE TITS"}
-          </button> */}
+            Welcome
+          </h1>
+        </button>
+        {/* Banner */}
+        <div className="bannerContainer" />
+
+        {/* Login Form */}
+        <form method="post">
+          <label id="username" className="fieldLabel">
+            Username
+            <input
+              className="field"
+              type="text"
+              name="username"
+              placeholder="Enter username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+          </label>
+          <label id="password" className="fieldLabel">
+            Password
+            <input
+              className="field"
+              type="password"
+              name="password"
+              placeholder="Enter password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </label>
+          {actionData?.error && (
+            <p style={{ color: "red" }}>{actionData.error}</p>
+          )}
+          <button type="submit" className="button" disabled={!username && !password}>
+            Submit
+          </button>
         </form>
+
+        {items.map((item) => (
+          <img
+            key={item.id}
+            src={nutzsack}
+            className={`spawn ${item.edge}`}
+            style={item}
+          />
+        ))}
       </div>
-
-      {items.map((item) => (
-        <img
-          key={item.id}
-          src={logo} // or any asset you want
-          className={`spawn ${item.edge}`}
-          style={item}
-        />
-      ))}
-
-    </div>
+    </PageLayout>
   );
 }

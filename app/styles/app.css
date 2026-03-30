@@ -151,6 +151,12 @@ p {
   /* hover:bg-blue-600 */
 }
 
+.button:disabled {
+  background-color: var(--text-muted);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
 /* Nav */
 nav {
   position: sticky;
@@ -204,6 +210,18 @@ nav a::after {
 
 nav a:hover::after {
   width: 100%;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  transition: 0.3s;
+}
+
+.nav-link.active {
+  color: limegreen;
+  font-weight: bold;
 }
 
 /* Animation */
