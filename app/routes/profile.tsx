@@ -2,6 +2,8 @@ import type { Route } from "./+types/profile";
 import { Form, redirect, data } from "react-router";
 import { useState } from "react";
 import PageLayout from "~/components/PageLayout";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRotateLeft } from "@fortawesome/free-solid-svg-icons";
 import { pool } from "../db/db.server";
 import { getUserFromSession } from "../db/session.server";
 
@@ -50,6 +52,27 @@ export async function action({ request }: Route.ActionArgs) {
 export default function Profile({ loaderData, actionData }: Route.ComponentProps) {
   const { user } = loaderData;
   const [isEditing, setIsEditing] = useState(false);
+  const [fields, setFields] = useState({
+    email: user.email ?? "",
+    first_name: user.first_name ?? "",
+    last_name: user.last_name ?? "",
+  });
+  const [original, setOriginal] = useState(fields);
+
+  const hasChanges =
+    fields.email !== original.email ||
+    fields.first_name !== original.first_name ||
+    fields.last_name !== original.last_name;
+
+  function handleEdit() {
+    setOriginal(fields);
+    setIsEditing(true);
+  }
+
+  function handleCancel() {
+    setFields(original);
+    setIsEditing(false);
+  }
 
   return (
     <PageLayout isAuthenticated={loaderData.isAuthenticated}>
@@ -64,63 +87,80 @@ export default function Profile({ loaderData, actionData }: Route.ComponentProps
               className="field"
               type="text"
               name="username"
-              defaultValue={user.username}
+              value={user.username}
               disabled
+              readOnly
             />
           </label>
           <label htmlFor="email" className="fieldLabel">
             Email
-            <input
-              id="email"
-              className="field"
-              type="email"
-              name="email"
-              defaultValue={user.email ?? ""}
-              disabled={!isEditing}
-            />
+            <div className="field-wrapper">
+              <input
+                id="email"
+                className="field"
+                type="email"
+                name="email"
+                value={fields.email}
+                disabled={!isEditing}
+                onChange={(e) => setFields({ ...fields, email: e.target.value })}
+                style={isEditing && fields.email !== original.email ? { paddingRight: "2rem" } : undefined}
+              />
+              {isEditing && fields.email !== original.email && (
+                <button type="button" className="field-reset-btn" onClick={() => setFields({ ...fields, email: original.email })}><FontAwesomeIcon icon={faArrowRotateLeft} /></button>
+              )}
+            </div>
           </label>
           <label htmlFor="first_name" className="fieldLabel">
             First Name
-            <input
-              id="first_name"
-              className="field"
-              type="text"
-              name="first_name"
-              defaultValue={user.first_name ?? ""}
-              disabled={!isEditing}
-            />
+            <div className="field-wrapper">
+              <input
+                id="first_name"
+                className="field"
+                type="text"
+                name="first_name"
+                value={fields.first_name}
+                disabled={!isEditing}
+                onChange={(e) => setFields({ ...fields, first_name: e.target.value })}
+                style={isEditing && fields.first_name !== original.first_name ? { paddingRight: "2rem" } : undefined}
+              />
+              {isEditing && fields.first_name !== original.first_name && (
+                <button type="button" className="field-reset-btn" onClick={() => setFields({ ...fields, first_name: original.first_name })}><FontAwesomeIcon icon={faArrowRotateLeft} /></button>
+              )}
+            </div>
           </label>
           <label htmlFor="last_name" className="fieldLabel">
             Last Name
-            <input
-              id="last_name"
-              className="field"
-              type="text"
-              name="last_name"
-              defaultValue={user.last_name ?? ""}
-              disabled={!isEditing}
-            />
+            <div className="field-wrapper">
+              <input
+                id="last_name"
+                className="field"
+                type="text"
+                name="last_name"
+                value={fields.last_name}
+                disabled={!isEditing}
+                onChange={(e) => setFields({ ...fields, last_name: e.target.value })}
+                style={isEditing && fields.last_name !== original.last_name ? { paddingRight: "2rem" } : undefined}
+              />
+              {isEditing && fields.last_name !== original.last_name && (
+                <button type="button" className="field-reset-btn" onClick={() => setFields({ ...fields, last_name: original.last_name })}><FontAwesomeIcon icon={faArrowRotateLeft} /></button>
+              )}
+            </div>
           </label>
 
-          {/* {actionData?.error && (
-            <p style={{ color: "red" }}>{actionData.error}</p>
-          )}
-          {actionData?.success && (
-            <p style={{ color: "limegreen" }}>{actionData.success}</p>
-          )} */}
-
           <div style={{ display: "flex", gap: "1rem", justifyContent: "center" }}>
-            <button
-              type="button"
-              className="button"
-              onClick={() => setIsEditing(!isEditing)}
-            >
-              {isEditing ? "Cancel" : "Edit"}
-            </button>
-            {isEditing && (
-              <button type="submit" className="button">
-                Save
+            {!isEditing ? (
+              <button type="button" className="button" onClick={handleEdit}>
+                Edit
               </button>
+            ) : (
+              <>
+                <button type="button" className="button" onClick={handleCancel}>
+                  Cancel
+                </button>
+                <button type="submit" className="button" disabled={!hasChanges}>
+                  Save
+                </button>
+              </>
             )}
           </div>
         </Form>
