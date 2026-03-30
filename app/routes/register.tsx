@@ -2,6 +2,9 @@ import type { Route } from "./+types/register";
 import { Form, redirect, data } from "react-router";
 import { useState } from "react";
 import PageLayout from "~/components/PageLayout";
+import logo from "../assets/images/peeps/mdg-bald-icon.jpg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { pool } from "../db/db.server";
 import bcrypt from "bcryptjs";
 
@@ -52,7 +55,7 @@ export default function Register({ actionData }: Route.ComponentProps) {
     return (
         <PageLayout>
             <div className="formContainer">
-                <div className="bannerContainer" />
+                {/* <Banner image={logo} alt="LAB3 Logo" /> */}
 
                 <Form method="post">
                     <label htmlFor="username" className="fieldLabel">
@@ -68,9 +71,9 @@ export default function Register({ actionData }: Route.ComponentProps) {
                             required
                         />
                     </label>
-                    <div style={{ position: "relative" }}>
-                        <label htmlFor="password" className="fieldLabel">
-                            Password
+                    <label htmlFor="password" className="fieldLabel">
+                        Password
+                        <div className="field-wrapper">
                             <input
                                 id="password"
                                 className="field"
@@ -84,23 +87,12 @@ export default function Register({ actionData }: Route.ComponentProps) {
                             <button
                                 type="button"
                                 onClick={() => setShowPassword(!showPassword)}
-                                style={{
-                                    position: "absolute",
-                                    right: "10px",
-                                    top: "50%",
-                                    transform: "translateY(-50%)",
-                                    background: "none",
-                                    border: "none",
-                                    cursor: "pointer",
-                                    color: "var(--accent-orange)",
-                                    fontFamily: "Black Ops One, sans-serif",
-                                    fontSize: "0.75rem",
-                                }}
+                                className="field-reset-btn"
                             >
-                                {showPassword ? "HIDE" : "SHOW"}
+                                <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
                             </button>
-                        </label>
-                    </div>
+                        </div>
+                    </label>
                     <label htmlFor="email" className="fieldLabel">
                         Email
                         <input
@@ -139,7 +131,9 @@ export default function Register({ actionData }: Route.ComponentProps) {
                         className="button"
                         disabled={!username && !password}
                     >
-                        Register
+                        {username && password
+                            ? <img src={logo} alt="Register" style={{ height: "6rem", borderRadius: "50%" }} />
+                            : "Register"}
                     </button>
                 </Form>
             </div>
