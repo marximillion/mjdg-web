@@ -1,5 +1,5 @@
 import type { Route } from "./+types/home";
-import nutzsack from "../assets/futuristice-geometric-nutzack-transparent.jpeg";
+import nutzsack from "../assets/images/misc/futuristice-geometric-nutzack-transparent.jpeg";
 import { useRef, useState } from "react";
 import PageLayout from "~/components/PageLayout";
 import { pool } from "../db/db.server";

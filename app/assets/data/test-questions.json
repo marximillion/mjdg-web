@@ -1,0 +1,332 @@
+[
+  {
+    "id": 1,
+    "question": "Which NBA player has won the most championships?",
+    "answers": [
+      {
+        "label": "LeBron James",
+        "points": 50
+      },
+      {
+        "label": "Bill Russell",
+        "points": 100
+      },
+      {
+        "label": "Michael Jordan",
+        "points": 50
+      },
+      {
+        "label": "Kareem Abdul-Jabbar",
+        "points": 50
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "question": "What is the traditional Filipino greeting that means 'blessing'?",
+    "answers": [
+      {
+        "label": "Mano po",
+        "points": 100
+      },
+      {
+        "label": "Salamat",
+        "points": 50
+      },
+      {
+        "label": "Kumusta",
+        "points": 50
+      },
+      {
+        "label": "Magandang araw",
+        "points": 50
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "question": "Who is the all-time leading scorer in NBA history?",
+    "answers": [
+      {
+        "label": "LeBron James",
+        "points": 100
+      },
+      {
+        "label": "Kareem Abdul-Jabbar",
+        "points": 50
+      },
+      {
+        "label": "Karl Malone",
+        "points": 50
+      },
+      {
+        "label": "Michael Jordan",
+        "points": 50
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "question": "What Filipino dish is made of pork blood and vinegar?",
+    "answers": [
+      {
+        "label": "Dinuguan",
+        "points": 100
+      },
+      {
+        "label": "Adobo",
+        "points": 50
+      },
+      {
+        "label": "Sinigang",
+        "points": 50
+      },
+      {
+        "label": "Lumpia",
+        "points": 50
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "question": "In what year was the NBA founded?",
+    "answers": [
+      {
+        "label": "1946",
+        "points": 100
+      },
+      {
+        "label": "1950",
+        "points": 50
+      },
+      {
+        "label": "1940",
+        "points": 50
+      },
+      {
+        "label": "1955",
+        "points": 50
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "question": "What do Filipinos call their grandmother?",
+    "answers": [
+      {
+        "label": "Lola",
+        "points": 100
+      },
+      {
+        "label": "Nanay",
+        "points": 50
+      },
+      {
+        "label": "Tita",
+        "points": 50
+      },
+      {
+        "label": "Mama",
+        "points": 50
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "question": "Which NBA team has won the most championships?",
+    "answers": [
+      {
+        "label": "Boston Celtics",
+        "points": 100
+      },
+      {
+        "label": "Los Angeles Lakers",
+        "points": 50
+      },
+      {
+        "label": "Chicago Bulls",
+        "points": 50
+      },
+      {
+        "label": "Golden State Warriors",
+        "points": 50
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "question": "What is the name of the long Philippine knife used in cooking?",
+    "answers": [
+      {
+        "label": "Balisong",
+        "points": 100
+      },
+      {
+        "label": "Kampilan",
+        "points": 50
+      },
+      {
+        "label": "Itak",
+        "points": 50
+      },
+      {
+        "label": "Talibong",
+        "points": 50
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "question": "How many NBA teams are there currently?",
+    "answers": [
+      {
+        "label": "30",
+        "points": 100
+      },
+      {
+        "label": "28",
+        "points": 50
+      },
+      {
+        "label": "32",
+        "points": 50
+      },
+      {
+        "label": "26",
+        "points": 50
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "question": "What Filipino holiday celebrates the feast of the Black Nazarene?",
+    "answers": [
+      {
+        "label": "Black Nazarene Festival (Sinulog)",
+        "points": 50
+      },
+      {
+        "label": "Ati-Atihan",
+        "points": 50
+      },
+      {
+        "label": "Flores de Mayo",
+        "points": 50
+      },
+      {
+        "label": "Dinagyang",
+        "points": 100
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "question": "What is Michael Jordan's jersey number?",
+    "answers": [
+      {
+        "label": "23",
+        "points": 100
+      },
+      {
+        "label": "45",
+        "points": 50
+      },
+      {
+        "label": "33",
+        "points": 50
+      },
+      {
+        "label": "12",
+        "points": 50
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "question": "How many main islands does the Philippines have?",
+    "answers": [
+      {
+        "label": "3",
+        "points": 100
+      },
+      {
+        "label": "7",
+        "points": 50
+      },
+      {
+        "label": "11",
+        "points": 50
+      },
+      {
+        "label": "5",
+        "points": 50
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "question": "Which NBA player is known as 'The King'?",
+    "answers": [
+      {
+        "label": "LeBron James",
+        "points": 100
+      },
+      {
+        "label": "Giannis Antetokounmpo",
+        "points": 50
+      },
+      {
+        "label": "Kevin Durant",
+        "points": 50
+      },
+      {
+        "label": "Stephen Curry",
+        "points": 50
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "question": "What is the Filipino word for 'thank you'?",
+    "answers": [
+      {
+        "label": "Salamat",
+        "points": 100
+      },
+      {
+        "label": "Maraming salamat",
+        "points": 50
+      },
+      {
+        "label": "Pasasalamat",
+        "points": 50
+      },
+      {
+        "label": "Merci",
+        "points": 50
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "question": "What is the minimum height of an NBA basketball hoop?",
+    "answers": [
+      {
+        "label": "10 feet",
+        "points": 100
+      },
+      {
+        "label": "9.5 feet",
+        "points": 50
+      },
+      {
+        "label": "11 feet",
+        "points": 50
+      },
+      {
+        "label": "8.5 feet",
+        "points": 50
+      }
+    ]
+  }
+]

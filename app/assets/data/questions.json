@@ -1,0 +1,378 @@
+[
+    {
+        "id": 1,
+        "question": "What can you find in the north pole?",
+        "answers": [
+            {
+                "label": "Snow",
+                "points": 5
+            },
+            {
+                "label": "Santa Claus",
+                "points": 4
+            },
+            {
+                "label": "Santa's Elves",
+                "points": 3
+            },
+            {
+                "label": "Reindeers",
+                "points": 2
+            },
+            {
+                "label": "Santa's Sleigh",
+                "points": 1
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "question": "Name a popular Christmas movie",
+        "answers": [
+            {
+                "label": "Home Alone",
+                "points": 6
+            },
+            {
+                "label": "Polar Express",
+                "points": 5
+            },
+            {
+                "label": "A Christmas Carol",
+                "points": 4
+            },
+            {
+                "label": "Elf",
+                "points": 3
+            },
+            {
+                "label": "The Grinch",
+                "points": 2
+            },
+            {
+                "label": "Die Hard",
+                "points": 1
+            }
+        ]
+    },
+    {
+        "id": 3,
+        "question": "Christmas decorations",
+        "answers": [
+            {
+                "label": "Parol",
+                "points": 5
+            },
+            {
+                "label": "Nativity Scene",
+                "points": 4
+            },
+            {
+                "label": "Christmas Wreath",
+                "points": 3
+            },
+            {
+                "label": "Christmas Tree",
+                "points": 2
+            },
+            {
+                "label": "Christmas Lights",
+                "points": 1
+            }
+        ]
+    },
+    {
+        "id": 4,
+        "question": "Santa's reindeers (NOT INCLUDING RUDOLPH)",
+        "answers": [
+            {
+                "label": "Dasher",
+                "points": 8
+            },
+            {
+                "label": "Dancer",
+                "points": 7
+            },
+            {
+                "label": "Prancer",
+                "points": 6
+            },
+            {
+                "label": "Vixen",
+                "points": 5
+            },
+            {
+                "label": "Comet",
+                "points": 4
+            },
+            {
+                "label": "Cupid",
+                "points": 3
+            },
+            {
+                "label": "Donner",
+                "points": 2
+            },
+            {
+                "label": "Blitzen",
+                "points": 1
+            }
+        ]
+    },
+    {
+        "id": 5,
+        "question": "Filipino Christmas Traditions",
+        "answers": [
+            {
+                "label": "BINGO",
+                "points": 5
+            },
+            {
+                "label": "Noche Buena",
+                "points": 4
+            },
+            {
+                "label": "Simbang Gabi",
+                "points": 3
+            },
+            {
+                "label": "Monito Monita",
+                "points": 2
+            },
+            {
+                "label": "Carolling",
+                "points": 1
+            }
+        ]
+    },
+    {
+        "id": 6,
+        "question": "Popular Christmas songs",
+        "answers": [
+            {
+                "label": "All I want for Christmas is you",
+                "points": 7
+            },
+            {
+                "label": "Christmas in our hearts",
+                "points": 6
+            },
+            {
+                "label": "Last Christmas",
+                "points": 5
+            },
+            {
+                "label": "Jingle Bells",
+                "points": 4
+            },
+            {
+                "label": "Joy to the World",
+                "points": 3
+            },
+            {
+                "label": "Rudolph the Red-Nosed Reindeer",
+                "points": 2
+            },
+            {
+                "label": "Pasko Na Naman",
+                "points": 1
+            }
+        ]
+    },
+    {
+        "id": 7,
+        "question": "Name someone you will find in the Nativity scene",
+        "answers": [
+            {
+                "label": "Baby Jesus",
+                "points": 6
+            },
+            {
+                "label": "Mary",
+                "points": 5
+            },
+            {
+                "label": "Joseph",
+                "points": 4
+            },
+            {
+                "label": "Three Wise Men",
+                "points": 3
+            },
+            {
+                "label": "Angel",
+                "points": 2
+            },
+            {
+                "label": "Sheperd",
+                "points": 1
+            }
+        ]
+    },
+    {
+        "id": 8,
+        "question": "Popular Christmas Foods",
+        "answers": [
+            {
+                "label": "Hamon",
+                "points": 5
+            },
+            {
+                "label": "Queso de Bola",
+                "points": 4
+            },
+            {
+                "label": "Puto Bumbong",
+                "points": 3
+            },
+            {
+                "label": "Bibingka",
+                "points": 2
+            },
+            {
+                "label": "Pancit",
+                "points": 1
+            }
+        ]
+    },
+    {
+        "id": 9,
+        "question": "Name something santa shouldn't get caught doing",
+        "answers": [
+            {
+                "label": "Kissing mommy",
+                "points": 5
+            },
+            {
+                "label": "Eating all the cookies",
+                "points": 4
+            },
+            {
+                "label": "Stepping on presents",
+                "points": 3
+            },
+            {
+                "label": "Drinking too much eggnog",
+                "points": 2
+            },
+            {
+                "label": "Losing a reindeer",
+                "points": 1
+            }
+        ]
+    },
+    {
+        "id": 10,
+        "question": "Name something the grinch hates about Christmas?",
+        "answers": [
+            {
+                "label": "Happy people",
+                "points": 5
+            },
+            {
+                "label": "Music/carolling/noisy",
+                "points": 4
+            },
+            {
+                "label": "Decorations/lights",
+                "points": 3
+            },
+            {
+                "label": "Parties/gatherings",
+                "points": 2
+            },
+            {
+                "label": "Cold weather",
+                "points": 1
+            }
+        ]
+    },
+    {
+        "id": 11,
+        "question": "Name an animated Christmas characer",
+        "answers": [
+            {
+                "label": "Santa Claus",
+                "points": 5
+            },
+            {
+                "label": "Rudolph the Red-Nosed Reindeer",
+                "points": 4
+            },
+            {
+                "label": "Frosty the Snowman",
+                "points": 3
+            },
+            {
+                "label": "Jack Frost",
+                "points": 2
+            },
+            {
+                "label": "Charlie Brown",
+                "points": 1
+            }
+        ]
+    },
+    {
+        "id": 12,
+        "question": "Name something people do on christmas morning",
+        "answers": [
+            {
+                "label": "Open gits",
+                "points": 4
+            },
+            {
+                "label": "Take pictures",
+                "points": 3
+            },
+            {
+                "label": "Go to church",
+                "points": 2
+            },
+            {
+                "label": "Eat breakfast",
+                "points": 1
+            }
+        ]
+    },
+    {
+        "id": 13,
+        "question": "Name something Santa needs to deliver pressents",
+        "answers": [
+            {
+                "label": "Sleigh",
+                "points": 5
+            },
+            {
+                "label": "Presents",
+                "points": 4
+            },
+            {
+                "label": "Reindeers",
+                "points": 3
+            },
+            {
+                "label": "Naught/nice list",
+                "points": 2
+            },
+            {
+                "label": "Elves",
+                "points": 1
+            }
+        ]
+    },
+    {
+        "id": 14,
+        "question": "What month does Christmas start?",
+        "answers": [
+            {
+                "label": "September",
+                "points": 1000
+            },
+            {
+                "label": "December",
+                "points": 10
+            }
+        ]
+    }
+]
