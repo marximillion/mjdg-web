@@ -1,3 +1,4 @@
+// Copyright © MJDG 2026
 import { getUserFromSession } from "~/db/session.server";
 import type { Route } from "./+types/dashboard";
 import PageLayout from "~/components/PageLayout";

@@ -1,3 +1,4 @@
+// Copyright © MJDG 2026
 import pg from "pg";
 import bcrypt from "bcryptjs";
 

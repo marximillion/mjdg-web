@@ -1,3 +1,4 @@
+// Copyright © MJDG 2026
 import type { Route } from "./+types/portfolio";
 import PageLayout from "../components/PageLayout";
 

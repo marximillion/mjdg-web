@@ -1,3 +1,4 @@
+// Copyright © MJDG 2026
 import { redirect } from "react-router";
 import { Link } from "react-router";
 import type { Route } from "./+types/catalogue";

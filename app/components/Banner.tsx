@@ -1,3 +1,4 @@
+// Copyright © MJDG 2026
 interface BannerProps {
   image: string;
   alt?: string;

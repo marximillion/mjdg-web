@@ -1,3 +1,4 @@
+// Copyright © MJDG 2026
 import { NavLink, Form } from "react-router";
 
 interface NavBarProps {

@@ -1,3 +1,4 @@
+// Copyright © MJDG 2026
 import type { Route } from "./+types/home";
 import nutzsack from "../assets/images/misc/futuristice-geometric-nutzack-transparent.jpeg";
 import logo from "../assets/images/logos/logo-main.svg";

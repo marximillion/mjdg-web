@@ -1,3 +1,4 @@
+// Copyright © MJDG 2026
 import NavBar from "./NavigationBar";
 
 interface PageLayoutProps {
@@ -13,6 +14,7 @@ export default function PageLayout({
     <div className="screenContainer">
       <NavBar isAuthenticated={isAuthenticated} />
       {children}
+      <footer className="copyright">&copy; MJDG 2026</footer>
     </div>
   );
 }

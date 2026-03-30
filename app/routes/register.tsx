@@ -1,3 +1,4 @@
+// Copyright © MJDG 2026
 import type { Route } from "./+types/register";
 import { Form, redirect, data } from "react-router";
 import { useState } from "react";
@@ -55,11 +56,10 @@ export default function Register({ actionData }: Route.ComponentProps) {
     return (
         <PageLayout>
             <div className="formContainer">
-                {/* <Banner image={logo} alt="LAB3 Logo" /> */}
 
                 <Form method="post">
                     <label htmlFor="username" className="fieldLabel">
-                        Username
+                        Username*
                         <input
                             id="username"
                             className="field"
@@ -72,7 +72,7 @@ export default function Register({ actionData }: Route.ComponentProps) {
                         />
                     </label>
                     <label htmlFor="password" className="fieldLabel">
-                        Password
+                        Password*
                         <div className="field-wrapper">
                             <input
                                 id="password"
@@ -100,7 +100,7 @@ export default function Register({ actionData }: Route.ComponentProps) {
                             className="field"
                             type="email"
                             name="email"
-                            placeholder="Enter email (optional)"
+                            placeholder="Enter email"
                         />
                     </label>
                     <label htmlFor="first_name" className="fieldLabel">
@@ -110,7 +110,7 @@ export default function Register({ actionData }: Route.ComponentProps) {
                             className="field"
                             type="text"
                             name="first_name"
-                            placeholder="Enter first name (optional)"
+                            placeholder="Enter first name"
                         />
                     </label>
                     <label htmlFor="last_name" className="fieldLabel">
@@ -120,7 +120,7 @@ export default function Register({ actionData }: Route.ComponentProps) {
                             className="field"
                             type="text"
                             name="last_name"
-                            placeholder="Enter last name (optional)"
+                            placeholder="Enter last name"
                         />
                     </label>
                     {actionData?.error && (

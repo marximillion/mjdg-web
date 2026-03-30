@@ -1,3 +1,4 @@
+// Copyright © MJDG 2026
 import { redirect } from "react-router";
 import { sessionStorage } from "../db/session.server";
 

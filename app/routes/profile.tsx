@@ -1,3 +1,4 @@
+// Copyright © MJDG 2026
 import type { Route } from "./+types/profile";
 import { Form, redirect, data } from "react-router";
 import { useState } from "react";
