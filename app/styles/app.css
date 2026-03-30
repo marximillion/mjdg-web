@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap");
 @import "tailwindcss";
 
-/* GLobal */
+/* Global */
 html {
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
@@ -53,7 +53,6 @@ body {
 }
 
 h1 {
-  /* margin-top: 2rem; */
   font-family: "Black Ops One", sans-serif;
   padding: 0.75rem;
   font-size: 3rem;

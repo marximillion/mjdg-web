@@ -5,7 +5,6 @@ interface NavBarProps {
 }
 
 export default function NavBar({ isAuthenticated = false }: NavBarProps) {
-  console.log("MDG::isAuthenticated->", isAuthenticated);
   if (isAuthenticated) {
     return (
       <nav>

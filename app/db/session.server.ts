@@ -6,7 +6,7 @@ export const sessionStorage = createCookieSessionStorage({
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
     sameSite: "lax",
-    secrets: ["mjdg-secret-key"],
+    secrets: [process.env.SESSION_SECRET ?? "mjdg-secret-key"],
     maxAge: 60 * 60 * 24 * 7,
   },
 });
