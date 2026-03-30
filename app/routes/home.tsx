@@ -5,6 +5,8 @@ import PageLayout from "~/components/PageLayout";
 import { pool } from "../db/db.server";
 import bcrypt from "bcryptjs";
 import { redirect, data } from "react-router";
+import { Form } from "react-router";
+import { sessionStorage } from "../db/session.server";
 
 interface SpawnItem {
   id: number;
@@ -39,13 +41,18 @@ export async function action({ request }: Route.ActionArgs) {
       return data({ error: "Invalid username or password" }, { status: 400 });
     }
 
-    const isValid = await bcrypt.compare(password, user.password);
+    const isValid = await bcrypt.compare(password, user.hashed_password);
 
     if (!isValid) {
       return data({ error: "Invalid username or password" }, { status: 400 });
     }
 
-    return redirect("/dashboard");
+    const session = await sessionStorage.getSession();
+    session.set("userId", user.id);
+
+    return redirect("/dashboard", {
+      headers: { "Set-Cookie": await sessionStorage.commitSession(session) },
+    });
   } catch (err) {
     console.error(err);
     return data({ error: "Something went wrong" }, { status: 500 });
@@ -134,7 +141,7 @@ export default function Home({ actionData }: Route.ComponentProps) {
         <div className="bannerContainer" />
 
         {/* Login Form */}
-        <form method="post">
+        <Form method="post">
           <label id="username" className="fieldLabel">
             Username
             <input
@@ -165,7 +172,7 @@ export default function Home({ actionData }: Route.ComponentProps) {
           <button type="submit" className="button" disabled={!username && !password}>
             Submit
           </button>
-        </form>
+        </Form>
 
         {items.map((item) => (
           <img
