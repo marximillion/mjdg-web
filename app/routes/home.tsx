@@ -119,6 +119,7 @@ export default function Home({ actionData }: Route.ComponentProps) {
   return (
     <PageLayout>
       <div className="formContainer">
+        <div className="bannerContainer" />
         <button
           onClick={handleWelcomeClick}
           style={{
@@ -137,7 +138,6 @@ export default function Home({ actionData }: Route.ComponentProps) {
           </h1>
         </button>
         {/* Banner */}
-        <div className="bannerContainer" />
 
         {/* Login Form */}
         <Form method="post">
