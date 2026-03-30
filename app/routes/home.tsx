@@ -1,7 +1,11 @@
 import type { Route } from "./+types/home";
 import nutzsack from "../assets/images/misc/futuristice-geometric-nutzack-transparent.jpeg";
+import logo from "../assets/images/logos/logo-main.svg";
 import { useRef, useState } from "react";
 import PageLayout from "~/components/PageLayout";
+import Banner from "~/components/Banner";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { pool } from "../db/db.server";
 import bcrypt from "bcryptjs";
 import { redirect, data } from "react-router";
@@ -67,6 +71,7 @@ export default function Home({ actionData }: Route.ComponentProps) {
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const spawnItem = () => {
     const id = Date.now();
@@ -119,7 +124,7 @@ export default function Home({ actionData }: Route.ComponentProps) {
   return (
     <PageLayout>
       <div className="formContainer">
-        <div className="bannerContainer" />
+        <Banner image={logo} alt="LAB3 Logo" />
         <button
           onClick={handleWelcomeClick}
           style={{
@@ -155,15 +160,24 @@ export default function Home({ actionData }: Route.ComponentProps) {
           </label>
           <label id="password" className="fieldLabel">
             Password
-            <input
-              className="field"
-              type="password"
-              name="password"
-              placeholder="Enter password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
+            <div className="field-wrapper">
+              <input
+                className="field"
+                type={showPassword ? "text" : "password"}
+                name="password"
+                placeholder="Enter password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="field-reset-btn"
+              >
+                <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+              </button>
+            </div>
           </label>
           {actionData?.error && (
             <p style={{ color: "red" }}>{actionData.error}</p>
