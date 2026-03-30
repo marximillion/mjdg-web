@@ -58,6 +58,7 @@ h1 {
   padding: 0.75rem;
   font-size: 3rem;
   color: var(--neon-pink);
+  width: fit-content;
 }
 
 p {
@@ -203,4 +204,58 @@ nav a::after {
 
 nav a:hover::after {
   width: 100%;
+}
+
+/* Animation */
+.spawn {
+  position: fixed;
+  width: 200px;
+  pointer-events: none;
+  animation: fly 1.2s ease-out forwards;
+}
+
+/* Direction-based movement */
+.spawn.top {
+  animation-name: fromTop;
+}
+
+.spawn.bottom {
+  animation-name: fromBottom;
+}
+
+.spawn.left {
+  animation-name: fromLeft;
+}
+
+.spawn.right {
+  animation-name: fromRight;
+}
+
+/* Animations */
+@keyframes fromTop {
+  to {
+    transform: translateY(300px) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+@keyframes fromBottom {
+  to {
+    transform: translateY(-300px) rotate(-180deg);
+    opacity: 0;
+  }
+}
+
+@keyframes fromLeft {
+  to {
+    transform: translateX(300px) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+@keyframes fromRight {
+  to {
+    transform: translateX(-300px) rotate(-180deg);
+    opacity: 0;
+  }
 }
