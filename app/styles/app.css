@@ -222,6 +222,47 @@ nav button {
   font-weight: bold;
 }
 
+/* Catalogue */
+.catalogue-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.catalogue-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 180px;
+  height: 180px;
+  background: rgba(25, 31, 74, 0.75);
+  border: 2px solid var(--purple);
+  border-radius: 1rem;
+  text-decoration: none;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.catalogue-tile:hover {
+  border-color: var(--cyan);
+  box-shadow: 0 0 18px var(--cyan);
+  transform: translateY(-4px);
+}
+
+.catalogue-tile-icon {
+  font-size: 3rem;
+}
+
+.catalogue-tile-label {
+  color: var(--text-primary);
+  font-family: "Black Ops One", sans-serif;
+  font-size: 0.85rem;
+  text-align: center;
+  padding: 0 0.5rem;
+}
+
 /* Animations */
 .spawn {
   position: fixed;
