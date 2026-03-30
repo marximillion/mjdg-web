@@ -2,6 +2,7 @@ import { getUserFromSession } from "~/db/session.server";
 import type { Route } from "./+types/dashboard";
 import PageLayout from "~/components/PageLayout";
 import { redirect } from "react-router";
+import emblem from "../assets/images/logos/lab3-emblem-v2.png";
 
 export function meta({ }: Route.MetaArgs) {
     return [
@@ -17,12 +18,14 @@ export async function loader({ request }: Route.LoaderArgs) {
 }
 
 export default function Dashboard({ loaderData }: Route.ComponentProps) {
-    console.log(loaderData);
     return (
         <PageLayout isAuthenticated={loaderData.isAuthenticated}>
-            <section id="dashboard">
-                <h1>Dashboard</h1>
-                <p>Welcome back!</p>
+            <section id="dashboard" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "1rem" }}>
+                <div>
+                    <h1>Dashboard</h1>
+                    <p>Welcome back!</p>
+                </div>
+                <img src={emblem} alt="LAB3 Emblem" style={{ width: "500px" }} />
             </section>
         </PageLayout >
     );
