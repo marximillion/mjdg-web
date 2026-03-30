@@ -15,7 +15,7 @@ export default function NavBar({ isAuthenticated = false }: NavBarProps) {
         <NavLink to="/catalogue" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
           Catalogue
         </NavLink>
-        <Form method="post" action="/logout">
+        <Form method="post" action="/logout" style={{ marginLeft: "auto" }}>
           <button type="submit" className="nav-link">
             Logout
           </button>
@@ -31,6 +31,9 @@ export default function NavBar({ isAuthenticated = false }: NavBarProps) {
       </NavLink>
       <NavLink to="/portfolio" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
         Portfolio
+      </NavLink>
+      <NavLink to="/register" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"} style={{ marginLeft: "auto" }}>
+        Register
       </NavLink>
     </nav>
   );

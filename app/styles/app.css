@@ -161,33 +161,29 @@ p {
 nav {
   position: sticky;
   top: 0;
-
   display: flex;
   gap: 2rem;
-
   padding: 1rem 2rem;
-
   background: rgba(10, 10, 19, 0.75);
   backdrop-filter: blur(8px);
-
   border-bottom: 1px solid rgba(159, 0, 255, 0.4);
   border-radius: 2rem;
 }
 
-nav a {
+nav a,
+nav button {
   position: relative;
-
-  color: #00E5FF;
+  color: var(--text-primary);
   text-decoration: none;
   font-weight: 500;
   letter-spacing: 0.05em;
   font-family: "Black Ops One", sans-serif;
-
   transition: 0.2s ease;
 }
 
 /* Hover glow */
-nav a:hover {
+nav a:hover,
+nav button:hover {
   color: #C4F90F;
   text-shadow:
     0 0 5px #C4F90F,
@@ -195,28 +191,30 @@ nav a:hover {
 }
 
 /* Underline animation */
-nav a::after {
+nav a::after,
+nav button::after {
   content: "";
   position: absolute;
   left: 0;
   bottom: -6px;
-
   width: 0%;
   height: 2px;
   background: linear-gradient(90deg, #9F00FF, #00E5FF);
-
   transition: width 0.25s ease;
 }
 
-nav a:hover::after {
+nav a:hover::after,
+nav button:hover::after {
   width: 100%;
 }
 
-.nav-link {
-  color: white;
-  text-decoration: none;
-  padding: 0.5rem 1rem;
-  transition: 0.3s;
+/* Reset: removes default browser button styling so it looks like a nav link */
+nav button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-size: inherit;
 }
 
 .nav-link.active {
@@ -224,7 +222,7 @@ nav a:hover::after {
   font-weight: bold;
 }
 
-/* Animation */
+/* Animations */
 .spawn {
   position: fixed;
   width: 200px;
@@ -249,7 +247,6 @@ nav a:hover::after {
   animation-name: fromRight;
 }
 
-/* Animations */
 @keyframes fromTop {
   to {
     transform: translateY(300px) rotate(180deg);

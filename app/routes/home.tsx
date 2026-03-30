@@ -125,7 +125,6 @@ export default function Home({ actionData }: Route.ComponentProps) {
             background: "none",
             border: "none",
             padding: 0,
-            cursor: "pointer",
           }}
         >
           <h1
