@@ -9,8 +9,5 @@
 /.react-router/
 /build/
 
-# Prisma
-prisma/migrations/migration_lock.toml
-
 # Mac
 .DS_Store
