@@ -15,6 +15,9 @@ export default function NavBar({ isAuthenticated = false }: NavBarProps) {
         <NavLink to="/catalogue" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
           Catalogue
         </NavLink>
+        <NavLink to="/profile" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
+          Profile
+        </NavLink>
         <Form method="post" action="/logout" style={{ marginLeft: "auto" }}>
           <button type="submit" className="nav-link">
             Logout
