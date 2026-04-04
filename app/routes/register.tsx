@@ -129,7 +129,7 @@ export default function Register({ actionData }: Route.ComponentProps) {
                     <button
                         type="submit"
                         className="button"
-                        disabled={!username && !password}
+                        // disabled={!username && !password}
                     >
                         {username && password
                             ? <img src={logo} alt="Register" style={{ height: "6rem", borderRadius: "50%" }} />
