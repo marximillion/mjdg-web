@@ -67,6 +67,15 @@
 - [ ] Create `.github/workflows/deploy.yml`
 - [ ] Auto-deploy on push to `main`
 
+## 🐳 Docker (Phase 3)
+- [ ] Write `Dockerfile` (multi-stage: build → production)
+- [ ] Write `.dockerignore`
+- [ ] Write `docker-compose.yml` (app + postgres services)
+- [ ] Test local Docker build and run
+- [ ] Push image to ECR (or Docker Hub)
+- [ ] Update EC2 deployment to run containerized app
+- [ ] Update CI/CD pipeline to build and push Docker image on deploy
+
 ## ✅ Pre-Launch Checklist
 - [ ] `.env` is in `.gitignore` and not committed
 - [ ] Error handling on all auth flows
