@@ -11,3 +11,5 @@
 
 # Mac
 .DS_Store
+
+*.docx
