@@ -107,6 +107,121 @@
 - [ ] Update EC2 deployment to run containerized app
 - [ ] Update CI/CD pipeline to build and push Docker image on deploy
 
+## 🧪 Testing
+
+### Smoke Tests — Pre-Auth
+Quick sanity checks to verify critical UI elements are present on public screens.
+
+#### Home Screen (`/`)
+- [ ] Navigation bar is visible
+- [ ] Nav link: Home is present
+- [ ] Nav link: Portfolio is present
+- [ ] Nav link: Register is present
+- [ ] LAB3 logo banner is present
+- [ ] "Welcome" heading is present
+- [ ] Username label is present
+- [ ] Username input field is present
+- [ ] Password label is present
+- [ ] Password input field is present
+- [ ] Password show/hide toggle button is present
+- [ ] Submit button is present
+- [ ] Footer copyright text is present
+
+#### Portfolio Screen (`/portfolio`)
+- [ ] Navigation bar is visible
+- [ ] Nav link: Home is present
+- [ ] Nav link: Portfolio is present
+- [ ] Nav link: Register is present
+- [ ] "Mark De Guzman" heading is present
+- [ ] Profile section is present
+- [ ] Work Experience section is present
+- [ ] Footer copyright text is present
+
+#### Register Screen (`/register`)
+- [ ] Navigation bar is visible
+- [ ] Nav link: Home is present
+- [ ] Nav link: Portfolio is present
+- [ ] Nav link: Register is present
+- [ ] Username field is present
+- [ ] Password field is present
+- [ ] Register button is present
+- [ ] Footer copyright text is present
+
+---
+
+### Build Acceptance Tests (BAT) — Pre-Auth
+Thorough verification that all UI elements are present and correctly labelled on public screens.
+
+#### Home Screen (`/`)
+- [ ] Page title is "LAB<3 Development"
+- [ ] Navigation bar is visible
+- [ ] Nav link: "Home" is present and links to `/`
+- [ ] Nav link: "Portfolio" is present and links to `/portfolio`
+- [ ] Nav link: "Register" is present, links to `/register`, and is pushed to the far right
+- [ ] LAB3 logo banner image is rendered
+- [ ] "Welcome" heading (h1) is present
+- [ ] Login form is present with method POST
+- [ ] Username label text reads "Username"
+- [ ] Username input is type `text`, name `username`, placeholder "Enter username", and is required
+- [ ] Password label text reads "Password"
+- [ ] Password input is type `password`, name `password`, placeholder "Enter password", and is required
+- [ ] Password show/hide toggle button is present inside the field wrapper
+- [ ] Submit button text reads "Submit"
+- [ ] Submit button is disabled when both username and password are empty
+- [ ] Footer text reads "© MJDG 2026"
+
+#### Portfolio Screen (`/portfolio`)
+- [ ] Page title is "Portfolio | LAB<3"
+- [ ] Navigation bar is visible
+- [ ] Nav link: "Home" is present and links to `/`
+- [ ] Nav link: "Portfolio" is present and links to `/portfolio`
+- [ ] Nav link: "Register" is present and links to `/register`
+- [ ] "Mark De Guzman" heading (h1) is present
+- [ ] Phone number "(587) 224-2306" is present as a link
+- [ ] Email "mark.deguzman960@gmail.com" is present as a link
+- [ ] LinkedIn "linkedin.com/in/mark-de-guzman" is present as an external link
+- [ ] Location "Calgary, AB" is present
+- [ ] Section heading "Profile" is present
+- [ ] Skills chips are rendered (e.g. "JavaScript", "TypeScript", "Python")
+- [ ] Section heading "Education" is present
+- [ ] "University of Calgary" is present
+- [ ] "Bachelor of Science in Geomatics Engineering" is present
+- [ ] Section heading "Work Experience" is present
+- [ ] "Homewood Health" (DevOps Analyst) entry is present
+- [ ] "Homewood Health" (Junior Mobile Developer) entry is present
+- [ ] "Stantec" entry is present
+- [ ] "McElhanney" entry is present
+- [ ] Section heading "Projects & Technical Clubs" is present
+- [ ] "Capstone Design Project" entry is present
+- [ ] "AWS DeepRacer Club" entry is present
+- [ ] Section heading "Certifications" is present
+- [ ] "AWS Certified Cloud Practitioner" entry is present
+- [ ] Section heading "Extracurricular" is present
+- [ ] Footer text reads "© MJDG 2026"
+
+#### Register Screen (`/register`)
+- [ ] Page title is "Register | LAB<3"
+- [ ] Navigation bar is visible
+- [ ] Nav link: "Home" is present and links to `/`
+- [ ] Nav link: "Portfolio" is present and links to `/portfolio`
+- [ ] Nav link: "Register" is present and links to `/register`
+- [ ] Registration form is present with method POST
+- [ ] Username label text reads "Username*"
+- [ ] Username input is type `text`, name `username`, placeholder "Enter username", and is required
+- [ ] Password label text reads "Password*"
+- [ ] Password input is type `password`, name `password`, placeholder "Enter password", and is required
+- [ ] Password show/hide toggle button is present inside the field wrapper
+- [ ] Email label text reads "Email"
+- [ ] Email input is type `email`, name `email`, placeholder "Enter email"
+- [ ] First Name label text reads "First Name"
+- [ ] First Name input is type `text`, name `first_name`, placeholder "Enter first name"
+- [ ] Last Name label text reads "Last Name"
+- [ ] Last Name input is type `text`, name `last_name`, placeholder "Enter last name"
+- [ ] Register button is present and reads "Register" when username and password are empty
+- [ ] Footer text reads "© MJDG 2026"
+
+---
+
 ## ✅ Pre-Launch Checklist
 - [ ] `.env` is in `.gitignore` and not committed
 - [ ] Error handling on all auth flows
