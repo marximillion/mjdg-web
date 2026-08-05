@@ -51,52 +51,77 @@
 - [ ] Redirect to dashboard after registration (optional)
 - [ ] Mobile screen size testing
 
+## 🌐 Domain & Infrastructure (Phase 2 — P2_01_DOMAIN_SETUP.md)
+- [x] Choose domain — `mjmdg.org` selected (mjdg.com listed for sale on Spaceship)
+- [x] Register domain on Cloudflare Registrar (~$12/yr, at-cost)
+- [x] Enable auto-renew on domain
+- [x] Enable WHOIS privacy
+- [x] Set up Cloudflare Email Routing — 6 aliases (general, school, gaming, usa, pro, w) all forwarding to Gmail
+- [x] Document email strategy — domain vs real Gmail (see P2_01_DOMAIN_SETUP.md §8)
+- [x] Create AWS account using Gmail (not domain email — recovery-critical)
+- [x] Enable MFA on AWS root account
+- [x] Create IAM user for day-to-day use (EC2Admin — AmazonEC2FullAccess, IAMUserChangePassword)
+- [x] Enable MFA on EC2Admin IAM user
+- [x] Set billing alarm ($15 budget, 3 alerts — actual 85%, actual 100%, forecasted 100%)
+- [x] Delete root user access key
+
 ## 🚀 Deployment (Phase 2)
 
 ### AWS Console — Setup
-- [ ] Create IAM user with EC2 + key pair permissions (console)
-- [ ] Launch EC2 instance — Ubuntu 24.04, t2.micro or t3.small (console)
-- [ ] Create and download key pair `.pem` file (console)
-- [ ] Configure Security Group: open ports 22 (SSH), 80 (HTTP), 443 (HTTPS) (console)
-- [ ] Allocate and associate an Elastic IP to the instance (console)
-- [ ] Verify instance is running and note public IP (console)
+- [x] Create IAM user with EC2 + key pair permissions (console) — EC2Admin
+- [x] Launch EC2 instance — Ubuntu 24.04, t3.micro, ca-west-1 Calgary (t2.micro not available in ca-west-1)
+- [x] Create and download key pair `.pem` file (ED25519, .pem format)
+- [x] Configure Security Group: mjmdg group (22/80/443 inbound) + default group (outbound)
+- [x] Allocate and associate an Elastic IP to the instance — 40.177.197.204
+- [x] Verify instance is running and note public IP — 40.177.197.204
 
 ### Terminal — Server Setup
-- [ ] `chmod 400 <key>.pem` and SSH into EC2: `ssh -i <key>.pem ubuntu@<ip>`
-- [ ] `sudo apt update && sudo apt upgrade -y`
-- [ ] Install Node.js via nvm: `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash`
-- [ ] `nvm install --lts && nvm use --lts`
-- [ ] `npm install -g yarn pm2`
-- [ ] `sudo apt install -y nginx postgresql postgresql-contrib`
+- [x] `chmod 400 /opt/master/keys/MJMDG_MASTER.pem` and SSH into EC2: `ssh -i /opt/master/keys/MJMDG_MASTER.pem ubuntu@40.177.197.204`
+- [x] Custom MOTD set at `/etc/motd`
+- [x] `sudo apt update && sudo apt upgrade -y`
+- [x] Install nvm: `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash` then `source ~/.bashrc`
+- [x] `nvm install --lts && nvm use --lts`
+- [x] `npm install -g yarn pm2` — Yarn 1.22.22, PM2 7.0.3
+- [x] `npm config set allow-scripts=yarn --location=user` — allow yarn install scripts permanently
+- [x] `sudo apt install -y nginx postgresql postgresql-contrib`
 
 ### Terminal — Database Setup on EC2
-- [ ] `sudo -u postgres psql` — create `mjdg` role and `mjdg-db01` database
-- [ ] Set password for `mjdg` user in psql
-- [ ] Run `CREATE TABLE` for `User` table (match local schema)
-- [ ] Verify connection: `psql -U mjdg -d mjdg-db01 -h localhost`
+- [x] `sudo -u postgres psql` — create `mjdg` role and `mjdg-db01` database
+- [x] Set password for `mjdg` user in psql
+- [x] Granted mjdg full privileges on User table and sequence, changed owner to mjdg
+- [x] Run `CREATE TABLE` for `User` table (match local schema)
+- [x] Verify connection: `psql -U mjdg -d mjdg-db01 -h localhost` — SSL enabled (TLSv1.3)
 
 ### Terminal — App Deployment
-- [ ] Add GitHub SSH key to EC2 (`ssh-keygen`, add public key to GitHub)
-- [ ] `git clone git@github.com:<user>/mjdg-web.git`
-- [ ] Create `.env` file on EC2 with `DATABASE_URL` and `SESSION_SECRET`
-- [ ] `yarn install && yarn build`
-- [ ] Start with PM2: `pm2 start npm --name mjdg-web -- run start`
-- [ ] `pm2 startup` and `pm2 save` (auto-restart on reboot)
-- [ ] Verify app is running: `pm2 status` and `curl http://localhost:3000`
+- [x] Add GitHub SSH key to EC2 (`ssh-keygen -t ed25519`, add public key to GitHub)
+- [x] `git clone git@github.com:marximillion/mjdg-web.git` — cloned to ~/mjdg-web
+- [x] Create `.env` file on EC2 with `DATABASE_URL`, `SESSION_SECRET`, `DEEPAI_API_KEY`
+- [x] `yarn install && yarn build` — build successful
+- [x] Start with PM2: `pm2 start npm --name mjdg-web -- run start`
+- [x] `pm2 startup` and `pm2 save` (auto-restart on reboot)
+- [x] Verify app is running: `pm2 status` and `curl http://localhost:3000`
 
 ### Terminal — Nginx + HTTPS
-- [ ] Configure nginx reverse proxy: proxy `localhost:3000` on port 80
-- [ ] `sudo nginx -t && sudo systemctl reload nginx`
-- [ ] Verify HTTP access via Elastic IP in browser
-- [ ] Point domain DNS A record to Elastic IP (registrar)
+- [x] Configure nginx reverse proxy: proxy `localhost:3000` on port 80
+- [x] `sudo nginx -t && sudo systemctl reload nginx`
+- [x] Removed default nginx site — `sudo rm /etc/nginx/sites-enabled/default`
+- [x] Verify HTTP access via Elastic IP in browser
+- [x] Point domain DNS A records to Elastic IP — mjmdg.org, www.mjmdg.org, staging.mjmdg.org
+- [x] Cloudflare SSL set to Flexible (temporary until Certbot installed)
 - [ ] Install Certbot: `sudo snap install --classic certbot`
-- [ ] `sudo certbot --nginx -d <domain>` — provision SSL cert
+- [ ] `sudo certbot --nginx -d mjmdg.org -d www.mjmdg.org` — provision SSL cert
+- [ ] Switch Cloudflare SSL back to Full after Certbot installed
 - [ ] Verify HTTPS in browser
 
 ## 🔄 CI/CD (Phase 2)
 - [ ] Add EC2 SSH private key as a GitHub secret
 - [ ] Create `.github/workflows/deploy.yml`
 - [ ] Auto-deploy on push to `main`
+
+## 📣 SNS Integration (Phase 3)
+- [ ] Wire AWS SNS into mjdg-web for billing alert notifications
+- [ ] Push threshold alerts to app dashboard
+- [ ] Explore SMS alerts and Lambda triggers via SNS
 
 ## 🐳 Docker (Phase 3)
 - [ ] Write `Dockerfile` (multi-stage: build → production)
