@@ -32,9 +32,9 @@ export async function action({ request }: Route.ActionArgs) {
         const hashed_password = await bcrypt.hash(password, 10);
 
         await pool.query(
-            `INSERT INTO "User" (username, password, hashed_password, email, first_name, last_name)
-       VALUES ($1, $2, $3, $4, $5, $6)`,
-            [username, password, hashed_password, email, first_name, last_name]
+            `INSERT INTO "User" (username, hashed_password, email, first_name, last_name)
+       VALUES ($1, $2, $3, $4, $5)`,
+            [username, hashed_password, email, first_name, last_name]
         );
 
         return redirect("/");
