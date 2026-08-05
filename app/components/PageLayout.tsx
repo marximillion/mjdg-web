@@ -1,5 +1,7 @@
-// Copyright © MJDG 2026
+// Copyright © MJMDG 2026
 import NavBar from "./NavigationBar";
+import MobileNav from "./MobileNav";
+import Footer from "./Footer";
 
 interface PageLayoutProps {
   children: React.ReactNode;
@@ -13,8 +15,9 @@ export default function PageLayout({
   return (
     <div className="screenContainer">
       <NavBar isAuthenticated={isAuthenticated} />
+      <MobileNav isAuthenticated={isAuthenticated} />
       {children}
-      <footer className="copyright">&copy; MJDG 2026</footer>
+      <Footer />
     </div>
   );
 }
