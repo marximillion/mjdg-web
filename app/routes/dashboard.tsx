@@ -1,4 +1,4 @@
-// Copyright © MJDG 2026
+// Copyright © MJMDG 2026
 import { getUserFromSession } from "~/db/session.server";
 import type { Route } from "./+types/dashboard";
 import PageLayout from "~/components/PageLayout";
@@ -26,7 +26,7 @@ export default function Dashboard({ loaderData }: Route.ComponentProps) {
                     <h1>Dashboard</h1>
                     <p>Welcome back!</p>
                 </div>
-                <img src={emblem} alt="LAB3 Emblem" style={{ width: "500px" }} />
+                {/* <img src={emblem} alt="LAB3 Emblem" style={{ width: "500px" }} /> */}
             </section>
         </PageLayout >
     );

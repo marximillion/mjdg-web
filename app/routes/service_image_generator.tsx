@@ -1,4 +1,4 @@
-// Copyright © MJDG 2026
+// Copyright © MJMDG 2026
 import { redirect, useNavigation } from "react-router";
 import { useState } from "react";
 import type { Route } from "./+types/service_image_generator";

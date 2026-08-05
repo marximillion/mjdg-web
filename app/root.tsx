@@ -1,4 +1,4 @@
-// Copyright © MJDG 2026
+// Copyright © MJMDG 2026
 import {
   isRouteErrorResponse,
   Links,

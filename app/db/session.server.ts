@@ -1,4 +1,4 @@
-// Copyright © MJDG 2026
+// Copyright © MJMDG 2026
 import { createCookieSessionStorage } from "react-router";
 
 export const sessionStorage = createCookieSessionStorage({

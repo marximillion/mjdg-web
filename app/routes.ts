@@ -1,4 +1,4 @@
-// Copyright © MJDG 2026
+// Copyright © MJMDG 2026
 import { type RouteConfig, index, route } from "@react-router/dev/routes";
 
 export default [

@@ -1,4 +1,4 @@
-// Copyright © MJDG 2026
+// Copyright © MJMDG 2026
 import type { Route } from "./+types/register";
 import { Form, redirect, data } from "react-router";
 import { useState } from "react";

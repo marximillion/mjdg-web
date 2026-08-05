@@ -1,7 +1,7 @@
-// Copyright © MJDG 2026
+// Copyright © MJMDG 2026
 import type { Route } from "./+types/home";
 import nutzsack from "../assets/images/misc/futuristice-geometric-nutzack-transparent.jpeg";
-import logo from "../assets/images/logos/logo-main.svg";
+import logo from "../assets/images/logos/lab3-emblem-v2.png";
 import { useRef, useState } from "react";
 import PageLayout from "~/components/PageLayout";
 import Banner from "~/components/Banner";
@@ -124,8 +124,8 @@ export default function Home({ actionData }: Route.ComponentProps) {
 
   return (
     <PageLayout>
+      <Banner image={logo} alt="LAB3 Logo" transparent />
       <div className="formContainer">
-        <Banner image={logo} alt="LAB3 Logo" />
         <button
           onClick={handleWelcomeClick}
           style={{
