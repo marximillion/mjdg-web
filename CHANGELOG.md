@@ -1,11 +1,11 @@
 # Changelog
 
 All notable changes to mjdg-web are documented here.
-Format: [Semantic Versioning](https://semver.org/) — MAJOR.MINOR.PATCH
+Format: MAJOR.MINOR.PATCH.BUILD — build increments with every deployment
 
 ---
 
-## [v1.0.0] — 2026-08-04
+## [v1.0.0.1] — 2026-08-04
 
 ### Initial Production Release
 

@@ -26,6 +26,10 @@
 - [x] Registration form with `action()` (hash + insert user)
 - [x] Profile page (load user data, edit fields, save)
 - [ ] Change password on profile page
+- [ ] Password recovery feature
+- [ ] Forced password reset flow
+- [ ] Add phone_number field to User table
+- [ ] Email / SMS MFA
 - [ ] Email validation
 - [ ] Rate limiting / brute force protection on login
 

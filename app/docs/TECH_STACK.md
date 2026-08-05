@@ -36,7 +36,7 @@
 ## Infrastructure
 | Technology | Purpose |
 |---|---|
-| AWS EC2 t2.micro | Hosting (ca-west-1, Calgary) |
+| AWS EC2 t3.micro | Hosting (ca-west-1, Calgary) |
 | nginx | Reverse proxy |
 | PM2 | Process manager, auto-restart |
 | Certbot | SSL/HTTPS via Let's Encrypt |
