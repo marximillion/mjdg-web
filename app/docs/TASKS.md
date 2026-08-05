@@ -23,7 +23,7 @@
 - [x] Protect authenticated routes (redirect to `/` if not logged in)
 - [x] Redirect logged in users away from public routes
 - [x] Wire up logout (destroy session, redirect to `/`)
-- [x] Registration form with `action()` (hash + insert user)
+- [x] Registration form with `action()` (hash + insert user) — schema fix deployed v1.0.0.2
 - [x] Profile page (load user data, edit fields, save)
 - [ ] Change password on profile page
 - [ ] Password recovery feature

@@ -5,6 +5,19 @@ Format: MAJOR.MINOR.PATCH.BUILD — build increments with every deployment
 
 ---
 
+## [v1.0.0.2] — 2026-08-04
+
+### Bug Fix — Registration
+
+**Fix**
+- Removed `password` column from registration INSERT query
+- Local database schema updated to match production (dropped `password` column)
+
+**Root Cause**
+Registration action was inserting into a `password` column that does not exist in the schema — only `hashed_password` is stored.
+
+---
+
 ## [v1.0.0.1] — 2026-08-04
 
 ### Initial Production Release
