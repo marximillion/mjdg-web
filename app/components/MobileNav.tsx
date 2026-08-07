@@ -49,7 +49,7 @@ export default function MobileNav({ isAuthenticated = false }: MobileNavProps) {
               <NavLink to="/profile" className={({ isActive }) => isActive ? "nav-mobile-link active" : "nav-mobile-link"} onClick={close}>Profile</NavLink>
               <div className="nav-mobile-divider" />
               <Form method="post" action="/logout">
-                <button type="submit" className="nav-mobile-link nav-mobile-logout" onClick={close}>Logout</button>
+                <button type="submit" className="nav-mobile-link nav-mobile-logout">Logout</button>
               </Form>
             </>
           ) : (
