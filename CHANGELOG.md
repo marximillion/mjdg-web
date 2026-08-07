@@ -5,13 +5,19 @@ Format: MAJOR.MINOR.PATCH.BUILD — build increments with every deployment
 
 ---
 
+## [v1.0.0.4] — 2026-08-06
+[PACKAGE] - Add dotenv to load .en file automatically in production
+[PACKAGE] - Add dotenv dependencies
+[FEATURE] - Add username to Dashboard
+
+---
+
 ## [v1.0.0.3] — 2026-08-06
 [FIX] - MobileNav logout
 [FEATURE] - Add version to footer
 [FEATURE] - Add Alert component
-
-on successful registration
-on successful logout
+  - on successful registration
+  - on successful logout
 
 ---
 
