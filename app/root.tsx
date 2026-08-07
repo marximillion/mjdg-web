@@ -11,6 +11,13 @@ import {
 import type { Route } from "./+types/root";
 import 'app/styles/app.css'
 
+export async function loader() {
+  return {
+    version: process.env.VERSION ?? null,
+    env: process.env.NODE_ENV,
+  };
+}
+
 export const links: Route.LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
