@@ -5,6 +5,7 @@ import logo from "../assets/images/logos/lab3-emblem-v2.png";
 import { useRef, useState } from "react";
 import PageLayout from "~/components/PageLayout";
 import Banner from "~/components/Banner";
+import Alert from "~/components/Alert";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { pool } from "../db/db.server";
@@ -27,6 +28,14 @@ export function meta({ }: Route.MetaArgs) {
     { title: "LAB<3 Development" },
     { name: "description", content: "Development Environment" },
   ];
+}
+
+export async function loader({ request }: Route.LoaderArgs) {
+  const url = new URL(request.url);
+  return {
+    registered: url.searchParams.get("registered") === "true",
+    loggedOut: url.searchParams.get("loggedOut") === "true",
+  };
 }
 
 export async function action({ request }: Route.ActionArgs) {
@@ -64,7 +73,7 @@ export async function action({ request }: Route.ActionArgs) {
   }
 }
 
-export default function Home({ actionData }: Route.ComponentProps) {
+export default function Home({ actionData, loaderData }: Route.ComponentProps) {
   const [items, setItems] = useState<SpawnItem[]>([]);
   const [clickCount, setClickCount] = useState(0);
   const [isActive, setIsActive] = useState(false);
@@ -125,6 +134,8 @@ export default function Home({ actionData }: Route.ComponentProps) {
   return (
     <PageLayout>
       <Banner image={logo} alt="LAB3 Logo" transparent />
+      {loaderData?.registered && <Alert message="Account created successfully. Please log in." />}
+      {loaderData?.loggedOut && <Alert message="You have been logged out." />}
       <div className="formContainer">
         <button
           onClick={handleWelcomeClick}

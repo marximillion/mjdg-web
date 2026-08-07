@@ -37,7 +37,7 @@ export async function action({ request }: Route.ActionArgs) {
             [username, hashed_password, email, first_name, last_name]
         );
 
-        return redirect("/");
+        return redirect("/?registered=true");
     } catch (err: any) {
         if (err.code === "23505") {
             return data({ error: "Username or email already taken" }, { status: 400 });
