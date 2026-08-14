@@ -5,6 +5,11 @@ Format: MAJOR.MINOR.PATCH.BUILD — build increments with every deployment
 
 ---
 
+## [v1.0.0.5] — 2026-08-13
+[DOCS] Update workplan and add test cases
+
+---
+
 ## [v1.0.0.4] — 2026-08-06
 [PACKAGE] - Add dotenv to load .en file automatically in production
 [PACKAGE] - Add dotenv dependencies
