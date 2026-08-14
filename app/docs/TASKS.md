@@ -51,8 +51,9 @@
 - [x] Disabled button until form fields filled
 - [x] Error display on login and registration forms
 - [x] Spawn animation easter egg on home page
-- [ ] Success message after registration
+- [x] Success message after registration — Alert component on `/?registered=true`
 - [ ] Redirect to dashboard after registration (optional)
+- [x] Add version/release number to app footer
 - [ ] Mobile screen size testing
 
 ## 🌐 Domain & Infrastructure (Phase 2 — P2_01_DOMAIN_SETUP.md)
@@ -116,6 +117,23 @@
 - [ ] `sudo certbot --nginx -d mjmdg.org -d www.mjmdg.org` — provision SSL cert
 - [ ] Switch Cloudflare SSL back to Full after Certbot installed
 - [ ] Verify HTTPS in browser
+
+## 🧪 Test Automation (Phase 2)
+- [ ] Scaffold mjdg-automation project structure
+- [ ] Write Playwright BAT tests based on TEST_CASES.md (auth, registration, alerts, dashboard, footer)
+- [ ] Write Appium mobile tests (iOS + Android)
+- [ ] Integrate test suite into CI/CD pipeline
+
+## 🎨 Redesign (Phase 2)
+- [ ] Finalise MJMDG mark from shortlist (8A, 8B, 9A)
+- [ ] Export chosen mark as SVG and add to assets
+- [ ] Update CSS variables to match new brand palette (Archivo font, neutral palette)
+- [ ] Hero section redesign — bold statement text, login secondary
+- [ ] Dashboard redesign — card grid layout, stat callouts
+- [ ] Catalogue redesign — card grid with icon/label/description
+- [ ] Nav redesign — cleaner, minimal, new logo mark
+- [ ] Component updates — buttons, inputs, cards (modern, less neon)
+- [ ] Update fonts (Archivo + JetBrains Mono)
 
 ## 🔄 CI/CD (Phase 2)
 - [ ] Add EC2 SSH private key as a GitHub secret
