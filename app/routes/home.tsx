@@ -1,10 +1,9 @@
 // Copyright © MJMDG 2026
 import type { Route } from "./+types/home";
 import nutzsack from "../assets/images/misc/futuristice-geometric-nutzack-transparent.jpeg";
-import logo from "../assets/images/logos/lab3-emblem-v2.png";
+import logo from "../assets/images/peeps/mdg-bald-icon.jpg";
 import { useRef, useState } from "react";
 import PageLayout from "~/components/PageLayout";
-import Banner from "~/components/Banner";
 import Alert from "~/components/Alert";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
@@ -133,7 +132,11 @@ export default function Home({ actionData, loaderData }: Route.ComponentProps) {
 
   return (
     <PageLayout>
-      <Banner image={logo} alt="LAB3 Logo" transparent />
+      <div className="hero">
+        <p className="hero-eyebrow">LAB&lt;3 Developments</p>
+        <h1 className="hero-title">Build.<br /><span>Own.</span><br />Operate.</h1>
+        <p className="hero-sub">A software platform for people who make things.</p>
+      </div>
       {loaderData?.registered && <Alert message="Account created successfully. Please log in." />}
       {loaderData?.loggedOut && <Alert message="You have been logged out." />}
       <div className="formContainer">
@@ -195,7 +198,9 @@ export default function Home({ actionData, loaderData }: Route.ComponentProps) {
             <p style={{ color: "red" }}>{actionData.error}</p>
           )}
           <button type="submit" className="button" disabled={!username && !password}>
-            Submit
+            {username && password
+              ? <img src={logo} alt="Login" style={{ height: "6rem", borderRadius: "50%" }} />
+              : "Submit"}
           </button>
         </Form>
 
