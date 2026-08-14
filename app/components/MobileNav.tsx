@@ -2,7 +2,8 @@
 // Mobile navigation — hidden on desktop via CSS
 import { NavLink, Form, Link } from "react-router";
 import { useState, useEffect, useRef } from "react";
-import logo from "../assets/images/logos/lab3-logo-v1-mobile.png";
+import mark from "../assets/images/logos/v1.0.1.6/white-1.png";
+import wordmark from "../assets/images/logos/v1.0.1.6/white-text-1.png";
 
 interface MobileNavProps {
   isAuthenticated?: boolean;
@@ -27,8 +28,9 @@ export default function MobileNav({ isAuthenticated = false }: MobileNavProps) {
   return (
     <div ref={menuRef} className={isAuthenticated ? "nav-mobile-wrapper nav-mobile-wrapper--auth" : "nav-mobile-wrapper"}>
       <div className="nav-mobile-bar">
-        <Link to={isAuthenticated ? "/dashboard" : "/"} className="nav-mobile-logo-link">
-          <img src={logo} alt="MJDG" className="nav-mobile-logo" />
+        <Link to={isAuthenticated ? "/dashboard" : "/"} className="nav-brand">
+          <img src={mark} alt="MJMDG mark" className="nav-brand-mark" />
+          <img src={wordmark} alt="MJMDG" className="nav-brand-wordmark" />
         </Link>
         <button
           className="nav-hamburger"
