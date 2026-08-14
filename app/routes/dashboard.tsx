@@ -4,7 +4,6 @@ import type { Route } from "./+types/dashboard";
 import PageLayout from "~/components/PageLayout";
 import { redirect } from "react-router";
 import { pool } from "~/db/db.server";
-import emblem from "../assets/images/logos/lab3-emblem-v2.png";
 
 export function meta({ }: Route.MetaArgs) {
     return [
@@ -24,13 +23,12 @@ export async function loader({ request }: Route.LoaderArgs) {
 export default function Dashboard({ loaderData }: Route.ComponentProps) {
     return (
         <PageLayout isAuthenticated={loaderData.isAuthenticated}>
-            <section id="dashboard" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "1rem" }}>
-                <div>
+            <div className="page-content">
+                <div className="page-header">
                     <h1>Dashboard</h1>
                     <p>Welcome back{loaderData.username ? `, ${loaderData.username}` : ""}!</p>
                 </div>
-                {/* <img src={emblem} alt="LAB3 Emblem" style={{ width: "500px" }} /> */}
-            </section>
-        </PageLayout >
+            </div>
+        </PageLayout>
     );
 }

@@ -21,15 +21,18 @@ export async function loader({ request }: Route.LoaderArgs) {
 export default function Catalogue({ loaderData }: Route.ComponentProps) {
   return (
     <PageLayout isAuthenticated={loaderData.isAuthenticated}>
-      <section id="catalogue">
-        <h1>Catalogue</h1>
+      <div className="page-content">
+        <div className="page-header">
+          <h1>Catalogue</h1>
+          <p>Available services and tools.</p>
+        </div>
         <div className="catalogue-grid">
           <Link to="/service-image-generator" className="catalogue-tile">
             <span className="catalogue-tile-icon">🖼️</span>
             <span className="catalogue-tile-label">Text to Image Generator</span>
           </Link>
         </div>
-      </section>
+      </div>
     </PageLayout>
   );
 }

@@ -56,7 +56,7 @@ export default function Register({ actionData }: Route.ComponentProps) {
     return (
         <PageLayout>
             <div className="formContainer">
-
+                <h1>Create Account</h1>
                 <Form method="post">
                     <label htmlFor="username" className="fieldLabel">
                         Username*
