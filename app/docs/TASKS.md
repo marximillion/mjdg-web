@@ -137,7 +137,9 @@
 - [x] Catalogue page — `.page-content` layout, page header
 - [x] Register page — "Create Account" heading, Easter egg submit button (bald icon when fields filled)
 - [ ] Dashboard card grid — stat callouts, module placeholders
-- [ ] Light/dark theme toggle — swap CSS variables + logo assets (black-1.png / white-1.png) — deferred
+- [ ] Portfolio page redesign — still uses old synthwave variables, needs brand update
+- [ ] Visual refresh — current design feels too minimal/corporate; consider reintroducing selective synthwave elements for vibrancy (neon accents, subtle gradients, glows)
+- [ ] Light mode — implement soon; assets ready (black-1.png / white-1.png), swap CSS variables + logo on toggle
 
 ## 🔄 CI/CD (Phase 2)
 - [ ] Add EC2 SSH private key as a GitHub secret

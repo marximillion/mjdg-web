@@ -121,7 +121,7 @@ export default function Portfolio() {
                   href={href}
                   target={href.startsWith("http") ? "_blank" : undefined}
                   rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  style={{ color: "var(--cyan)", fontSize: "0.9rem", textDecoration: "none" }}
+                  className="portfolio-contact-link"
                 >
                   {label}
                 </a>
@@ -140,14 +140,7 @@ export default function Portfolio() {
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem", paddingLeft: "0.75rem" }}>
               {skills.map((skill) => (
-                <span key={skill} style={{
-                  background: "rgba(159,0,255,0.15)",
-                  border: "1px solid var(--purple)",
-                  borderRadius: "0.4rem",
-                  color: "var(--text-primary)",
-                  fontSize: "0.8rem",
-                  padding: "0.2rem 0.6rem",
-                }}>
+                <span key={skill} className="portfolio-skill-pill">
                   {skill}
                 </span>
               ))}
