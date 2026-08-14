@@ -125,15 +125,19 @@
 - [ ] Integrate test suite into CI/CD pipeline
 
 ## 🎨 Redesign (Phase 2)
-- [ ] Finalise MJMDG mark from shortlist (8A, 8B, 9A)
-- [ ] Export chosen mark as SVG and add to assets
-- [ ] Update CSS variables to match new brand palette (Archivo font, neutral palette)
-- [ ] Hero section redesign — bold statement text, login secondary
-- [ ] Dashboard redesign — card grid layout, stat callouts
-- [ ] Catalogue redesign — card grid with icon/label/description
-- [ ] Nav redesign — cleaner, minimal, new logo mark
-- [ ] Component updates — buttons, inputs, cards (modern, less neon)
-- [ ] Update fonts (Archivo + JetBrains Mono)
+- [x] Finalise MJMDG mark — 8B chosen (red/gold/blue geometric polygon)
+- [x] Export mark assets to `/assets/images/logos/v1.0.1.6/` (white-1.png, white-text-1.png, black-1.png, black-text-1.png)
+- [x] Update CSS variables — MJMDG brand palette (--brand-red, --brand-gold, --brand-blue, neutral bg/text tokens)
+- [x] Hero section — "Build. Own. Operate." with LAB<3 eyebrow and subtext
+- [x] Nav redesign — mark + wordmark logo, clean minimal, brand-red hover underline
+- [x] Mobile nav — mark + wordmark logo, clean menu with brand-red logout
+- [x] Component updates — buttons (brand-red), inputs (elevated bg), cards (panel bg, subtle borders)
+- [x] Update fonts — Archivo (400/500/600) + JetBrains Mono; Black Ops One removed (preserved as commented import)
+- [x] Dashboard page — `.page-content` layout, page header
+- [x] Catalogue page — `.page-content` layout, page header
+- [x] Register page — "Create Account" heading, Easter egg submit button (bald icon when fields filled)
+- [ ] Dashboard card grid — stat callouts, module placeholders
+- [ ] Light/dark theme toggle — swap CSS variables + logo assets (black-1.png / white-1.png) — deferred
 
 ## 🔄 CI/CD (Phase 2)
 - [ ] Add EC2 SSH private key as a GitHub secret
