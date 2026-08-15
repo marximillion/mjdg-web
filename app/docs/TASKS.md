@@ -138,8 +138,8 @@
 - [x] Register page — "Create Account" heading, Easter egg submit button (bald icon when fields filled)
 - [ ] Dashboard card grid — stat callouts, module placeholders
 - [ ] Portfolio page redesign — still uses old synthwave variables, needs brand update
-- [ ] Visual refresh — current design feels too minimal/corporate; consider reintroducing selective synthwave elements for vibrancy (neon accents, subtle gradients, glows)
-- [ ] Light mode — implement soon; assets ready (black-1.png / white-1.png), swap CSS variables + logo on toggle
+- [ ] Synthwave theme — add as a third selectable theme option alongside light/dark (neon accents, gradients, glows); deferred until light/dark toggle is complete
+- [x] Light mode — implemented v1.0.1.6; cream palette, logo swap, localStorage persistence, flash prevention
 
 ## 🔄 CI/CD (Phase 2)
 - [ ] Add EC2 SSH private key as a GitHub secret

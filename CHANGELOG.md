@@ -5,6 +5,44 @@ Format: MAJOR.MINOR.PATCH.BUILD — build increments with every deployment
 
 ---
 
+## [v1.0.1.6] — 2026-08-15
+
+[FEAT] Light/dark theme toggle
+- ThemeToggle component with FontAwesome lightbulb icons (outline = light, solid = dark)
+- Light theme — warm cream palette (#E8E4DC), all UI tokens updated
+- Logo swaps between dark/light assets on toggle
+- Theme persisted to localStorage, blocking script prevents flash on load
+- Circle outline on toggle hover, no underline
+
+[FEAT] MJMDG logo in hero
+- Replaced eyebrow text with MJMDG logo mark, theme-aware
+- Hero subtitle updated to "Kalabaw Noon, Kabayo Ngayon."
+
+[FEAT] Favicon + page title
+- MJMDG logo set as browser favicon
+- Home page title updated to "MJMDG"
+
+[FEAT] Portfolio contact pills
+- Phone, email, LinkedIn, Calgary converted to pill components with FA icons
+- Brand-red hover state on contact pills
+- Calgary links to Google Maps
+- Skill pill hover removed (not interactive)
+
+[FEAT] Footer redesign
+- Copyright left-aligned, version right-aligned
+- Mobile: stacked and centered
+- Copyright updated to "© MJMDG — LAB<3 Developments 2026"
+
+[FIX] Nav bar not sticky
+- Removed overflow-x: hidden from .screenContainer — was creating a new scroll container, breaking position: sticky on nav
+
+[REFACTOR] Remove personal name as CSS identifier
+- Renamed mark/wordmark → logo/logoText across all components and CSS classes
+
+[PACKAGE] Install @fortawesome/free-regular-svg-icons and @fortawesome/free-brands-svg-icons
+
+---
+
 ## [v1.0.0.5] — 2026-08-13
 [DOCS] Update workplan and add test cases
 

@@ -23,6 +23,8 @@ app/
 ```
 
 ## CSS Theme Variables
+
+> ⚠️ Invalid as of v1.0.1.6 — replaced with MJMDG brand design system. See app/styles/app.css for current variables.
 ```css
 --bg-main: #0A0A13
 --bg-panel: #191F4A
@@ -34,6 +36,33 @@ app/
 --text-muted: #9CA0C8
 --accent-orange: #FF8C42
 ```
+
+> Updated v1.0.1.6 — MJMDG brand design system (dark + light themes)
+
+**Dark (default)**
+```css
+--bg-main: #0E0F10
+--bg-panel: #1C1D20
+--bg-elevated: #252629
+--brand-red: #C23B2E
+--brand-gold: #C9A227
+--brand-blue: #3D5EA8
+--text-primary: #F4F3F1
+--text-muted: #8A8C90
+--text-subtle: #55575B
+```
+
+**Light**
+```css
+--bg-main: #E8E4DC
+--bg-panel: #DEDAD2
+--bg-elevated: #D4CFC6
+--text-primary: #18191A
+--text-muted: #4A4C50
+--text-subtle: #8A8C90
+```
+
+Fonts: Archivo (400/500/600) + JetBrains Mono. Toggle persisted to localStorage via `ThemeToggle.tsx`.
 
 ## Auth Flow
 - Login: `app/routes/home.tsx` → `action()` → bcrypt compare → set session cookie
@@ -54,12 +83,30 @@ CREATE TABLE "User" (
 ```
 
 ## Current Status
+> Updated v1.0.1.6
+- Auth (login, register, logout, profile edit) — complete
+- MJMDG brand redesign complete — dark/light theme toggle, new CSS design system
+- Portfolio page with contact pills, FA icons, Google Maps link
+- Favicon set to MJMDG logo, page title "MJMDG"
+- Local dev working, v1.0.1.6 pending deployment
+
+> As of v1.0.0.5
 - Auth (login, register, logout, profile edit) — complete
 - All pages built and styled
-- Portfolio page displays Mark's resume in synthwave docs format
+- Portfolio page displays resume in synthwave docs format
 - Local dev working, deployment next
 
 ## What's Deferred
+> Updated v1.0.1.6
+- Change password on profile page
+- Email validation
+- Rate limiting on login
+- Mobile screen size testing
+- Dashboard card grid
+- Portfolio page full brand redesign (still uses some old variables)
+- Synthwave as a third selectable theme
+
+> As of v1.0.0.5
 - Change password on profile page
 - Email validation
 - Rate limiting on login
