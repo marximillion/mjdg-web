@@ -1,6 +1,9 @@
 // Copyright © MJMDG 2026
 import type { Route } from "./+types/portfolio";
 import PageLayout from "../components/PageLayout";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPhone, faEnvelope, faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -106,28 +109,27 @@ export default function Portfolio() {
       <div style={{ maxWidth: "860px", margin: "0 auto", padding: "2rem 1rem" }}>
 
         {/* Header */}
-        <header style={{ marginBottom: "2rem", borderBottom: "2px solid var(--purple)", paddingBottom: "1.5rem" }}>
+        <header style={{ marginBottom: "2rem", borderBottom: "1px solid var(--border)", paddingBottom: "1.5rem" }}>
           <h1 style={{ marginBottom: "0.25rem" }}>Mark De Guzman</h1>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "1.25rem", paddingLeft: "0.75rem" }}>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
             {[
-              { label: "(587) 224-2306", href: "tel:5872242306" },
-              { label: "mark.deguzman960@gmail.com", href: "mailto:mark.deguzman960@gmail.com" },
-              { label: "linkedin.com/in/mark-de-guzman", href: "https://linkedin.com/in/mark-de-guzman" },
-              { label: "Calgary, AB", href: null },
-            ].map(({ label, href }) =>
+              { label: "(587) 224-2306", href: "tel:5872242306", icon: faPhone },
+              { label: "mark.deguzman960@gmail.com", href: "mailto:mark.deguzman960@gmail.com", icon: faEnvelope },
+              { label: "linkedin.com/in/mark-de-guzman", href: "https://linkedin.com/in/mark-de-guzman", icon: faLinkedin },
+              { label: "Calgary, AB", href: "https://www.google.ca/maps/place/Calgary,+AB/@51.0275069,-114.2529811,11z/", icon: faLocationDot },
+            ].map(({ label, href, icon }) =>
               href ? (
                 <a
                   key={label}
                   href={href}
                   target={href.startsWith("http") ? "_blank" : undefined}
                   rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="portfolio-contact-link"
+                  className="portfolio-contact-pill"
                 >
+                  <FontAwesomeIcon icon={icon} style={{ fontSize: "0.75rem" }} />
                   {label}
                 </a>
-              ) : (
-                <span key={label} style={{ color: "var(--text-muted)", fontSize: "0.9rem" }}>{label}</span>
-              )
+              ) : null
             )}
           </div>
         </header>
