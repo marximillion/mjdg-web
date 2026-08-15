@@ -2,7 +2,9 @@
 import type { Route } from "./+types/home";
 import nutzsack from "../assets/images/misc/futuristice-geometric-nutzack-transparent.jpeg";
 import logo from "../assets/images/peeps/mdg-bald-icon.jpg";
-import { useRef, useState } from "react";
+import darkLogo from "../assets/images/logos/v1.0.1.6/white-1.png";
+import lightLogo from "../assets/images/logos/v1.0.1.6/black-1.png";
+import { useRef, useState, useEffect } from "react";
 import PageLayout from "~/components/PageLayout";
 import Alert from "~/components/Alert";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -24,7 +26,7 @@ interface SpawnItem {
 
 export function meta({ }: Route.MetaArgs) {
   return [
-    { title: "LAB<3 Development" },
+    { title: "MJMDG" },
     { name: "description", content: "Development Environment" },
   ];
 }
@@ -81,6 +83,16 @@ export default function Home({ actionData, loaderData }: Route.ComponentProps) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [theme, setTheme] = useState<"dark" | "light">("dark");
+
+  useEffect(() => {
+    const update = () =>
+      setTheme((document.documentElement.getAttribute("data-theme") as "dark" | "light") ?? "dark");
+    update();
+    const observer = new MutationObserver(update);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+    return () => observer.disconnect();
+  }, []);
 
   const spawnItem = () => {
     const id = Date.now();
@@ -133,9 +145,13 @@ export default function Home({ actionData, loaderData }: Route.ComponentProps) {
   return (
     <PageLayout>
       <div className="hero">
-        <p className="hero-eyebrow">LAB&lt;3 Developments</p>
+        <img
+          src={theme === "light" ? lightLogo : darkLogo}
+          alt="MJMDG"
+          className="hero-logo"
+        />
         <h1 className="hero-title">Build.<br /><span>Own.</span><br />Operate.</h1>
-        <p className="hero-sub">A software platform for people who make things.</p>
+        <p className="hero-sub">Kalabaw Noon, Kabayo Ngayon.</p>
       </div>
       {loaderData?.registered && <Alert message="Account created successfully. Please log in." />}
       {loaderData?.loggedOut && <Alert message="You have been logged out." />}
@@ -150,7 +166,7 @@ export default function Home({ actionData, loaderData }: Route.ComponentProps) {
         >
           <h1
             style={{
-              color: isActive ? "#FF3EFF" : "white",
+              color: isActive ? "#FF3EFF" : "var(--text-primary)",
               transition: "0.3s",
             }}
           >
