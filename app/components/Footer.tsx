@@ -12,8 +12,9 @@ export default function Footer() {
   }
 
   return (
-    <footer className="copyright">
-      &copy; MJMDG 2026{versionLabel ? ` — ${versionLabel}` : ""}
+    <footer className="footer">
+      <span className="footer-copyright">&copy; MJMDG — LAB&lt;3 Developments 2026</span>
+      {versionLabel && <span className="footer-version">{versionLabel}</span>}
     </footer>
   );
 }
