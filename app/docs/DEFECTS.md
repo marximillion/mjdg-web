@@ -4,6 +4,17 @@ Format: DEF-[ID] | Page | Severity | Status | Description
 
 ---
 
+## Open
+
+### DEF-002 | Portfolio | Low | Open
+**Page:** `/portfolio`
+**Description:** Section headers (PROFILE, EDUCATION, WORK EXPERIENCE, etc.) still use `var(--cyan)` from the old synthwave theme which is no longer defined.
+**Expected:** Section headers should use a brand token (e.g. `--text-primary` or `--brand-red`) consistent with the MJMDG design system.
+**Actual:** Headers render in cyan on dark mode (browser falling back to a default), will be broken in light mode.
+**Notes:** Part of the broader portfolio page redesign task. Low priority until full portfolio brand pass is done.
+
+---
+
 ## Closed
 
 ### DEF-001 | Portfolio | Low | Fixed — 2026-08-13
