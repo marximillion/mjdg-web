@@ -5,6 +5,19 @@ Format: MAJOR.MINOR.PATCH.BUILD — build increments with every deployment
 
 ---
 
+## [Unreleased]
+
+[FEAT] Flappy Bird game
+- Authenticated-only route at /game-flappy-bird
+- Canvas-based game with gravity, pipes, collision detection
+- Bald icon as the bird, clipped to circle, rotates with velocity
+- Brand colours — pipes brand-blue, ground bg-elevated
+- Score tracking, high score persisted to localStorage
+- Space / click / tap controls, idle / playing / game over states
+- Catalogue tile added
+
+---
+
 ## [v1.0.1.6] — 2026-08-15
 
 [FEAT] Light/dark theme toggle
