@@ -2,8 +2,11 @@
 // Mobile navigation — hidden on desktop via CSS
 import { NavLink, Form, Link } from "react-router";
 import { useState, useEffect, useRef } from "react";
-import mark from "../assets/images/logos/v1.0.1.6/white-1.png";
-import wordmark from "../assets/images/logos/v1.0.1.6/white-text-1.png";
+import ThemeToggle from "./ThemeToggle";
+import darkLogo from "../assets/images/logos/v1.0.1.6/white-1.png";
+import darkLogoText from "../assets/images/logos/v1.0.1.6/white-text-1.png";
+import lightLogo from "../assets/images/logos/v1.0.1.6/black-1.png";
+import lightLogoText from "../assets/images/logos/v1.0.1.6/black-text-1.png";
 
 interface MobileNavProps {
   isAuthenticated?: boolean;
@@ -11,6 +14,7 @@ interface MobileNavProps {
 
 export default function MobileNav({ isAuthenticated = false }: MobileNavProps) {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [theme, setTheme] = useState<"dark" | "light">("dark");
   const menuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -23,23 +27,38 @@ export default function MobileNav({ isAuthenticated = false }: MobileNavProps) {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  useEffect(() => {
+    const update = () => {
+      setTheme((document.documentElement.getAttribute("data-theme") as "dark" | "light") ?? "dark");
+    };
+    update();
+    const observer = new MutationObserver(update);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+    return () => observer.disconnect();
+  }, []);
+
   const close = () => setMenuOpen(false);
+  const logo = theme === "light" ? lightLogo : darkLogo;
+  const logoText = theme === "light" ? lightLogoText : darkLogoText;
 
   return (
     <div ref={menuRef} className={isAuthenticated ? "nav-mobile-wrapper nav-mobile-wrapper--auth" : "nav-mobile-wrapper"}>
       <div className="nav-mobile-bar">
         <Link to={isAuthenticated ? "/dashboard" : "/"} className="nav-brand">
-          <img src={mark} alt="MJMDG mark" className="nav-brand-mark" />
-          <img src={wordmark} alt="MJMDG" className="nav-brand-wordmark" />
+          <img src={logo} alt="MJMDG" className="nav-brand-logo" />
+          <img src={logoText} alt="MJMDG" className="nav-brand-logo-text" />
         </Link>
-        <button
-          className="nav-hamburger"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
-          aria-expanded={menuOpen}
-        >
-          {menuOpen ? "✕" : "☰"}
-        </button>
+        <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+          <ThemeToggle />
+          <button
+            className="nav-hamburger"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+            aria-expanded={menuOpen}
+          >
+            {menuOpen ? "✕" : "☰"}
+          </button>
+        </div>
       </div>
 
       {menuOpen && (
