@@ -31,6 +31,10 @@ export default function Catalogue({ loaderData }: Route.ComponentProps) {
             <span className="catalogue-tile-icon">🖼️</span>
             <span className="catalogue-tile-label">Text to Image Generator</span>
           </Link>
+          <Link to="/game-flappy-bird" className="catalogue-tile">
+            <span className="catalogue-tile-icon">🐦</span>
+            <span className="catalogue-tile-label">Flappy Bird</span>
+          </Link>
         </div>
       </div>
     </PageLayout>

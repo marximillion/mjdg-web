@@ -786,6 +786,23 @@ html, body {
   background: var(--bg-panel);
 }
 
+/* Game */
+.game-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem 1rem;
+  flex: 1;
+}
+
+.game-canvas {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  display: block;
+  max-width: 100%;
+}
+
 /* Alert */
 .alert {
   display: flex;
