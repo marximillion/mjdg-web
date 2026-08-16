@@ -5,6 +5,15 @@ Format: MAJOR.MINOR.PATCH.BUILD — build increments with every deployment
 
 ---
 
+## [v1.1.1.7] — 2026-08-16
+
+[INFRA] SSL — End-to-end HTTPS enabled
+- Let's Encrypt TLS cert provisioned for `mjmdg.org` and `www.mjmdg.org` with auto-renewal
+- Cloudflare SSL hardened — HSTS, TLS 1.2 minimum, security headers
+- SSL Labs grade: **A+**
+
+---
+
 ## [v1.0.1.6] — 2026-08-15
 
 [FEAT] Light/dark theme toggle
