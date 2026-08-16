@@ -88,7 +88,7 @@ CREATE TABLE "User" (
 - MJMDG brand redesign complete — dark/light theme toggle, new CSS design system
 - Portfolio page with contact pills, FA icons, Google Maps link
 - Favicon set to MJMDG logo, page title "MJMDG"
-- Local dev working, v1.0.1.6 pending deployment
+- Local dev working, v1.0.1.6 deployed to EC2 2026-08-15
 
 > As of v1.0.0.5
 - Auth (login, register, logout, profile edit) — complete

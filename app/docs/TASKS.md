@@ -146,6 +146,15 @@
 - [ ] Create `.github/workflows/deploy.yml`
 - [ ] Auto-deploy on push to `main`
 
+## 🎮 Flappy Bird — Leaderboard (Phase 2)
+- [ ] Add `Score` table to DB schema (`id`, `user_id`, `score`, `created_at`)
+- [ ] Add FK constraint from `Score.user_id` → `User.id`
+- [ ] API route: `POST /api/flappy-score` — submit score on game over (authenticated)
+- [ ] API route: `GET /api/flappy-leaderboard` — return top N scores with username
+- [ ] Leaderboard UI on `/game-flappy-bird` — show top scores (overlay or side panel)
+- [ ] Highlight current user's entry in leaderboard
+- [ ] Replace localStorage high score with DB personal best
+
 ## 📣 SNS Integration (Phase 3)
 - [ ] Wire AWS SNS into mjdg-web for billing alert notifications
 - [ ] Push threshold alerts to app dashboard
