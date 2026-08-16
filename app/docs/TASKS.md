@@ -1,5 +1,7 @@
 # mjdg-web — Launch Roadmap
 
+> ⚠️ Legacy document as of v1.0.1.6 — task tracking and phase planning has been refactored into `ROADMAP.md`. This file is preserved as a historical record of work completed through v1.0.1.6.
+
 ## 🗄️ Database Setup
 - [x] Install PostgreSQL 18 locally
 - [x] Create database `mjdg-db01`
@@ -146,14 +148,62 @@
 - [ ] Create `.github/workflows/deploy.yml`
 - [ ] Auto-deploy on push to `main`
 
-## 🎮 Flappy Bird — Leaderboard (Phase 2)
+## 📡 mjdg-api — API Service (Phase 2.5)
+- [ ] Scaffold `mjdg-api` repo — Express + TypeScript
+- [ ] Set up PM2 process on EC2 (:3001)
+- [ ] Configure nginx to route `api.mjmdg.org` → localhost:3001
+- [ ] Add Certbot cert for `api.mjmdg.org`
+- [ ] Migrate all direct DB calls from mjdg-web → mjdg-api routes
+  - [ ] Auth: login, register, logout, profile
+  - [ ] Game: score submit, leaderboard fetch
+- [ ] mjdg-web refactor — remove pg pool, replace with API calls
+- [ ] Add internal logger to mjdg-web (UI + outbound API call logs)
+- [ ] Add internal logger to mjdg-api (inbound API + DB call logs)
+- [ ] Both loggers environment-aware via NODE_ENV (request-level local, event-level prod)
+
+## 🗄️ Shared Database Strategy (Phase 2.5)
+- [ ] `pg_dump` prod DB on EC2 → save as snapshot
+- [ ] Create `mjdg-db01-dev` on same EC2 PostgreSQL instance from snapshot
+- [ ] Open EC2 security group port 5432 restricted to known IPs (or use SSH tunnel — preferred)
+- [ ] Set up SSH tunnel for local dev DB access: `ssh -L 5432:localhost:5432 -i /opt/master/keys/MJMDG_MASTER.pem ubuntu@40.177.197.204`
+- [ ] Update local `.env` `DATABASE_URL` to point to EC2 dev DB via tunnel
+- [ ] Remove local PostgreSQL dependency — no DB running on local machine
+- [ ] Update staging `.env` to point to `mjdg-db01-dev` on EC2
+- [ ] Verify local dev and staging hit `mjdg-db01-dev`, prod hits `mjdg-db01`
+
+> Phase 3 — AWS RDS migration
+- [ ] Create RDS PostgreSQL instance (db.t3.micro, ca-west-1) from EC2 snapshot
+- [ ] Migrate prod DB from EC2 → RDS prod instance
+- [ ] Create RDS dev instance from prod snapshot
+- [ ] Update all DATABASE_URL env vars to RDS endpoints
+- [ ] Remove PostgreSQL from EC2 entirely
+
+## 🎮 Flappy Me (Phase 2)
+- [ ] Rename game — "Flappy Bird" → "Flappy Me" (route, page title, catalogue tile, all references)
+- [ ] Selfie as bird — camera capture UI on game page (getUserMedia API)
+- [ ] Store selfie per user in DB or as uploaded file (TBD — blob vs file path)
+- [ ] Clip selfie to circle and use as bird sprite, fallback to bald icon if no selfie set
 - [ ] Add `Score` table to DB schema (`id`, `user_id`, `score`, `created_at`)
 - [ ] Add FK constraint from `Score.user_id` → `User.id`
 - [ ] API route: `POST /api/flappy-score` — submit score on game over (authenticated)
 - [ ] API route: `GET /api/flappy-leaderboard` — return top N scores with username
-- [ ] Leaderboard UI on `/game-flappy-bird` — show top scores (overlay or side panel)
+- [ ] Leaderboard UI on `/game-flappy-me` — show top scores with player selfies (overlay or side panel)
 - [ ] Highlight current user's entry in leaderboard
 - [ ] Replace localStorage high score with DB personal best
+
+## 🌐 Staging Environment (Phase 2.5)
+- [ ] Configure separate nginx server block for `staging.mjmdg.org`
+- [ ] Set up second PM2 process for staging build (separate from prod)
+- [ ] Staging points to `mjdg-db01-dev` on EC2
+- [ ] Staging deploy triggered separately from prod (manual or separate CI/CD job)
+
+## ⛓️ Web3 / Blockchain (Phase 3)
+- [ ] Solidity — smart contract fundamentals
+- [ ] ethers.js / viem — blockchain interaction from Node.js
+- [ ] Hardhat — local blockchain dev environment
+- [ ] MetaMask wallet connect — replace or augment current session auth
+- [ ] First smart contract deployed to testnet
+- [ ] dApp frontend integration with React + ethers.js
 
 ## 📣 SNS Integration (Phase 3)
 - [ ] Wire AWS SNS into mjdg-web for billing alert notifications

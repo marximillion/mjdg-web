@@ -70,6 +70,26 @@ Fonts: Archivo (400/500/600) + JetBrains Mono. Toggle persisted to localStorage 
 - Protected routes: `loader()` checks session, redirects to `/` if not authenticated
 - Registration: `app/routes/register.tsx` → hash password → insert user
 
+### Network request sequence on login (React Router 7 SSR)
+1. `POST /_root.data` — form submission with credentials; server validates, responds with `Set-Cookie`
+2. `GET /__manifest?paths=%2Fdashboard` — React Router prefetches dashboard route chunks
+3. `GET /dashboard.data` — dashboard loader runs with session cookie attached; server returns user data
+4. `GET /__manifest?paths=%2Fcatalogue%2C%2Flogout%2C%2Fprofile` — prefetches nav link routes
+
+### Cookie structure
+Cookie name: `mjdg_session`
+Value format: `[base64_payload].[signature]`
+- Payload (`eyJ1c2VySWQiOjh9`) is base64-encoded JSON — decodes to `{"userId":8}`. Readable but not forgeable.
+- Signature is an HMAC using `SESSION_SECRET` — prevents tampering
+- Cookie is `HttpOnly` (JS cannot read it) and `Secure` (HTTPS only)
+- No `MaxAge` currently set — session lives until logout or browser close. Session expiry planned v1.2.6.
+
+### Password visibility in DevTools
+Passwords are visible in the Network tab of any browser DevTools on the machine that sent the request. This is browser behavior and cannot be controlled at the application level. Mitigations:
+- HTTPS encrypts the password in transit — DevTools shows the local decrypted version only
+- Session expiry (v1.2.6) limits the damage window if a machine is left unattended
+- Nothing the server can do to hide credentials from the local browser's own DevTools
+
 ## Database Schema
 ```sql
 CREATE TABLE "User" (
