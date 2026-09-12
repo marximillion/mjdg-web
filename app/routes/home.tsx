@@ -84,6 +84,8 @@ export default function Home({ actionData, loaderData }: Route.ComponentProps) {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [theme, setTheme] = useState<"dark" | "light">("dark");
+  const [showError, setShowError] = useState(false);
+  const errorTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const update = () =>
@@ -93,6 +95,14 @@ export default function Home({ actionData, loaderData }: Route.ComponentProps) {
     observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
     return () => observer.disconnect();
   }, []);
+
+  useEffect(() => {
+    if (!actionData?.error) return;
+    setShowError(true);
+    if (errorTimerRef.current) clearTimeout(errorTimerRef.current);
+    errorTimerRef.current = setTimeout(() => setShowError(false), 4000);
+    return () => { if (errorTimerRef.current) clearTimeout(errorTimerRef.current); };
+  }, [actionData]);
 
   const spawnItem = () => {
     const id = Date.now();
@@ -185,7 +195,7 @@ export default function Home({ actionData, loaderData }: Route.ComponentProps) {
               name="username"
               placeholder="Enter username"
               value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={(e) => { setUsername(e.target.value); setShowError(false); }}
               required
             />
           </label>
@@ -198,7 +208,7 @@ export default function Home({ actionData, loaderData }: Route.ComponentProps) {
                 name="password"
                 placeholder="Enter password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => { setPassword(e.target.value); setShowError(false); }}
                 required
               />
               <button
@@ -210,7 +220,7 @@ export default function Home({ actionData, loaderData }: Route.ComponentProps) {
               </button>
             </div>
           </label>
-          {actionData?.error && (
+          {showError && actionData?.error && (
             <p style={{ color: "red" }}>{actionData.error}</p>
           )}
           <button type="submit" className="button" disabled={!username && !password}>
