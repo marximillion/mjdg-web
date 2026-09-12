@@ -53,6 +53,7 @@ export async function action({ request }: Route.ActionArgs) {
 export default function Profile({ loaderData, actionData }: Route.ComponentProps) {
   const { user } = loaderData;
   const [isEditing, setIsEditing] = useState(false);
+  // DEPENDENCY: change password flow (DEF deferred — v1.3.6)
   const [fields, setFields] = useState({
     email: user.email ?? "",
     first_name: user.first_name ?? "",
@@ -77,8 +78,11 @@ export default function Profile({ loaderData, actionData }: Route.ComponentProps
 
   return (
     <PageLayout isAuthenticated={loaderData.isAuthenticated}>
-      <div className="formContainer">
-        <h1>Profile</h1>
+      <div className={`formContainer${isEditing ? " formContainer--editing" : ""}`}>
+        <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", justifyContent: "center" }}>
+          <h1 style={{ margin: 0 }}>Profile</h1>
+          {isEditing && <span className="profile-editing-badge">EDITING</span>}
+        </div>
 
         <Form method="post">
           <label htmlFor="username" className="fieldLabel">
@@ -92,6 +96,21 @@ export default function Profile({ loaderData, actionData }: Route.ComponentProps
               disabled
               readOnly
             />
+          </label>
+          <label htmlFor="password" className="fieldLabel">
+            Password
+            <div className="field-wrapper">
+              <input
+                id="password"
+                className="field"
+                type="password"
+                defaultValue="placeholder"
+                disabled
+                readOnly
+                tabIndex={-1}
+              />
+              <span className="field-coming-soon">coming soon</span>
+            </div>
           </label>
           <label htmlFor="email" className="fieldLabel">
             Email
