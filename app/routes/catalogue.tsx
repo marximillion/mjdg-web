@@ -35,6 +35,10 @@ export default function Catalogue({ loaderData }: Route.ComponentProps) {
             <span className="catalogue-tile-icon">🐦</span>
             <span className="catalogue-tile-label">Flappy Bird</span>
           </Link>
+          <Link to="/automotive" className="catalogue-tile">
+            <span className="catalogue-tile-icon">🚗</span>
+            <span className="catalogue-tile-label">Automotive</span>
+          </Link>
         </div>
       </div>
     </PageLayout>
