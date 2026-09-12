@@ -20,9 +20,9 @@ html[data-theme="light"] {
   --bg-elevated: #252629;
 
   /* MJMDG brand colours */
-  --brand-red: #C23B2E;
-  --brand-gold: #C9A227;
-  --brand-blue: #3D5EA8;
+  --brand-red: #CC1E26;
+  --brand-gold: #FFD100;
+  --brand-blue: #1562C8;
 
   /* Text */
   --text-primary: #F4F3F1;
@@ -48,9 +48,9 @@ html[data-theme="light"] {
   --bg-panel: #DEDAD2;
   --bg-elevated: #D4CFC6;
 
-  --brand-red: #B0342A;
-  --brand-gold: #A8841F;
-  --brand-blue: #2E4A8A;
+  --brand-red: #B01B22;
+  --brand-gold: #D4A800;
+  --brand-blue: #0F52A8;
 
   --text-primary: #18191A;
   --text-muted: #4A4C50;
@@ -204,6 +204,36 @@ p {
 .formContainer h1 {
   font-size: 1.5rem;
   margin-bottom: 1.5rem;
+}
+
+.formContainer--editing {
+  border-color: var(--brand-gold);
+  box-shadow: 0 0 0 1px var(--brand-gold);
+}
+
+.profile-editing-badge {
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--brand-gold);
+  background: rgba(255, 209, 0, 0.08);
+  border: 1px solid var(--brand-gold);
+  padding: 2px 8px;
+  border-radius: 4px;
+  align-self: center;
+}
+
+.field-coming-soon {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.65rem;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 0.06em;
+  color: var(--text-subtle);
+  pointer-events: none;
 }
 
 .field {
@@ -803,6 +833,637 @@ html, body {
   max-width: 100%;
 }
 
+/* ── Portfolio v2 ── */
+.pf2-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem 6rem;
+}
+
+/* Section header row */
+.pf2-section { margin-top: 5rem; }
+
+.pf2-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.pf2-section-label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.pf2-section-rule {
+  width: 48px;
+  height: 1px;
+  background: var(--border-hover);
+}
+
+.pf2-section-link {
+  font-size: 0.8rem;
+  color: var(--brand-blue);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: color 0.15s;
+}
+.pf2-section-link:hover { color: var(--text-primary); }
+
+/* Hero */
+.pf2-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  padding: 5rem 0 2rem;
+  min-height: 520px;
+}
+
+.pf2-hero-left {}
+
+.pf2-headline {
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  text-wrap: balance;
+  margin-bottom: 1.25rem;
+}
+
+.pf2-headline-accent { color: var(--brand-blue); }
+
+.pf2-hero-sub {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--text-muted);
+  max-width: 420px;
+  padding: 0;
+  margin-bottom: 2rem;
+}
+
+.pf2-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.pf2-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--brand-blue);
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.7rem 1.25rem;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.15s;
+}
+.pf2-btn-primary:hover { background: #0F52A8; transform: translateY(-1px); }
+
+.pf2-btn-ghost {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-bottom: 1px solid var(--border-hover);
+  padding-bottom: 1px;
+  transition: color 0.15s;
+}
+.pf2-btn-ghost:hover { color: var(--text-primary); }
+
+.pf2-btn-resume {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: 1px solid var(--border-hover);
+  padding: 0.65rem 1.1rem;
+  border-radius: var(--radius-sm);
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+.pf2-btn-resume:hover {
+  color: var(--text-primary);
+  border-color: var(--text-muted);
+  background: var(--bg-panel);
+}
+
+.pf2-terminal-hint {
+  margin-top: 1.75rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--text-subtle);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pf2-terminal-cursor {
+  display: inline-block;
+  width: 7px;
+  height: 13px;
+  background: var(--brand-blue);
+  animation: blink 1.1s step-end infinite;
+}
+
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+/* Hero right — code card + status widget */
+.pf2-hero-right {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.pf2-code-card {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.pf2-code-card-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.pf2-dot { width: 10px; height: 10px; border-radius: 50%; }
+.pf2-dot-red   { background: #ff5f57; }
+.pf2-dot-gold  { background: #febc2e; }
+.pf2-dot-green { background: #28c840; }
+
+.pf2-code-body {
+  padding: 1.25rem 1.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.78rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+}
+
+.pf2-code-key   { color: var(--brand-blue); }
+.pf2-code-str   { color: var(--brand-gold); }
+.pf2-code-fn    { color: var(--text-primary); }
+.pf2-code-comment { color: var(--text-subtle); }
+
+.pf2-status-card {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.pf2-status-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.pf2-status-online {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: #28c840;
+}
+
+.pf2-status-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #28c840;
+  animation: pulse-green 2s ease-in-out infinite;
+}
+
+@keyframes pulse-green { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+.pf2-status-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.pf2-status-bar-track {
+  width: 80px;
+  height: 3px;
+  background: var(--bg-elevated);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.pf2-status-bar-fill {
+  height: 100%;
+  background: var(--brand-blue);
+  border-radius: 2px;
+  opacity: 0.7;
+}
+
+/* Project cards */
+.pf2-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.pf2-project-card {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.15s;
+}
+.pf2-project-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-2px);
+}
+
+.pf2-project-img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  display: block;
+}
+
+.pf2-project-img-placeholder {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: var(--bg-elevated);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pf2-project-img-placeholder span {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  color: var(--text-subtle);
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.pf2-project-body { padding: 1rem 1.1rem 1.25rem; }
+
+.pf2-project-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  color: var(--text-subtle);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.4rem;
+}
+
+.pf2-project-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.35rem;
+}
+
+.pf2-project-desc {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  padding: 0;
+  margin-bottom: 0.85rem;
+}
+
+.pf2-project-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pf2-tag-row { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+
+.pf2-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 0.15rem 0.55rem;
+  border-radius: 4px;
+}
+
+.pf2-project-arrow {
+  width: 28px; height: 28px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition: border-color 0.15s, color 0.15s;
+  flex-shrink: 0;
+}
+.pf2-project-card:hover .pf2-project-arrow {
+  border-color: var(--brand-blue);
+  color: var(--brand-blue);
+}
+
+/* Tech Stack */
+.pf2-tech-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+.pf2-tech-category {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+}
+
+.pf2-tech-cat-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-subtle);
+  margin-bottom: 1rem;
+}
+
+.pf2-tech-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.pf2-tech-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.pf2-tech-icon {
+  width: 20px; height: 20px;
+  border-radius: 4px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6rem;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text-subtle);
+  flex-shrink: 0;
+}
+
+/* Experience Timeline */
+.pf2-timeline-track {
+  position: relative;
+  padding-top: 1.5rem;
+}
+
+.pf2-timeline-line {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: var(--border);
+}
+
+.pf2-timeline-years {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.pf2-timeline-year {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--text-subtle);
+  position: relative;
+}
+
+.pf2-timeline-year::before {
+  content: '';
+  position: absolute;
+  top: -1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--border-hover);
+}
+
+.pf2-timeline-year.active::before { background: var(--brand-blue); }
+
+.pf2-timeline-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.pf2-exp-card {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.1rem;
+}
+
+.pf2-exp-company {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.15rem;
+}
+
+.pf2-exp-role {
+  font-size: 0.75rem;
+  color: var(--brand-blue);
+  margin-bottom: 0.1rem;
+}
+
+.pf2-exp-period {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  color: var(--text-subtle);
+  margin-bottom: 0.85rem;
+}
+
+.pf2-exp-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.pf2-exp-bullets li {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  padding-left: 0.85rem;
+  position: relative;
+  line-height: 1.4;
+}
+
+.pf2-exp-bullets li::before {
+  content: '·';
+  position: absolute;
+  left: 0;
+  color: var(--text-subtle);
+}
+
+/* About */
+.pf2-about-grid {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.pf2-about-img-placeholder {
+  width: 100%;
+  aspect-ratio: 3/4;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pf2-about-img-placeholder span {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  color: var(--text-subtle);
+  text-align: center;
+  padding: 1rem;
+}
+
+.pf2-about-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-subtle);
+  margin-bottom: 0.75rem;
+}
+
+.pf2-about-headline {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  text-wrap: balance;
+}
+
+.pf2-about-bio {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  padding: 0;
+  margin-bottom: 2rem;
+  max-width: 480px;
+}
+
+.pf2-pillars {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.pf2-pillar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.pf2-pillar-icon {
+  font-size: 1rem;
+}
+
+/* Contact CTA */
+.pf2-contact {
+  margin-top: 6rem;
+  border-top: 1px solid var(--border);
+  padding-top: 4rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.pf2-contact-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-subtle);
+}
+
+.pf2-contact-headline {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  text-wrap: balance;
+}
+
+/* Responsive — portfolio v2 */
+@media (max-width: 900px) {
+  .pf2-hero { grid-template-columns: 1fr; gap: 2rem; padding-top: 3rem; }
+  .pf2-hero-right { order: -1; }
+  .pf2-projects-grid { grid-template-columns: 1fr; }
+  .pf2-tech-grid { grid-template-columns: repeat(2, 1fr); }
+  .pf2-timeline-cards { grid-template-columns: 1fr 1fr; }
+  .pf2-about-grid { grid-template-columns: 1fr; }
+  .pf2-about-img-placeholder { aspect-ratio: 16/9; max-width: 400px; }
+}
+
+@media (max-width: 560px) {
+  .pf2-page { padding: 0 1rem 4rem; }
+  .pf2-tech-grid { grid-template-columns: 1fr; }
+  .pf2-timeline-cards { grid-template-columns: 1fr; }
+  .pf2-timeline-years { display: none; }
+}
+
 /* Alert */
 .alert {
   display: flex;
@@ -833,4 +1494,97 @@ html, body {
 
 .alert-dismiss:hover {
   opacity: 1;
+}
+
+/* ── Page Loader ─────────────────────────────────────────────────────────── */
+
+.loader-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  background: var(--bg-main);
+  transition: opacity 0.38s ease;
+}
+
+.loader-car-wrap {
+  position: relative;
+  width: min(340px, 80vw);
+}
+
+.loader-car {
+  width: 100%;
+  display: block;
+  will-change: transform, filter;
+}
+
+.loader-car-run {
+  animation: loader-car-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes loader-car-in {
+  0%   { transform: scale(0.05) translateY(30px); opacity: 0; filter: blur(6px); }
+  5%   { opacity: 0.6; }
+  25%  { filter: blur(2px); }
+  50%  { filter: blur(0.5px); }
+  65%  { filter: blur(0); }
+  74%  { transform: scale(1.05) translateY(-4px); opacity: 1; }
+  88%  { transform: scale(0.98) translateY(2px); }
+  100% { transform: scale(1) translateY(0); opacity: 1; filter: blur(0); }
+}
+
+/* Blinker blobs */
+.loader-blinker {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+  background: radial-gradient(circle,
+    #fff 0%, #ffe040 15%, rgba(255,155,0,0.9) 42%,
+    rgba(255,100,0,0.25) 65%, transparent 78%);
+  filter: blur(1.2px);
+}
+
+.loader-blinker-left  { left: 36%; top: 52%; width: 9%; aspect-ratio: 1.8; transform: rotate(-6deg); }
+.loader-blinker-right { left: 88%; top: 53%; width: 7%; aspect-ratio: 1.8; transform: rotate(-4deg); }
+
+@keyframes loader-hazard-flash {
+  0%   { opacity: 0; transform: scale(1); }
+  8%   { opacity: 1; transform: scale(1.35); }
+  20%  { opacity: 0; transform: scale(1); }
+  34%  { opacity: 1; transform: scale(1.35); }
+  48%  { opacity: 0; transform: scale(1); }
+  100% { opacity: 0; }
+}
+
+.loader-hazard-on .loader-blinker {
+  animation: loader-hazard-flash 1s ease 1 forwards;
+}
+
+/* Progress bar */
+.loader-track {
+  width: min(320px, 75vw);
+  height: 3px;
+  background: var(--bg-elevated, #252629);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.loader-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--brand-blue), var(--brand-gold));
+  border-radius: 2px;
+}
+
+.loader-status {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  text-transform: uppercase;
 }
