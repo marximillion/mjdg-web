@@ -7,6 +7,7 @@
 | Vite | 7.1.7 | Build tool, dev server |
 | TypeScript | 5.9.2 | Type safety |
 | TailwindCSS | 4.1.13 | Utility-first styling |
+| Three.js | 0.186.0 | WebGL scene — `/portfolio/dev` preview only, route-level code-split |
 
 ## Backend
 | Technology | Version | Purpose |

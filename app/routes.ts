@@ -4,6 +4,7 @@ import { type RouteConfig, index, route } from "@react-router/dev/routes";
 export default [
   index("routes/home.tsx"),
   route("portfolio", "routes/portfolio.tsx"),
+  route("portfolio/dev", "routes/portfolio.dev.tsx"),
   route("register", "routes/register.tsx"),
   route("catalogue", "routes/catalogue.tsx"),
   route("dashboard", "routes/dashboard.tsx"),

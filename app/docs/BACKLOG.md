@@ -19,5 +19,13 @@ Future ideas and items under consideration not yet assigned to a specific releas
 
 ---
 
+## Portfolio Hero Redesign
+- [ ] Decide whether the Pit Lane WebGL hero (`/portfolio/dev` preview) replaces the current `/portfolio` hero, becomes a new "Selected Work" section further down the page, or stays a one-off
+- [ ] If adopted: wire the four plaques to real per-project links/screenshots instead of the current placeholder repo links
+- [ ] If adopted: revisit mobile layout — panels currently stack full-width but the WebGL scene itself isn't tuned for narrow viewports
+- [ ] Preview: `app/routes/portfolio.dev.tsx`, `app/components/PitLaneScene.tsx`
+
+---
+
 ## Ideas / Under Consideration
 Add items here as they come up.

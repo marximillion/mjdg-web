@@ -109,6 +109,11 @@ CREATE TABLE "User" (
 ```
 
 ## Current Status
+> Unreleased — not yet a version bump, not deployed
+- Pit Lane portfolio hero preview at `/portfolio/dev` (noindex, not linked from nav) — Three.js scroll-driven scene, theme-aware (dark/light), spec-sheet copy per project. See `app/components/PitLaneScene.tsx`, `app/routes/portfolio.dev.tsx`
+- Adds `three` 0.186.0 as a dependency — route-level code-split, no impact on the live `/portfolio` bundle
+- Decision pending on whether it replaces the current `/portfolio` hero — tracked in `app/docs/BACKLOG.md`
+
 > Updated v1.1.1.8
 - Brand colors updated to Honda paint codes (R-513, Y-82, B-561P) — dark + light themes
 - Page loader component (`app/components/Loader.tsx`) — FD5 car approach animation, fires on login and logout

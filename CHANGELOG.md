@@ -5,6 +5,18 @@ Format: MAJOR.MINOR.PATCH.BUILD — build increments with every deployment
 
 ---
 
+## [Unreleased]
+
+[FEATURE] Pit Lane portfolio hero — preview
+- New route `/portfolio/dev` (noindex) — scroll-driven WebGL hero concept for the portfolio page, not linked from nav
+- `app/components/PitLaneScene.tsx` — Three.js scene: pit-lane grid floor, light beams, dust particles, four project "plaques" (WEB-01/QA-02/DB-03/ARC-04) that come into focus as the camera dollies forward on scroll
+- Theme-aware — reads `--brand-red/gold/blue`, `--bg-main` etc. directly and recolors live on dark/light toggle (dark = night garage, light = daylight showroom)
+- Spec-sheet copy pulls real platform data — stack, deployment, dyno score (scorecard rating) per project
+- [PACKAGE] Added `three` 0.186.0 + `@types/three` — route-level code-split, not loaded on the live `/portfolio` page
+- Not yet decided whether this replaces the current hero, becomes a new section, or stays a one-off — see `app/docs/BACKLOG.md`
+
+---
+
 ## [v1.1.1.7] — 2026-08-16
 
 [INFRA] SSL — End-to-end HTTPS enabled
