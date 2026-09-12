@@ -10,6 +10,7 @@ import {
 
 import type { Route } from "./+types/root";
 import 'app/styles/app.css'
+import Loader from "./components/Loader";
 
 export async function loader() {
   return {
@@ -57,7 +58,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <>
+      <Loader />
+      <Outlet />
+    </>
+  );
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
