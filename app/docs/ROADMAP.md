@@ -6,13 +6,26 @@ Versioning: `MAJOR.MINOR.PATCH.BUILD`
 - **MINOR** — phase completion, significant feature set delivered
 - **MAJOR** — architectural pivot or breaking change
 
-Current: **v1.0.1.6**
+Current: **v1.1.1.7**
 
 ---
 
 ## v1.0 — Foundation (Complete)
 > Delivered: auth system, initial EC2 deployment, MJMDG brand redesign, dark/light theme, Flappy Bird, favicon, portfolio improvements, nav, footer
 > See `TASKS.md` for full granular history of v1.0 work.
+
+---
+
+## v1.1.1 — UI Polish & Testing (Complete)
+> Delivered 2026-09-12
+- Brand colors updated to Honda paint codes — R-513 Rallye Red, Y-82 Phoenix Yellow, B-561P Dyno Blue (dark + light)
+- Page loader — FD5 car approach animation, hazard blinker flash, fires on login and logout (`app/components/Loader.tsx`)
+- Login error auto-dismiss — clears on keypress or after 4s
+- Playwright E2E navigation tests — `tests/navigation.spec.ts` covering public/protected routes, auth flow, cross-route matrix, 404
+- Commit tag standards locked: `[FEATURE]`, `[BRANDING]` (normalized from `[FEAT]`, `[BRAND]`)
+- Profile page — password field (disabled/greyed, deferred to v1.3.6), editing mode indicator (gold border + EDITING badge)
+- Automotive route stubbed — `/automotive`, authenticated, blank slate
+- Catalogue — Automotive tile added
 
 ---
 
@@ -57,12 +70,25 @@ Current: **v1.0.1.6**
 - [ ] Create `.github/workflows/deploy.yml` — triggers on push to `main`: SSH into EC2, pull, build, restart PM2
 - [ ] Auto-inject `VERSION` from git tag on deploy — replaces manual `.env` update each release
 
-### Observability — `v1.1.4`
-> No way to confirm what version is live without checking PM2 or the repo. `/version.html` gives a quick sanity check during deploy or QA. `dev:remote` removes the two-command setup for local-to-EC2 DB access.
+> ⚡ **Windows parallel development unlocks here.** Once CI/CD is live, Windows Claude can push feature branches and GitHub Actions handles the deploy — no SSH key needed on Windows. Branch convention: `feat/vX.X.X-description`. Each agent opens a PR; merge to `main` triggers auto-deploy. Mac Claude retains ownership of all EC2/infra work (SSH key stays on Mac).
 
+### Observability & SEO — `v1.1.4`
+> No way to confirm what version is live without checking PM2 or the repo. `/version.html` gives a quick sanity check during deploy or QA. `dev:remote` removes the two-command setup for local-to-EC2 DB access. 404 and robots.txt clean up log noise. SEO grouped here because robots.txt and sitemap.xml are infrastructure concerns, and the public surface (`/` and `/portfolio`) is small enough to wire meta tags in the same pass.
+
+**Observability**
 - [ ] `/version.html` — public route that renders the current `VERSION` env var; useful post-deploy QA check
 - [ ] `scripts/dev-remote.sh` — opens SSH tunnel to EC2 on start, kills tunnel on exit via `trap`
 - [ ] Add `dev:remote` to `package.json` scripts — `bash scripts/dev-remote.sh` (replaces manual tunnel setup)
+- [ ] Catch-all 404 route — splat route (`$`) renders a proper 404 page and returns HTTP 404; stops React Router from logging unmatched URLs as errors (resolves GAP-012)
+- [x] PM2 memory limit — `pm2 restart mjdg-web --max-memory-restart 512M && pm2 save`; restarts app cleanly before OOM killer fires ✅ v1.1.1.7
+
+**SEO**
+- [ ] `public/robots.txt` — disallow authenticated routes (`/dashboard`, `/profile`, `/catalogue`, `/game-flappy-bird`), allow public pages (`/`, `/portfolio`), include sitemap URL (resolves GAP-013)
+- [ ] `public/sitemap.xml` — static sitemap listing public routes (`/`, `/portfolio`); submit to Google Search Console
+- [ ] `<title>` and `<meta name="description">` — unique, descriptive values on every public route; currently Home uses generic "MJMDG" and Portfolio has no description
+- [ ] Open Graph meta tags (`og:title`, `og:description`, `og:url`, `og:type`) on Home and Portfolio — controls how pages appear when shared on LinkedIn, Slack, iMessage
+- [ ] JSON-LD structured data — `Person` schema on Portfolio (name, job title, email, LinkedIn), `WebSite` schema on Home; helps Google display rich results
+- [ ] Image alt text audit — ensure all `<img>` tags on public routes have descriptive alt attributes
 
 ---
 

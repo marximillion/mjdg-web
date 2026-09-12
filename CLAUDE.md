@@ -15,11 +15,13 @@ Main web application for the MJDG platform. Built with React Router 7 (SSR), Typ
 ```
 app/
 ├── routes/        # Page components (home, portfolio, dashboard, catalogue, profile, register)
-├── components/    # PageLayout, NavigationBar
+├── components/    # PageLayout, NavigationBar, Loader
 ├── db/            # db.server.ts (pool), session.server.ts, seed.ts
-├── styles/        # app.css (synthwave theme, CSS variables)
+├── styles/        # app.css (brand design system + loader CSS)
 ├── assets/        # images, data
-└── docs/          # TASKS.md (launch roadmap)
+└── docs/          # ROADMAP.md, BACKLOG.md, DEFECTS.md, TEST_CASES.md, TASKS.md (legacy)
+tests/             # Playwright E2E — navigation.spec.ts
+playwright.config.ts
 ```
 
 ## CSS Theme Variables
@@ -38,15 +40,16 @@ app/
 ```
 
 > Updated v1.0.1.6 — MJMDG brand design system (dark + light themes)
+> Updated v1.1.1.8 — brand colors updated to Honda paint codes
 
 **Dark (default)**
 ```css
 --bg-main: #0E0F10
 --bg-panel: #1C1D20
 --bg-elevated: #252629
---brand-red: #C23B2E
---brand-gold: #C9A227
---brand-blue: #3D5EA8
+--brand-red: #CC1E26   /* Honda R-513 Rallye Red FL5 */
+--brand-gold: #FFD100  /* Honda Y-82 Phoenix Yellow FK8 */
+--brand-blue: #1562C8  /* Honda B-561P Dyno Blue Pearl */
 --text-primary: #F4F3F1
 --text-muted: #8A8C90
 --text-subtle: #55575B
@@ -57,6 +60,9 @@ app/
 --bg-main: #E8E4DC
 --bg-panel: #DEDAD2
 --bg-elevated: #D4CFC6
+--brand-red: #B01B22
+--brand-gold: #D4A800
+--brand-blue: #0F52A8
 --text-primary: #18191A
 --text-muted: #4A4C50
 --text-subtle: #8A8C90
@@ -103,6 +109,17 @@ CREATE TABLE "User" (
 ```
 
 ## Current Status
+> Updated v1.1.1.8
+- Brand colors updated to Honda paint codes (R-513, Y-82, B-561P) — dark + light themes
+- Page loader component (`app/components/Loader.tsx`) — FD5 car approach animation, fires on login and logout
+- Loader CSS appended to app.css (`loader-` prefix, blinker blobs, hazard flash, progress bar)
+- Login error message auto-dismisses after 4s or on keypress
+- Profile — password field (disabled, "coming soon"), editing mode indicator (gold border + EDITING badge)
+- Automotive route stubbed at `/automotive` — authenticated, blank slate
+- Catalogue — Automotive tile (`🚗`) added
+- Playwright E2E navigation tests — `tests/navigation.spec.ts`, `playwright.config.ts`
+- SSL & security hardening deployed — v1.1.1.7
+
 > Updated v1.0.1.6
 - Auth (login, register, logout, profile edit) — complete
 - MJMDG brand redesign complete — dark/light theme toggle, new CSS design system
@@ -117,6 +134,11 @@ CREATE TABLE "User" (
 - Local dev working, deployment next
 
 ## What's Deferred
+> Updated v1.1.1.8
+- Run Playwright tests (need TEST_USERNAME/TEST_PASSWORD + `npx playwright install chromium`)
+- ThemeToggle.tsx — FA icon prefix type conflict (duplicate @fortawesome/fontawesome-common-types versions), non-blocking
+- portfolio.tsx:290 — `e.id` on experience array objects without id field, non-blocking
+
 > Updated v1.0.1.6
 - Change password on profile page
 - Email validation

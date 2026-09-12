@@ -2,7 +2,8 @@
 
 Manual test cases for validating features on production and local dev.
 
-> **Automation:** These test cases are the source of truth for the mjdg-automation Playwright + Appium suite. See `mjdg-automation` project when automation is prioritized.
+> **Automation:** Playwright E2E suite lives in `tests/navigation.spec.ts`. Run with `yarn playwright test` (dev server must be running). Set `TEST_USERNAME` / `TEST_PASSWORD` env vars for a valid test account. Run `npx playwright install chromium` once to install the browser binary.
+> Manual cases below remain the source of truth for the mjdg-automation BAT suite (v1.2.7).
 
 ---
 
@@ -58,6 +59,45 @@ Manual test cases for validating features on production and local dev.
 | FOOT-001 | Version in production | Visit any page on mjmdg.org | Footer shows `© MJMDG 2026 — vX.X.X.X` |
 | FOOT-002 | DEV label in local | Run `yarn dev`, visit any page | Footer shows `© MJMDG 2026 — DEV` |
 | FOOT-003 | Footer on all pages | Check footer on `/`, `/dashboard`, `/profile` | Version label consistent across pages |
+
+---
+
+## Navigation (Automated — `tests/navigation.spec.ts`)
+
+| ID | Test Case | Coverage |
+|---|---|---|
+| NAV-001 | Public routes load without session | `/`, `/portfolio`, `/register` |
+| NAV-002 | Protected routes redirect to `/` — unauthenticated | `/dashboard`, `/catalogue`, `/profile`, `/logout GET` |
+| NAV-003 | Protected routes load after login | `/dashboard`, `/catalogue`, `/profile` |
+| NAV-004 | Logout destroys session | POST `/logout` → redirect `/` → `/dashboard` redirects to `/` |
+| NAV-005 | Nav links — portfolio | `/dashboard` → click `a[href="/portfolio"]` → `/portfolio` |
+| NAV-006 | Nav links — catalogue | `/dashboard` → click `a[href="/catalogue"]` → `/catalogue` |
+| NAV-007 | Nav links — profile | `/dashboard` → click `a[href="/profile"]` → `/profile` |
+| NAV-008 | Nav links — home | `/dashboard` → click `a[href="/"]` → `/` |
+| NAV-009 | Cross-route matrix (authenticated) | All permutations of `/dashboard`, `/catalogue`, `/profile`, `/portfolio`, `/` |
+| NAV-010 | 404 — unknown route | `/this-does-not-exist` → HTTP 404 |
+
+---
+
+## Login Error Behaviour
+
+| ID | Test Case | Steps | Expected Result |
+|---|---|---|---|
+| ERR-001 | Error auto-dismiss | Submit invalid credentials, wait 4s | Error message disappears automatically |
+| ERR-002 | Error clears on typing — username | Submit invalid credentials, type in username field | Error message clears immediately |
+| ERR-003 | Error clears on typing — password | Submit invalid credentials, type in password field | Error message clears immediately |
+
+---
+
+## Loader Animation
+
+| ID | Test Case | Steps | Expected Result |
+|---|---|---|---|
+| LOAD-001 | Fires on logout | Click Logout | Car approach animation plays, blinker flash on completion, overlay fades |
+| LOAD-002 | Does not fire on page nav | Navigate between `/dashboard`, `/portfolio`, etc. | No loader overlay appears |
+| LOAD-003 | Fires on login | Submit login form with valid credentials | Car approach animation plays, overlay fades into dashboard |
+| LOAD-004 | Blinker position | Watch logout animation | Hazard blinkers land on the turn signal positions of the FD5 car image |
+| LOAD-005 | Sync — bar and car | Watch logout animation | Progress bar reaches 100% at same time car animation completes |
 
 ---
 

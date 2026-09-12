@@ -6,6 +6,26 @@ Format: DEF-[ID] | Page | Severity | Status | Description
 
 ## Open
 
+### DEF-004 | ThemeToggle | Low | Open
+**Page:** Global (all routes)
+**Description:** TypeScript error — duplicate `@fortawesome/fontawesome-common-types` installed at two version paths. `IconDefinition` type from `free-regular-svg-icons` is not assignable to `IconProp` from the root `@fortawesome` package.
+**Expected:** `tsc` passes clean.
+**Actual:** `app/components/ThemeToggle.tsx(31,24): error TS2322` — prefix type incompatibility between nested and root FA installs.
+**Fix:** `yarn dedupe @fortawesome/fontawesome-common-types` or pin versions in `package.json` resolutions.
+**Notes:** Non-blocking — app builds and runs via esbuild. Does not affect runtime behaviour.
+
+---
+
+### DEF-003 | Portfolio | Low | Open
+**Page:** `/portfolio`
+**Description:** TypeScript error — `e.id` referenced on experience array objects that have no `id` field. Key expression `e.id ?? e.company + e.role` always falls through to the fallback.
+**Expected:** `tsc` passes clean.
+**Actual:** `app/routes/portfolio.tsx(290,29): error TS2339` — Property `id` does not exist on experience object type.
+**Fix:** Either add an `id` field to each experience entry or remove `e.id ??` from the key expression.
+**Notes:** Non-blocking — fallback key `e.company + e.role` is used at runtime, React renders correctly.
+
+---
+
 ### DEF-002 | Portfolio | Low | Open
 **Page:** `/portfolio`
 **Description:** Section headers (PROFILE, EDUCATION, WORK EXPERIENCE, etc.) still use `var(--cyan)` from the old synthwave theme which is no longer defined.
