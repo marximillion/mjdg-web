@@ -42,6 +42,11 @@
 | Certbot | SSL/HTTPS via Let's Encrypt |
 | Cloudflare | Domain registrar, DNS, email routing |
 
+## Testing
+| Technology | Version | Purpose |
+|---|---|---|
+| Playwright | latest | E2E browser automation — navigation, auth flow, protected routes |
+
 ## Package Manager
 - **Yarn**
 

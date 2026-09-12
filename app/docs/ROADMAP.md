@@ -6,7 +6,7 @@ Versioning: `MAJOR.MINOR.PATCH.BUILD`
 - **MINOR** — phase completion, significant feature set delivered
 - **MAJOR** — architectural pivot or breaking change
 
-Current: **v1.1.1.7**
+Current: **v1.1.1.8**
 
 ---
 
