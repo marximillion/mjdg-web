@@ -112,6 +112,8 @@ CREATE TABLE "User" (
 > Updated v1.1.1.8
 - Pit Lane WebGL scene moved from `/portfolio/dev` to `/automotive` — Three.js scroll-driven scene, theme-aware (dark/light), spec-sheet copy per project. See `app/components/PitLaneScene.tsx`, `app/routes/automotive.tsx`
 - `portfolio.dev.tsx` deleted; `/portfolio/dev` route removed
+- Personal garage section added to `/automotive` — 4 cars (CAR-01 CSX, CAR-02 CR-V, CAR-03 Odyssey RB1, CAR-04 CSX Type S) with images; car data in `app/assets/data/garage.json`, images in `app/assets/images/cars/`
+- Software builds section (WEB-01 → ARC-04) currently commented out in automotive.tsx — pending layout decision
 
 > Updated v1.1.1.8
 - Brand colors updated to Honda paint codes (R-513, Y-82, B-561P) — dark + light themes

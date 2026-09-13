@@ -20,7 +20,9 @@ Future ideas and items under consideration not yet assigned to a specific releas
 ---
 
 ## Automotive / Pit Lane
-- [ ] Wire the four stop panels to real per-project links/screenshots instead of the current placeholder repo links
+- [ ] Software builds section (WEB-01 → ARC-04) — currently commented out; decide final layout and re-enable or redesign
+- [ ] Wire software stop CTAs to real per-project links/screenshots instead of placeholder repo links
+- [ ] Garage section — add car detail/mod specs as they become known (CAR-01 CSX, CAR-02 CR-V, CAR-03 Odyssey, CAR-04 CSX Type S)
 - [ ] Revisit mobile layout — panels currently stack full-width but the WebGL scene itself isn't tuned for narrow viewports
 
 ---
