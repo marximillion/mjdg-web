@@ -4,7 +4,6 @@ import { type RouteConfig, index, route } from "@react-router/dev/routes";
 export default [
   index("routes/home.tsx"),
   route("portfolio", "routes/portfolio.tsx"),
-  route("portfolio/dev", "routes/portfolio.dev.tsx"),
   route("register", "routes/register.tsx"),
   route("catalogue", "routes/catalogue.tsx"),
   route("dashboard", "routes/dashboard.tsx"),
@@ -13,4 +12,5 @@ export default [
   route("service-image-generator", "routes/service_image_generator.tsx"),
   route("game-flappy-bird", "routes/game-flappy-bird.tsx"),
   route("automotive", "routes/automotive.tsx"),
+  route("financial", "routes/financial.tsx"),
 ] satisfies RouteConfig;
