@@ -5,6 +5,11 @@ import type { Route } from "./+types/automotive";
 import PageLayout from "~/components/PageLayout";
 import PitLaneScene from "~/components/PitLaneScene";
 import { getUserFromSession } from "~/db/session.server";
+import csxSUrl from "~/assets/images/cars/csx-s.png";
+import csxUrl from "~/assets/images/cars/csx-1.png";
+import crvUrl from "~/assets/images/cars/crv-1.png";
+import odysseyUrl from "~/assets/images/cars/odyssey-4.png";
+import garageData from "~/assets/data/garage.json";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -80,6 +85,15 @@ const stops = [
   },
 ];
 
+const carImageMap: Record<string, string> = {
+  "csx-s":    csxSUrl,
+  "csx-1":    csxUrl,
+  "crv-1":    crvUrl,
+  "odyssey-4": odysseyUrl
+};
+
+const carStops = garageData.map(c => ({ ...c, img: carImageMap[c.imgKey] }));
+
 export default function Automotive({ loaderData }: Route.ComponentProps) {
   const trackRef = useRef<HTMLDivElement>(null);
 
@@ -125,7 +139,7 @@ export default function Automotive({ loaderData }: Route.ComponentProps) {
             <div className="pitlane-scroll-cue">SCROLL</div>
           </section>
 
-          {stops.map((s, i) => (
+          {/* {stops.map((s, i) => (
             <section
               key={s.tag}
               className={`pitlane-stop pitlane-stop--${i % 2 === 0 ? "left" : "right"}`}
@@ -158,6 +172,44 @@ export default function Automotive({ loaderData }: Route.ComponentProps) {
                 ) : (
                   <span className="pitlane-cta pitlane-cta--muted">{s.cta.label}</span>
                 )}
+              </div>
+            </section>
+          ))} */}
+
+          <section className="pitlane-divider-section">
+            <div className="pitlane-eyebrow">THE GARAGE</div>
+            <h2 className="pitlane-section-h2">Personal fleet.</h2>
+            <p className="pitlane-sub">Four builds. All Honda DNA. All on the road at some point.</p>
+          </section>
+
+          {carStops.map((c, i) => (
+            <section
+              key={c.tag}
+              className={`pitlane-stop pitlane-stop--${i % 2 === 0 ? "left" : "right"}`}
+              data-stop
+            >
+              <div className="pitlane-panel" style={{ ["--accent" as string]: c.accent }}>
+                <div className="pitlane-tag-row">
+                  <span className="pitlane-chassis-tag">{c.tag}</span>
+                  <span className="pitlane-status-pill">{c.status}</span>
+                </div>
+                <h2 className="pitlane-panel-title">{c.title}</h2>
+                <p className="pitlane-tagline">{c.tagline}</p>
+                {c.img && (
+                  <img
+                    src={c.img}
+                    alt={c.title}
+                    className="pitlane-car-img"
+                  />
+                )}
+                <div className="pitlane-spec">
+                  {c.spec.map(([label, value]) => (
+                    <div key={label} className="pitlane-spec-row">
+                      <span>{label}</span>
+                      <span>{value}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </section>
           ))}

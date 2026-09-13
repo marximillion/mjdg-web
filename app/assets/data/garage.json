@@ -1,0 +1,60 @@
+[
+  {
+    "tag": "CAR-01",
+    "status": "PROJECT CAR",
+    "accent": "var(--text-muted)",
+    "title": "2008 Acura CSX",
+    "tagline": "Same bones. Different animal. Built for the road, not just looks.",
+    "imgKey": "csx-1",
+    "spec": [
+      ["CHASSIS",  "FD2 · Acura CSX"],
+      ["COLOUR",   "NH-737M · Polished Metal Metallic"],
+      ["WHEELS",   "Konig · gold"],
+      ["AERO",     "Wide-body · GT wing · full lip kit"],
+      ["PLATE",    "MJMDG"]
+    ]
+  },
+  {
+    "tag": "CAR-02",
+    "status": "PREVIOUS DAILY",
+    "accent": "var(--brand-red)",
+    "title": "2001 Honda CR-V",
+    "tagline": "Gen 1. Lifted. Went everywhere it wasn't supposed to.",
+    "imgKey": "crv-1",
+    "spec": [
+      ["CHASSIS",  "RD1 · Honda CR-V Gen 1"],
+      ["ENGINE",   "B20B · 4WD"],
+      ["BUILD",    "Lifted · off-road rubber · steelies"],
+      ["STATUS",   "Retired"]
+    ]
+  },
+  {
+    "tag": "CAR-03",
+    "status": "FAMILY HAULER",
+    "accent": "var(--brand-gold)",
+    "title": "2006 Honda Odyssey",
+    "tagline": "RB1. Seven seats. Surprisingly quick off the line.",
+    "imgKey": "odyssey-4",
+    "spec": [
+      ["CHASSIS",  "RB1 · Honda Odyssey"],
+      ["ENGINE",   "K24A · 2.4L DOHC i-VTEC"],
+      ["LAYOUT",   "FWD · 7-seat"],
+      ["STATUS",   "In the fleet"]
+    ]
+  },
+  {
+    "tag": "CAR-04",
+    "status": "DAILY DRIVER",
+    "accent": "var(--brand-blue)",
+    "title": "2009 Acura CSX Type S",
+    "tagline": "K20Z2. Six-speed. The one that started it all.",
+    "imgKey": "csx-s",
+    "spec": [
+      ["CHASSIS",  "FD2 · Acura CSX Type S"],
+      ["ENGINE",   "K20Z2 · 155hp · 6MT"],
+      ["COLOUR",   "B-561P · Dyno Blue Pearl"],
+      ["AERO",     "Full wide-body · lowered · dark wheels"],
+      ["PLATE",    "MJMOG"]
+    ]
+  }
+]
