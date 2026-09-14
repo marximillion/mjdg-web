@@ -169,15 +169,15 @@ export default function Profile({ loaderData, actionData }: Route.ComponentProps
 
           <div style={{ display: "flex", gap: "1rem", justifyContent: "center" }}>
             {!isEditing ? (
-              <button type="button" className="button" onClick={handleEdit}>
+              <button type="button" className="button" onClick={handleEdit} style={{ background: "var(--brand-gold)", borderColor: "var(--brand-gold)", color: "#18191A" }}>
                 Edit
               </button>
             ) : (
               <>
-                <button type="button" className="button" onClick={handleCancel}>
+                <button type="button" className="button" onClick={handleCancel} style={{ background: "var(--brand-red)", borderColor: "var(--brand-red)" }}>
                   Cancel
                 </button>
-                <button type="submit" className="button" disabled={!hasChanges}>
+                <button type="submit" className="button" disabled={!hasChanges} style={{ background: "var(--brand-blue)", borderColor: "var(--brand-blue)" }}>
                   Save
                 </button>
               </>

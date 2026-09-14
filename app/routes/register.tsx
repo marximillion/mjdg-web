@@ -1,6 +1,7 @@
 // Copyright © MJMDG 2026
 import type { Route } from "./+types/register";
 import { Form, redirect, data } from "react-router";
+import Alert from "~/components/Alert";
 import { useState } from "react";
 import PageLayout from "~/components/PageLayout";
 import logo from "../assets/images/peeps/mdg-bald-icon.jpg";
@@ -124,12 +125,12 @@ export default function Register({ actionData }: Route.ComponentProps) {
                         />
                     </label>
                     {actionData?.error && (
-                        <p style={{ color: "red" }}>{actionData.error}</p>
+                        <Alert variant="error" message={actionData.error} />
                     )}
                     <button
                         type="submit"
                         className="button"
-                        // disabled={!username && !password}
+                        style={{ background: "var(--brand-blue)", borderColor: "var(--brand-blue)" }}
                     >
                         {username && password
                             ? <img src={logo} alt="Register" style={{ height: "6rem", borderRadius: "50%" }} />

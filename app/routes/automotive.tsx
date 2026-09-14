@@ -3,8 +3,9 @@ import { redirect } from "react-router";
 import { useEffect, useRef } from "react";
 import type { Route } from "./+types/automotive";
 import PageLayout from "~/components/PageLayout";
-import PitLaneScene from "~/components/PitLaneScene";
 import { getUserFromSession } from "~/db/session.server";
+// import PitLaneScene from "~/components/scenes/PitLaneScene";
+import HighwayScene from "~/components/scenes/HighwayScene";
 import csxSUrl from "~/assets/images/cars/csx-s.png";
 import csxUrl from "~/assets/images/cars/csx-1.png";
 import crvUrl from "~/assets/images/cars/crv-1.png";
@@ -120,8 +121,7 @@ export default function Automotive({ loaderData }: Route.ComponentProps) {
   return (
     <PageLayout isAuthenticated={loaderData.isAuthenticated}>
       <div className="pitlane-page">
-        <div className="pitlane-fallback" />
-        <PitLaneScene />
+        <HighwayScene />
         <div className="pitlane-scrim" />
 
         <div className="pitlane-track" data-pitlane-track ref={trackRef}>

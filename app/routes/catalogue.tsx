@@ -39,10 +39,10 @@ export default function Catalogue({ loaderData }: Route.ComponentProps) {
             <span className="catalogue-tile-icon">🚗</span>
             <span className="catalogue-tile-label">Automotive</span>
           </Link>
-          <Link to="/financial" className="catalogue-tile">
+          <div className="catalogue-tile catalogue-tile--disabled">
             <span className="catalogue-tile-icon">💰</span>
             <span className="catalogue-tile-label">Financial</span>
-          </Link>
+          </div>
         </div>
       </div>
     </PageLayout>
