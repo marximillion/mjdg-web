@@ -2,6 +2,7 @@
 import type { Route } from "./+types/home";
 import nutzsack from "../assets/images/misc/futuristice-geometric-nutzack-transparent.jpeg";
 import logo from "../assets/images/peeps/mdg-bald-icon.jpg";
+import nunavutBg from "../assets/images/bg/Nunavut.jpg";
 import darkLogo from "../assets/images/logos/v1.0.1.6/white-1.png";
 import lightLogo from "../assets/images/logos/v1.0.1.6/black-1.png";
 import { useRef, useState, useEffect } from "react";
@@ -83,9 +84,20 @@ export default function Home({ actionData, loaderData }: Route.ComponentProps) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [theme, setTheme] = useState<"dark" | "light">("dark");
   const [showError, setShowError] = useState(false);
-  const errorTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [theme, setTheme] = useState<"dark" | "light">("dark");
+  const [showBanner, setShowBanner] = useState(true);
+
+  useEffect(() => {
+    document.body.classList.add('page-home');
+    return () => document.body.classList.remove('page-home');
+  }, []);
+
+  useEffect(() => {
+    if (loaderData?.registered || loaderData?.loggedOut) {
+      window.history.replaceState({}, "", "/");
+    }
+  }, []);
 
   useEffect(() => {
     const update = () =>
@@ -99,9 +111,6 @@ export default function Home({ actionData, loaderData }: Route.ComponentProps) {
   useEffect(() => {
     if (!actionData?.error) return;
     setShowError(true);
-    if (errorTimerRef.current) clearTimeout(errorTimerRef.current);
-    errorTimerRef.current = setTimeout(() => setShowError(false), 4000);
-    return () => { if (errorTimerRef.current) clearTimeout(errorTimerRef.current); };
   }, [actionData]);
 
   const spawnItem = () => {
@@ -154,91 +163,97 @@ export default function Home({ actionData, loaderData }: Route.ComponentProps) {
 
   return (
     <PageLayout>
-      <div className="hero">
-        <img
-          src={theme === "light" ? lightLogo : darkLogo}
-          alt="MJMDG"
-          className="hero-logo"
-        />
-        <h1 className="hero-title">Build.<br /><span>Own.</span><br />Operate.</h1>
-        <p className="hero-sub">Kalabaw Noon, Kabayo Ngayon.</p>
-      </div>
-      {loaderData?.registered && <Alert message="Account created successfully. Please log in." />}
-      {loaderData?.loggedOut && <Alert message="You have been logged out." />}
-      <div className="formContainer">
-        <button
-          onClick={handleWelcomeClick}
-          style={{
-            background: "none",
-            border: "none",
-            padding: 0,
-          }}
-        >
-          <h1
-            style={{
-              color: isActive ? "#FF3EFF" : "var(--text-primary)",
-              transition: "0.3s",
-            }}
-          >
-            Welcome
-          </h1>
-        </button>
-        {/* Banner */}
+      <section className="home-hero">
+        {/* Photo layer */}
+        <div className="home-hero-media">
+          <img src={nunavutBg} alt="" className="home-hero-img" />
+          <div className="home-hero-overlay" aria-hidden="true" />
+          {/* Mobile-only: headline floated over the photo */}
+          <div className="home-hero-mobile-headline" aria-hidden="true">
+            <h2 className="hero-title">Plan.<br /><span>Execute.</span><br />Deliver.</h2>
+            <p className="hero-sub">Forge the future — one idea at a time.</p>
+          </div>
+        </div>
 
-        {/* Login Form */}
-        <Form method="post">
-          <label id="username" className="fieldLabel">
-            Username
-            <input
-              className="field"
-              type="text"
-              name="username"
-              placeholder="Enter username"
-              value={username}
-              onChange={(e) => { setUsername(e.target.value); setShowError(false); }}
-              required
-            />
-          </label>
-          <label id="password" className="fieldLabel">
-            Password
-            <div className="field-wrapper">
-              <input
-                className="field"
-                type={showPassword ? "text" : "password"}
-                name="password"
-                placeholder="Enter password"
-                value={password}
-                onChange={(e) => { setPassword(e.target.value); setShowError(false); }}
-                required
-              />
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className="field-reset-btn"
-              >
-                <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+        {/* Desktop: three-col grid absolutely over image | Mobile: in-flow below image */}
+        <div className="home-hero-inner">
+          {/* Col 1: form */}
+          <div className="formContainer home-hero-panel">
+            <button
+              onClick={handleWelcomeClick}
+              style={{ background: "none", border: "none", padding: 0 }}
+            >
+              <h1 style={{ color: isActive ? "#FF3EFF" : "var(--text-primary)", transition: "0.3s" }}>
+                Welcome
+              </h1>
+            </button>
+
+            <Form method="post">
+              <label id="username" className="fieldLabel">
+                Username
+                <input
+                  className="field"
+                  type="text"
+                  name="username"
+                  placeholder="Enter username"
+                  value={username}
+                  onChange={(e) => { setUsername(e.target.value); setShowError(false); setShowBanner(false); }}
+                  required
+                />
+              </label>
+              <label id="password" className="fieldLabel">
+                Password
+                <div className="field-wrapper">
+                  <input
+                    className="field"
+                    type={showPassword ? "text" : "password"}
+                    name="password"
+                    placeholder="Enter password"
+                    value={password}
+                    onChange={(e) => { setPassword(e.target.value); setShowError(false); setShowBanner(false); }}
+                    required
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="field-reset-btn"
+                  >
+                    <FontAwesomeIcon icon={showPassword ? faEyeSlash : faEye} />
+                  </button>
+                </div>
+              </label>
+              {showBanner && loaderData?.registered && <Alert variant="success" message="Account created successfully. Please log in." />}
+              {showBanner && loaderData?.loggedOut && <Alert variant="success" message="You have been logged out." />}
+              {showError && actionData?.error && <Alert variant="error" message={actionData.error} />}
+              <button type="submit" className="button" disabled={!username && !password} style={{ background: "var(--brand-blue)", borderColor: "var(--brand-blue)" }}>
+                {username && password
+                  ? <img src={logo} alt="Login" style={{ height: "6rem", borderRadius: "50%" }} />
+                  : "Submit"}
               </button>
-            </div>
-          </label>
-          {showError && actionData?.error && (
-            <p style={{ color: "red" }}>{actionData.error}</p>
-          )}
-          <button type="submit" className="button" disabled={!username && !password}>
-            {username && password
-              ? <img src={logo} alt="Login" style={{ height: "6rem", borderRadius: "50%" }} />
-              : "Submit"}
-          </button>
-        </Form>
+            </Form>
 
-        {items.map((item) => (
-          <img
-            key={item.id}
-            src={nutzsack}
-            className={`spawn ${item.edge}`}
-            style={item}
-          />
-        ))}
-      </div>
+            {items.map((item) => (
+              <img key={item.id} src={nutzsack} className={`spawn ${item.edge}`} style={item} />
+            ))}
+          </div>
+
+          {/* Col 2: headline */}
+          <div className="home-hero-copy">
+            <h1 className="hero-title">Plan.<br /><span>Execute.</span><br />Deliver.</h1>
+            <p className="hero-sub">Forge the future — one idea at a time.</p>
+          </div>
+
+          {/* Col 3: branding */}
+          <div className="home-hero-branding">
+            <img
+              src={theme === "light" ? lightLogo : darkLogo}
+              alt="MJMDG"
+              className="home-hero-branding-logo"
+            />
+            <span className="home-hero-branding-name">MJMDG</span>
+          </div>
+        </div>
+      </section>
     </PageLayout>
   );
 }
