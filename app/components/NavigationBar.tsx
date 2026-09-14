@@ -4,9 +4,7 @@ import { NavLink, Form, Link } from "react-router";
 import { useEffect, useState } from "react";
 import ThemeToggle from "./ThemeToggle";
 import darkLogo from "../assets/images/logos/v1.0.1.6/white-1.png";
-import darkLogoText from "../assets/images/logos/v1.0.1.6/white-text-1.png";
 import lightLogo from "../assets/images/logos/v1.0.1.6/black-1.png";
-import lightLogoText from "../assets/images/logos/v1.0.1.6/black-text-1.png";
 
 interface NavBarProps {
   isAuthenticated?: boolean;
@@ -26,7 +24,6 @@ export default function NavBar({ isAuthenticated = false }: NavBarProps) {
   }, []);
 
   const logo = theme === "light" ? lightLogo : darkLogo;
-  const logoText = theme === "light" ? lightLogoText : darkLogoText;
 
   return (
     <nav className="nav-desktop">
@@ -47,7 +44,7 @@ export default function NavBar({ isAuthenticated = false }: NavBarProps) {
 
       <Link to={isAuthenticated ? "/dashboard" : "/"} className="nav-brand">
         <img src={logo} alt="MJMDG" className="nav-brand-logo" />
-        <img src={logoText} alt="MJMDG" className="nav-brand-logo-text" />
+        <span className="nav-brand-wordmark">MJMDG</span>
       </Link>
 
       <div className="nav-right">

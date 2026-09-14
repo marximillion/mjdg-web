@@ -4,9 +4,7 @@ import { NavLink, Form, Link } from "react-router";
 import { useState, useEffect, useRef } from "react";
 import ThemeToggle from "./ThemeToggle";
 import darkLogo from "../assets/images/logos/v1.0.1.6/white-1.png";
-import darkLogoText from "../assets/images/logos/v1.0.1.6/white-text-1.png";
 import lightLogo from "../assets/images/logos/v1.0.1.6/black-1.png";
-import lightLogoText from "../assets/images/logos/v1.0.1.6/black-text-1.png";
 
 interface MobileNavProps {
   isAuthenticated?: boolean;
@@ -39,14 +37,13 @@ export default function MobileNav({ isAuthenticated = false }: MobileNavProps) {
 
   const close = () => setMenuOpen(false);
   const logo = theme === "light" ? lightLogo : darkLogo;
-  const logoText = theme === "light" ? lightLogoText : darkLogoText;
 
   return (
     <div ref={menuRef} className={isAuthenticated ? "nav-mobile-wrapper nav-mobile-wrapper--auth" : "nav-mobile-wrapper"}>
       <div className="nav-mobile-bar">
         <Link to={isAuthenticated ? "/dashboard" : "/"} className="nav-brand">
           <img src={logo} alt="MJMDG" className="nav-brand-logo" />
-          <img src={logoText} alt="MJMDG" className="nav-brand-logo-text" />
+          <span className="nav-brand-wordmark">MJMDG</span>
         </Link>
         <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
           <ThemeToggle />

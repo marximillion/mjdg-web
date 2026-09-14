@@ -1,6 +1,6 @@
 // Copyright © MJMDG 2026
 import { useEffect, useRef } from "react";
-import { useNavigation } from "react-router";
+import { useNavigation, useLocation } from "react-router";
 import carImg from "../assets/images/logos/fd5-blue-icon-v2.png";
 
 const CAR_ANIM_MS = 900;
@@ -19,6 +19,8 @@ function isTrackedAction(formAction: string | undefined): boolean {
 
 export default function Loader() {
   const navigation = useNavigation();
+  const location = useLocation();
+  const startPathnameRef = useRef<string>("");
   const overlayRef    = useRef<HTMLDivElement>(null);
   const carRef        = useRef<HTMLImageElement>(null);
   const fillRef       = useRef<HTMLDivElement>(null);
@@ -113,10 +115,19 @@ export default function Loader() {
       } catch {
         actionRef.current = navigation.formAction ?? "";
       }
+      startPathnameRef.current = location.pathname;
       startAnimation();
     }
 
     if (navigation.state === "idle" && activeRef.current && !navIdleRef.current) {
+      // Failed action — still on the same page, abort quietly
+      if (location.pathname === startPathnameRef.current && actionRef.current !== "/logout") {
+        activeRef.current = false;
+        if (timerRef.current) clearInterval(timerRef.current);
+        const overlay = overlayRef.current;
+        if (overlay) { overlay.style.opacity = "0"; setTimeout(() => { overlay.hidden = true; overlay.style.opacity = "1"; }, 260); }
+        return;
+      }
       navIdleRef.current = true;
       if (timerRef.current) clearInterval(timerRef.current);
 
