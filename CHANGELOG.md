@@ -17,6 +17,76 @@ Format: MAJOR.MINOR.PATCH.BUILD — build increments with every deployment
 
 ---
 
+## [v1.1.2.8] — 2026-09-14
+
+[FEAT] Portfolio page v2 — full redesign
+- New layout: hero with code card, Selected Work cards, Tech Stack grid, Experience timeline, About Me, Contact
+- Three project cards with images: MJMDG Platform (brand logo card), Pipeline WFCA (Schulich Geo fill), AWS DeepRacer (contain + bg-elevated); DeepRacer links to `https://deepracer-website.web.app/`
+- Pipeline card: `object-fit: fill`, white background, bottom border separator
+- `.pf2-project-download` pill button (gold border) for report downloads
+- Global theme-aware logo CSS utilities: `.theme-logo--dark` / `.theme-logo--light` — covers all 3 theme states via `data-theme` + `prefers-color-scheme`, no per-component JS
+- Vertical mobile timeline at ≤900px — `data-year` + `::before`/`::after` pseudo-elements for year labels and dot markers; NOW tag on active card; most-recent-first ordering
+- About Me photo: `mdg-baguio-portfolio.png`, `object-position: center 72%`
+- Terminal cursor switched to `--brand-green`
+- "About me" hero CTA: `href="#about"`
+- DEF-003 fixed — experience card key was `e.id ?? ...`; changed to `e.company + e.role`
+- Resume PDF: `app/assets/data/MarkDeGuzman_Resume-2024.pdf`; import + both CTA buttons commented out pending profile copy finalization
+
+[FEAT] Home hero redesign
+- Full-bleed `Nunavut.jpg` background with top/bottom image fade overlays
+- 3-equal-column grid layout: form | headline | branding
+- Light-mode overlay softened; nav wordmark appears ≤900px when hero branding hides
+- `page-home` class locks screenContainer to `100dvh` on desktop only
+- Hero tagline: `color: var(--brand-gold)`
+
+[FEAT] Brand token — `--brand-green`
+- `#3B6E35` (dark) / `#2E5829` (light) — Honda G95P Clover Green Pearl approximation, pending spec confirmation
+
+[FEAT] Alert system standardised
+- `Alert` component with `variant="success|error|warning"` prop (success=green, error=red, warning=gold)
+- Replaces all raw `<p style={{ color: "red" }}>` in home.tsx and register.tsx
+
+[FEAT] Login UX improvements
+- Loader animation aborted on failed login — no longer shows "All set." on bad credentials
+- Banners (registered/loggedOut) dismiss on first keypress; URL cleaned on mount; auto-clear timer removed
+
+[FEAT] Profile button styling
+- Edit=gold, Cancel=red, Save=blue; standardised across login/register/profile
+
+[FEAT] Catalogue — Financial tile disabled
+- `.catalogue-tile--disabled` — non-clickable, 40% opacity
+
+[REFACTOR] Nav wordmark — CSS text
+- `logoText` image replaced with CSS `nav-brand-wordmark` span in NavigationBar and MobileNav; dead image imports removed
+
+[FEAT] Automotive page — `/automotive`
+- HighwayScene (`app/components/scenes/HighwayScene.tsx`) — Three.js night highway
+- PitLaneScene moved to `app/components/scenes/`
+- Personal garage: 4 cars (CSX, CR-V, Odyssey RB1, CSX Type S) — data from `garage.json` + `carImageMap`
+- Software builds section commented out pending layout decision
+
+[FEAT] Financial dashboard — `/financial`
+- Chart.js 4.5.1, KPI tiles, monthly donut, setup costs, tax comparison
+- Auth-gated (admin gating deferred until RBAC ships)
+
+[FEAT] Custom error page
+- `app/components/ErrorPage.tsx` — 400/401/403/404/500/503 with bald icon; replaces default RR7 ErrorBoundary
+
+[FEAT] Page loader
+- `app/components/Loader.tsx` — FD5 car approach animation, fires on login/logout
+
+[FEAT] Brand colors — Honda paint codes
+- `--brand-red`: R-513 Rallye Red FL5
+- `--brand-gold`: Y-82 Phoenix Yellow FK8
+- `--brand-blue`: B-561P Dyno Blue Pearl
+- Updated dark + light theme tokens
+
+[FIX] tsconfig.json — removed deprecated `baseUrl`; fixed `~/styles/app.css` import path in root.tsx
+
+[TEST] Playwright E2E — `tests/navigation.spec.ts`, `playwright.config.ts`
+
+---
+
 ## [v1.1.1.7] — 2026-08-16
 
 [INFRA] SSL — End-to-end HTTPS enabled

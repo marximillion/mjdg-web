@@ -6,13 +6,35 @@ Versioning: `MAJOR.MINOR.PATCH.BUILD`
 - **MINOR** — phase completion, significant feature set delivered
 - **MAJOR** — architectural pivot or breaking change
 
-Current: **v1.1.1.8**
+Current: **v1.1.2** (local, not yet deployed)
 
 ---
 
 ## v1.0 — Foundation (Complete)
 > Delivered: auth system, initial EC2 deployment, MJMDG brand redesign, dark/light theme, Flappy Bird, favicon, portfolio improvements, nav, footer
 > See `TASKS.md` for full granular history of v1.0 work.
+
+---
+
+## v1.1.2 — Automotive & Data Foundation (In Progress)
+> Target: next production deployment
+
+### Automotive & UI (complete locally)
+- [x] Pit Lane WebGL scene moved from `/portfolio/dev` → `/automotive` — auth-protected, full build sheet
+- [x] Personal garage section — 4 cars (CAR-01 CSX, CAR-02 CR-V, CAR-03 Odyssey, CAR-04 CSX Type S) with images; data in `garage.json`
+- [x] HighwayScene — Three.js night highway replacing Pit Lane background; scrolling dash lines, horizon glow, streak particles; `app/components/scenes/`
+- [x] Financial dashboard — `/financial`, KPI tiles, monthly donut, setup costs bar, tax comparison; Chart.js 4.5.1
+- [x] Custom error page — `app/components/ErrorPage.tsx`; per-code copy (400/401/403/404/500/503), bald icon, dev stack trace
+- [x] `tsconfig.json` — removed deprecated `baseUrl`; `~/` alias sufficient
+- [x] `app/root.tsx` — fixed `app/styles/app.css` → `~/styles/app.css` import (exposed by baseUrl removal)
+
+### Data & Access (planned)
+- [ ] `migrations/002_add_garage_cars.sql` — `garage_cars` + `garage_car_specs` tables, seed from `garage.json` — see `MJDG_AUTOMOTIVE_SPEC.md`
+- [ ] `/automotive` loader — replace `garage.json` import with DB query
+- [ ] `migrations/003_add_user_role.sql` — add `role` column to `User` table (`user` / `admin`) — see `MJDG_RBAC_SPEC.md`
+- [ ] `requireAdmin` server utility — redirect non-admins to `/dashboard`
+- [ ] `/financial` gated to admin role — currently accessible to all authenticated users
+- [ ] FontAwesome version alignment — bump `fontawesome-svg-core` + `free-solid-svg-icons` to `^7.3.1` to resolve duplicate `fontawesome-common-types`
 
 ---
 

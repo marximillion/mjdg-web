@@ -109,11 +109,44 @@ CREATE TABLE "User" (
 ```
 
 ## Current Status
+> Updated v1.1.2.8 (deploying — 2026-09-14)
+- **Portfolio page complete (pending resume)** — all sections wired: project cards with images, vertical mobile timeline, About Me photo, contact section
+- **Project cards redesigned**:
+  - MJMDG: theme-aware logo (white/black PNG) + "MJMDG" wordmark in `pf2-project-img--brand` flex container
+  - Pipeline (WFCA): `schulich-geo.png` fill/stretch with white bg + bottom border separator
+  - DeepRacer: `object-fit: contain` + `bg-elevated` padding, arrow links to `https://deepracer-website.web.app/`
+- **Global theme-aware logo CSS** — `.theme-logo--dark` / `.theme-logo--light` utilities in `app.css`, no per-component JS, cover all 3 theme states (data-theme explicit + prefers-color-scheme)
+- **Vertical timeline on mobile** — activates at ≤900px; `data-year` / `::before` pseudo-element labels, `::after` dot markers, NOW tag on active card; most-recent-first via `experience.slice().reverse()`
+- **About Me photo** — `mdg-baguio-portfolio.png`, `object-position: center 72%` to show full horse
+- **Terminal cursor** — `--brand-green` (was `--brand-blue`)
+- **"About me" CTA** — `href="#about"` scroll anchor
+- **DEF-003 fixed** — experience card key was `e.id ?? ...`; changed to `e.company + e.role`
+- **Resume PDF** — created at `app/assets/data/MarkDeGuzman_Resume-2024.pdf`; HTML source at scratchpad `resume.html`; resume import + both CTA buttons **commented out pending finalization**
+
+> Updated v1.1.3 (local, not yet deployed — 2026-09-14)
+- **Home hero redesign** — Nunavut.jpg full-bleed background; 3-equal-column grid (form | headline | branding); top/bottom image fade overlay; light-mode overlay softened; nav wordmark (JetBrains Mono) appears ≤900px when hero branding hides; `page-home` class locks screenContainer to `100dvh` on desktop only
+- **Brand token** — `--brand-green: #3B6E35` (dark) / `#2E5829` (light) added — Honda G95P Clover Green Pearl approximation, pending tweak
+- **Alert system standardised** — `Alert` component gains `variant="success|error|warning"` prop; success=green, error=red, warning=gold; replaces all raw `<p style={{ color: "red" }}>` in home.tsx and register.tsx; all alerts rendered at consistent location (above submit button)
+- **Login UX** — loader animation aborted on failed login (no longer shows "All set." on bad credentials); banners (registered/loggedOut) dismiss on first keypress + URL cleaned on mount so refresh doesn't re-show them; auto-clear timer removed (keypress-only dismiss)
+- **Profile buttons** — Edit=gold, Cancel=red, Save=blue; standardised across login/register/profile
+- **Catalogue** — Financial tile disabled (`.catalogue-tile--disabled`); non-clickable, 40% opacity
+- **Nav cleanup** — wordmark image (`logoText`) replaced with CSS text span (`nav-brand-wordmark`) in both NavigationBar and MobileNav; dead `darkLogoText`/`lightLogoText` imports removed
+- **Hero tagline** — `color: var(--brand-gold)`
+- **Submit buttons** — login and register submit buttons set to `--brand-blue`
+
 > Updated v1.1.1.8
 - Pit Lane WebGL scene moved from `/portfolio/dev` to `/automotive` — Three.js scroll-driven scene, theme-aware (dark/light), spec-sheet copy per project. See `app/components/PitLaneScene.tsx`, `app/routes/automotive.tsx`
 - `portfolio.dev.tsx` deleted; `/portfolio/dev` route removed
 - Personal garage section added to `/automotive` — 4 cars (CAR-01 CSX, CAR-02 CR-V, CAR-03 Odyssey RB1, CAR-04 CSX Type S) with images; car data in `app/assets/data/garage.json`, images in `app/assets/images/cars/`
 - Software builds section (WEB-01 → ARC-04) currently commented out in automotive.tsx — pending layout decision
+
+> Updated v1.1.2 (local, not yet deployed)
+- HighwayScene (`app/components/scenes/HighwayScene.tsx`) — Three.js night highway on `/automotive`; PitLaneScene moved to `app/components/scenes/`
+- Personal garage section on `/automotive` — 4 cars with images; data from `app/assets/data/garage.json` + `carImageMap`; software builds section commented out pending layout decision
+- Financial dashboard (`/financial`) — Chart.js 4.5.1, KPI tiles, monthly donut, setup costs, tax comparison; admin-gated once RBAC ships
+- Custom error page (`app/components/ErrorPage.tsx`) — 400/401/403/404/500/503 with bald icon; replaces default RR7 ErrorBoundary in root.tsx
+- `tsconfig.json` — removed deprecated `baseUrl`; fixed `app/styles/app.css` → `~/styles/app.css` in root.tsx
+- Data modelling standards established — see `/opt/master/lib/MJDG_DATA_MODELLING.md`, `MJDG_AUTOMOTIVE_SPEC.md`, `MJDG_RBAC_SPEC.md`
 
 > Updated v1.1.1.8
 - Brand colors updated to Honda paint codes (R-513, Y-82, B-561P) — dark + light themes
@@ -140,10 +173,13 @@ CREATE TABLE "User" (
 - Local dev working, deployment next
 
 ## What's Deferred
-> Updated v1.1.1.8
+> Updated v1.1.2.8
 - Run Playwright tests (need TEST_USERNAME/TEST_PASSWORD + `npx playwright install chromium`)
-- ThemeToggle.tsx — FA icon prefix type conflict (duplicate @fortawesome/fontawesome-common-types versions), non-blocking
-- portfolio.tsx:290 — `e.id` on experience array objects without id field, non-blocking
+- Software builds section (WEB-01 → ARC-04) on `/automotive` — commented out pending layout decision
+- `/financial` admin gating — currently auth-only; needs `requireAdmin` once RBAC migration ships
+- **Resume** — PDF at `app/assets/data/MarkDeGuzman_Resume-2024.pdf`; HTML source at scratchpad `resume.html`; import + both CTA buttons commented out in `portfolio.tsx` pending profile copy finalization
+- **"View all projects" link** — `href="#"` placeholder, no destination yet
+- `--brand-green` hex pending confirmation against Honda G95P Clover Green Pearl spec sheet
 
 > Updated v1.0.1.6
 - Change password on profile page

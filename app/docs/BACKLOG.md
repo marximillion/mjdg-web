@@ -27,5 +27,12 @@ Future ideas and items under consideration not yet assigned to a specific releas
 
 ---
 
+## Admin & Access Control
+- [ ] Admin role UI — promote/demote users via `/admin/users` (no UI yet; promotion is DB-level for now)
+- [ ] Financial page — currently stubs auth check only; needs `requireAdmin` gate once RBAC ships
+- [ ] Future admin routes: `/admin/garage` (car CRUD), `/admin/portfolio` (content editing post-portfolio DB migration)
+
+---
+
 ## Ideas / Under Consideration
 Add items here as they come up.
