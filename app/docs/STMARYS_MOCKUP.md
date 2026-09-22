@@ -14,6 +14,13 @@ direction doesn't land. Whatever direction gets picked here feeds Phase 3 (Desig
 Precedent to follow: `/portfolio/dev` (now removed, logic moved into `/automotive`'s Pit Lane scene) —
 noindex, not linked from nav, self-contained.
 
+> **Updated 2026-09-21** — Authenticated only, and stubbed via the catalogue first. Matches the actual
+> established pattern for internal/preview pages in this repo (`/automotive`, `/financial`): loader
+> checks `getUserFromSession`, redirects to `/` if not logged in, content still wraps in `PageLayout`
+> (keeps MJMDG nav/footer, doesn't go fully standalone as originally drafted below). A disabled
+> "St. Mary's ⛪" tile was added to `/catalogue` first as the entry point, matching the existing
+> `Financial` tile pattern — will be enabled once the mockup is ready to view.
+
 ## Scope for this pass
 
 - **Home page only**, fully designed — the other core pages (Sacraments, Giving, Events, Bulletin
