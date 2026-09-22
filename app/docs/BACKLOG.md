@@ -34,5 +34,12 @@ Future ideas and items under consideration not yet assigned to a specific releas
 
 ---
 
+## St. Mary's Cathedral Mockup
+- [ ] Build `/mockups/stmarys` — Home page mockup, 2 switchable design variants, other core pages stubbed with a new `ComingSoon` component
+- [ ] Feeds design direction into the separate `stmarys-cathedral` repo (Phase 3 of its workplan) — not part of mjdg-web's own release track
+- [ ] Plan: `app/docs/STMARYS_MOCKUP.md`
+
+---
+
 ## Ideas / Under Consideration
 Add items here as they come up.
