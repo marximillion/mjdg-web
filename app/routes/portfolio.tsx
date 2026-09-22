@@ -1,6 +1,7 @@
 // Copyright © MJMDG 2026
 import type { Route } from "./+types/portfolio";
 import PageLayout from "../components/PageLayout";
+import NetworkScene from "../components/scenes/NetworkScene";
 import mjmdgLogoWhite from "../assets/images/logos/v1.0.1.6/white-1.png";
 import mjmdgLogoBlack from "../assets/images/logos/v1.0.1.6/black-1.png";
 import schulichGeo from "../assets/images/logos/schulich-geo.png";
@@ -137,7 +138,9 @@ const experience = [
 export default function Portfolio() {
   return (
     <PageLayout>
-      <div className="portfolio-page">
+      <div className="portfolio-wrapper">
+        <NetworkScene />
+        <div className="portfolio-page">
 
         {/* ── Hero ── */}
         <section className="portfolio-hero">
@@ -152,11 +155,19 @@ export default function Portfolio() {
               building production systems, and exploring what's possible.
             </p>
             <div className="portfolio-cta-row">
-              <a href="#work" className="portfolio-btn-primary">
+              <a
+                href="#work"
+                className="portfolio-btn-primary"
+                onClick={(e) => { e.preventDefault(); document.getElementById("work")?.scrollIntoView({ behavior: "smooth" }); }}
+              >
                 Explore my work
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
               </a>
-              <a href="#about" className="portfolio-btn-ghost">About me</a>
+              <a
+                href="#about"
+                className="portfolio-btn-ghost"
+                onClick={(e) => { e.preventDefault(); document.getElementById("about")?.scrollIntoView({ behavior: "smooth" }); }}
+              >About me</a>
               {/* <a href={resumePdf} download="MarkDeGuzman_Resume-2024.pdf" className="portfolio-btn-resume">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 Resume
@@ -225,7 +236,7 @@ export default function Portfolio() {
               <span>Selected Work</span>
               <div className="portfolio-section-rule" />
             </div>
-            <a href="#" className="portfolio-section-link">
+            <a href="/projects" className="portfolio-section-link">
               View all projects
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
             </a>
@@ -316,12 +327,12 @@ export default function Portfolio() {
           <div className="portfolio-timeline-track">
             <div className="portfolio-timeline-line" />
             <div className="portfolio-timeline-years">
-              {experience.map((e) => (
+              <div className="portfolio-timeline-year active portfolio-timeline-year--now">NOW</div>
+              {experience.slice().reverse().map((e) => (
                 <div key={e.year} className={`portfolio-timeline-year${e.active ? " active" : ""}`}>
                   {e.year}
                 </div>
               ))}
-              <div className="portfolio-timeline-year active portfolio-timeline-year--now">NOW</div>
             </div>
             <div className="portfolio-timeline-cards">
               {experience.slice().reverse().map((e) => (
@@ -361,19 +372,10 @@ export default function Portfolio() {
                 a new feature, or exploring new tools — I'm always curious about what's next.
               </p>
 
-              <div className="portfolio-pillars">
-                {[
-                  { icon: "🔧", label: "Build" },
-                  { icon: "💡", label: "Solve" },
-                  { icon: "📖", label: "Learn" },
-                  { icon: "🧭", label: "Explore" },
-                ].map(({ icon, label }) => (
-                  <div key={label} className="portfolio-pillar">
-                    <span className="portfolio-pillar-icon">{icon}</span>
-                    {label}
-                  </div>
-                ))}
-              </div>
+              <a href="/about" className="portfolio-about-link">
+                View full story
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </a>
             </div>
           </div>
         </section>
@@ -396,6 +398,7 @@ export default function Portfolio() {
           </div>
         </section>
 
+        </div>
       </div>
     </PageLayout>
   );
