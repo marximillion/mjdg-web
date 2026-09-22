@@ -1,7 +1,8 @@
 # St. Mary's Cathedral — Home Page Mockup (within mjdg-web)
 
-Status: Planning
+Status: Built (2026-09-22)
 Related: `C:\opt\projects\stmarys-cathedral\docs\WORKPLAN.md` (Phase 3 — Design)
+Entry point: `/dev-settings/mockups` (hidden — click the MJMDG logo 5x on the home page), not the catalogue
 
 ## Why this lives in mjdg-web, not the new repo
 
@@ -11,70 +12,43 @@ route before deciding whether to adopt it. Cheap to iterate, easy to show for fe
 direction doesn't land. Whatever direction gets picked here feeds Phase 3 (Design) of the main
 `stmarys-cathedral` workplan — this doc doesn't replace that one, it feeds it.
 
-Precedent to follow: `/portfolio/dev` (now removed, logic moved into `/automotive`'s Pit Lane scene) —
-noindex, not linked from nav, self-contained.
-
-> **Updated 2026-09-21** — Authenticated only, and stubbed via the catalogue first. Matches the actual
-> established pattern for internal/preview pages in this repo (`/automotive`, `/financial`): loader
-> checks `getUserFromSession`, redirects to `/` if not logged in, content still wraps in `PageLayout`
-> (keeps MJMDG nav/footer, doesn't go fully standalone as originally drafted below). A disabled
-> "St. Mary's ⛪" tile was added to `/catalogue` first as the entry point, matching the existing
-> `Financial` tile pattern — will be enabled once the mockup is ready to view.
-
 ## Scope for this pass
 
 - **Home page only**, fully designed — the other core pages (Sacraments, Giving, Events, Bulletin
-  archive, Staff/Contact) are stubbed with a shared "Coming Soon" placeholder so the nav/IA reads as a
-  real site, without spending design time on pages we're not evaluating yet
-- **Two visual directions**, switchable live via a tab control at the top of the page — not separate
-  links to click between, an actual switcher so comparison is immediate
-- **Static mockup** — real layout, real copy, real design, no DB/auth/working forms. Exception: as we
-  go deeper on Home specifically, also work out the actual UX structure (what sections exist, what
-  order, what each one needs to communicate) — that structural thinking is real IA work, not just skin
+  archive, Contact) are stubbed with the shared `ComingSoon` component so the nav/IA reads as a real
+  site, without spending design time on pages we're not evaluating yet
+- **Two visual directions**, switchable live via a tab control at the top of the page
+- **Static mockup** — real layout, real copy, real design, no DB/working forms
 
-## Confirmed: no reusable "Coming Soon" component exists yet
+## What's built
 
-Checked the pulled code — the only "coming soon" text in the repo is an inline label on the disabled
-password field in `/profile` (`app/routes/profile.tsx:112`, `.field-coming-soon` CSS class). Nothing
-reusable as a stub page. This mockup will need a small `ComingSoon` component built for it.
+- `app/routes/mockups.stmarys.tsx` — Home mockup: quick-info bar (Mass/confession/adoration times),
+  hero, sample event teaser, footer nav, and the A/B variant switcher
+- `app/routes/mockups.stmarys.stub.tsx` — dynamic `:page` route for Sacraments/Giving/Events/Bulletin/
+  Contact, each rendering the shared `ComingSoon` component (`app/components/ComingSoon.tsx`)
+- Both wrapped in the normal `PageLayout` (MJMDG nav/footer) — not a standalone layout as first drafted;
+  matches how `/automotive` and `/financial` do it
+- No auth gate on either route — matches the rest of `/dev-settings*`; login isn't wired to a local DB
+  in most dev environments right now, so a hard auth requirement would make these unreachable locally
+- Entry point is `/dev-settings/mockups`, not `/catalogue` (that tile was added, then removed, once
+  Developer Settings became the actual entry point)
 
-## Plan
+**Variant A — "Stone & Stained Glass"**: warm stone neutrals, stained-glass jewel tones (ruby, sapphire,
+gold) as accents, Cormorant Garamond serif display type (loaded route-locally via `links()`).
 
-**Phase 1 — Scaffold**
-- New routes under `/mockups/stmarys` (noindex, not linked from mjdg-web's nav)
-- Own minimal layout for this section — no MJMDG `NavBar`/`Footer`. This is a mockup of a *different*
-  site; wrapping it in MJMDG's own chrome would undercut the preview
-- `ComingSoon` component (shared) for the stub pages: Sacraments, Giving, Events, Bulletin, Contact
-- Variant switcher: a small tab control (Variant A / Variant B) pinned at the top of the mockup section,
-  swaps a CSS/data attribute so both stub and Home pages reflect whichever variant is active
+**Variant B — "Light & Sanctuary"**: bright, airy, Archivo (already loaded site-wide), generous
+whitespace, less ornamental than A.
 
-**Phase 2 — Home page UX structure (content/IA, independent of visual skin)**
-Work out before or alongside visual design:
-- Hero — what's the one thing a visitor should see first (Mass times? a welcome message? both?)
-- Quick-info bar — Mass/confession/adoration times, always visible without scrolling
-- Welcome / mission statement block
-- Upcoming event teaser (pulls from the real site's current "static image" approach — decide what
-  replaces it)
-- Giving CTA — how prominent, where it sits relative to the fold
-- Footer nav — what belongs here vs. in the main nav
+*(Names/directions are a starting proposal — easy to rename or redirect once reviewed.)*
 
-**Phase 3 — Variant A: "Stone & Stained Glass"**
-- Warm stone neutrals, deep stained-glass jewel tones (ruby, sapphire, gold) as accents
-- A serif display face for headings — evokes carved stone / traditional ecclesiastical lettering
-- Traditional, reverent, leans into the building's actual architecture
+## Next
 
-**Phase 4 — Variant B: "Light & Sanctuary"**
-- Bright, airy, photography-forward — natural light through windows as the dominant visual idea
-- Clean modern sans-serif, generous whitespace, minimal chrome
-- Contemporary parish-website feel, less ornamental than Variant A
-
-*(Names/directions above are a starting proposal — easy to rename or swap once we're looking at them.)*
-
-**Phase 5 — Review**
-- Compare both variants live via the switcher
-- Pick a direction (or a hybrid) before Phase 3 of the main `stmarys-cathedral` workplan locks it in
+- **Phase 2 — UX structure review**: confirm the home mockup's section order/content (hero, quick-info,
+  event teaser, giving CTA placement) actually matches what the parish needs before picking a variant
+- **Phase 5 — Review**: compare both variants, pick a direction (or hybrid) — feeds Phase 3 of the main
+  `stmarys-cathedral` workplan
 
 ## Explicitly out of scope for this pass
-- Any database, auth, or working form submission
+- Any database or working form submission
 - Sacraments/Giving/Events/Bulletin/Contact page design (stubbed only)
 - Anything in the separate `stmarys-cathedral` repo — this is exploration inside mjdg-web only
