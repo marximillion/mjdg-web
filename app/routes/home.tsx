@@ -13,7 +13,7 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { pool } from "../db/db.server";
 import bcrypt from "bcryptjs";
 import { redirect, data } from "react-router";
-import { Form } from "react-router";
+import { Form, useNavigate } from "react-router";
 import { sessionStorage } from "../db/session.server";
 
 interface SpawnItem {
@@ -86,6 +86,24 @@ export default function Home({ actionData, loaderData }: Route.ComponentProps) {
   const [showPassword, setShowPassword] = useState(false);
   const [showError, setShowError] = useState(false);
   const [theme, setTheme] = useState<"dark" | "light">("dark");
+  const navigate = useNavigate();
+  const logoClickCount = useRef(0);
+  const logoClickTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Secret entry point: click the MJMDG logo 5x in quick succession to reach
+  // /dev-settings. Home-page only, on purpose — see app/docs/DEV_SETTINGS.md.
+  function handleLogoClick() {
+    logoClickCount.current += 1;
+    if (logoClickTimer.current) clearTimeout(logoClickTimer.current);
+    if (logoClickCount.current >= 5) {
+      logoClickCount.current = 0;
+      navigate("/dev-settings");
+      return;
+    }
+    logoClickTimer.current = setTimeout(() => {
+      logoClickCount.current = 0;
+    }, 1500);
+  }
   const [showBanner, setShowBanner] = useState(true);
 
   useEffect(() => {
@@ -249,6 +267,8 @@ export default function Home({ actionData, loaderData }: Route.ComponentProps) {
               src={theme === "light" ? lightLogo : darkLogo}
               alt="MJMDG"
               className="home-hero-branding-logo"
+              onClick={handleLogoClick}
+              style={{ cursor: "pointer" }}
             />
             <span className="home-hero-branding-name">MJMDG</span>
           </div>

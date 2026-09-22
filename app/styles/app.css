@@ -2391,3 +2391,385 @@ html, body {
   overflow-x: auto;
   line-height: 1.55;
 }
+
+/* ── St. Mary's Cathedral — home mockup (app/docs/STMARYS_MOCKUP.md) ───────── */
+/* Two design variants, scoped entirely under [data-variant] tokens — deliberately
+   its own palette/type system, not MJMDG's Honda-paint-code brand tokens. */
+
+.stmarys-mock-page {
+  max-width: 900px;
+}
+
+.stmarys-switcher {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.stmarys-switcher-tab {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 10px 4px 12px;
+  cursor: pointer;
+}
+
+.stmarys-switcher-tab:hover {
+  color: var(--text-primary);
+}
+
+.stmarys-switcher-tab.is-active {
+  color: var(--text-primary);
+  border-bottom-color: var(--brand-gold);
+}
+
+.stmarys-mock {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+/* Variant A — Stone & Stained Glass */
+.stmarys-mock[data-variant="a"] {
+  --sm-bg: #EDE7DA;
+  --sm-panel: #E2DBC9;
+  --sm-ink: #221F1B;
+  --sm-muted: #6B6255;
+  --sm-ruby: #7A1F2B;
+  --sm-sapphire: #1F3A6B;
+  --sm-gold: #B8912B;
+  --sm-display: 'Cormorant Garamond', Georgia, serif;
+}
+
+/* Variant B — Light & Sanctuary */
+.stmarys-mock[data-variant="b"] {
+  --sm-bg: #FAF8F4;
+  --sm-panel: #F1EEE7;
+  --sm-ink: #1C1C1E;
+  --sm-muted: #6E6E6E;
+  --sm-ruby: #A6414C;
+  --sm-sapphire: #5B7A8C;
+  --sm-gold: #C9A227;
+  --sm-display: 'Archivo', Helvetica, sans-serif;
+}
+
+.stmarys-mock {
+  background: var(--sm-bg);
+  color: var(--sm-ink);
+}
+
+.stmarys-quickinfo {
+  background: var(--sm-panel);
+  padding: 14px 24px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 28px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.stmarys-quickinfo-row {
+  display: flex;
+  gap: 8px;
+  font-size: 0.78rem;
+}
+
+.stmarys-quickinfo-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 600;
+  color: var(--sm-sapphire);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.stmarys-quickinfo-value {
+  color: var(--sm-muted);
+}
+
+.stmarys-hero {
+  padding: 56px 40px 40px;
+  text-align: center;
+}
+
+.stmarys-eyebrow {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--sm-gold);
+  margin-bottom: 14px;
+}
+
+.stmarys-h1 {
+  font-family: var(--sm-display);
+  font-weight: 600;
+  font-size: clamp(2.4rem, 5vw, 3.4rem);
+  color: var(--sm-ink);
+  margin: 0 0 18px;
+  text-wrap: balance;
+}
+
+.stmarys-mock[data-variant="a"] .stmarys-h1 {
+  font-weight: 700;
+}
+
+.stmarys-hero-sub {
+  max-width: 52ch;
+  margin: 0 auto 28px;
+  color: var(--sm-muted);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.stmarys-hero-ctas {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.stmarys-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 22px;
+  border-radius: 4px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.stmarys-btn--primary {
+  background: var(--sm-ruby);
+  color: #FAF8F4;
+}
+
+.stmarys-btn--ghost {
+  border: 1px solid var(--sm-ink);
+  color: var(--sm-ink);
+}
+
+.stmarys-event {
+  margin: 0 40px 40px;
+  padding: 24px;
+  background: var(--sm-panel);
+  border-left: 3px solid var(--sm-sapphire);
+  border-radius: 4px;
+}
+
+.stmarys-event-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: var(--sm-muted);
+}
+
+.stmarys-event-title {
+  font-family: var(--sm-display);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--sm-ink);
+  margin: 6px 0 2px;
+}
+
+.stmarys-event-date {
+  font-size: 0.8rem;
+  color: var(--sm-sapphire);
+  font-weight: 600;
+}
+
+.stmarys-event-blurb {
+  margin: 10px 0 14px;
+  color: var(--sm-muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.stmarys-event-link {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--sm-ruby);
+  text-decoration: none;
+}
+
+.stmarys-footer {
+  background: var(--sm-ink);
+  padding: 20px 40px;
+}
+
+.stmarys-footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.stmarys-footer-link {
+  font-size: 0.8rem;
+  color: var(--sm-bg);
+  opacity: 0.85;
+  text-decoration: none;
+}
+
+.stmarys-footer-link:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .stmarys-hero { padding: 40px 20px 32px; }
+  .stmarys-event { margin: 0 20px 32px; }
+  .stmarys-footer { padding: 18px 20px; }
+  .stmarys-quickinfo { padding: 12px 16px; }
+}
+
+/* ── Developer Settings (hidden — 5x click MJMDG logo on home) ─────────────── */
+
+.devsettings-page {
+  max-width: 720px;
+}
+
+.devsettings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.devsettings-tile,
+.devsettings-list-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 24px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  color: var(--text-primary);
+}
+
+.devsettings-tile:hover,
+.devsettings-list-item:hover {
+  border-color: var(--border-hover);
+}
+
+.devsettings-tile-icon {
+  font-size: 1.8rem;
+}
+
+.devsettings-tile-label,
+.devsettings-list-label {
+  font-weight: 600;
+}
+
+.devsettings-tile-desc,
+.devsettings-list-desc {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.devsettings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.devsettings-back {
+  display: inline-block;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.devsettings-back:hover {
+  color: var(--text-primary);
+}
+
+/* ── Dev Settings — Styles page ─────────────────────────────────────────── */
+
+.devstyles-section {
+  margin-bottom: 2.5rem;
+}
+
+.devstyles-section h2 {
+  margin-bottom: 1rem;
+}
+
+.devstyles-swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+.devstyles-swatch {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.devstyles-swatch-fill {
+  height: 64px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+}
+
+.devstyles-swatch-name {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.devstyles-type-sample {
+  padding: 24px;
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.devstyles-mono {
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text-primary);
+}
+
+.devstyles-btn-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.devstyles-btn {
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  font-weight: 600;
+  font-family: 'Archivo', Helvetica, sans-serif;
+  cursor: pointer;
+}
+
+.devstyles-btn--primary {
+  background: var(--brand-red);
+  color: #fff;
+  border: none;
+}
+
+.devstyles-btn--ghost {
+  background: none;
+  border: 1px solid var(--border-hover);
+  color: var(--text-primary);
+}
+
+.devstyles-btn--disabled {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  color: var(--text-subtle);
+  cursor: not-allowed;
+}

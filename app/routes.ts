@@ -13,4 +13,7 @@ export default [
   route("game-flappy-bird", "routes/game-flappy-bird.tsx"),
   route("automotive", "routes/automotive.tsx"),
   route("financial", "routes/financial.tsx"),
+  route("dev-settings", "routes/dev-settings.tsx"),
+  route("dev-settings/styles", "routes/dev-settings.styles.tsx"),
+  route("dev-settings/mockups", "routes/dev-settings.mockups.tsx"),
 ] satisfies RouteConfig;
