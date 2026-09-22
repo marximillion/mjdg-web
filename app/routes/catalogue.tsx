@@ -43,10 +43,6 @@ export default function Catalogue({ loaderData }: Route.ComponentProps) {
             <span className="catalogue-tile-icon">💰</span>
             <span className="catalogue-tile-label">Financial</span>
           </div>
-          <div className="catalogue-tile catalogue-tile--disabled">
-            <span className="catalogue-tile-icon">⛪</span>
-            <span className="catalogue-tile-label">St. Mary's</span>
-          </div>
         </div>
       </div>
     </PageLayout>
