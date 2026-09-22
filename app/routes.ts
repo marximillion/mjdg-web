@@ -12,5 +12,8 @@ export default [
   route("service-image-generator", "routes/service_image_generator.tsx"),
   route("game-flappy-bird", "routes/game-flappy-bird.tsx"),
   route("automotive", "routes/automotive.tsx"),
+  route("cycling", "routes/cycling.tsx"),
+  route("projects", "routes/projects.tsx"),
+  route("about", "routes/about.tsx"),
   route("financial", "routes/financial.tsx"),
 ] satisfies RouteConfig;

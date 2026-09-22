@@ -109,7 +109,7 @@ CREATE TABLE "User" (
 ```
 
 ## Current Status
-> Updated v1.1.2.8 (deploying — 2026-09-14)
+> Updated v1.1.2.8 (deployed — 2026-09-14)
 - **Portfolio page complete (pending resume)** — all sections wired: project cards with images, vertical mobile timeline, About Me photo, contact section
 - **Project cards redesigned**:
   - MJMDG: theme-aware logo (white/black PNG) + "MJMDG" wordmark in `pf2-project-img--brand` flex container
@@ -122,6 +122,20 @@ CREATE TABLE "User" (
 - **"About me" CTA** — `href="#about"` scroll anchor
 - **DEF-003 fixed** — experience card key was `e.id ?? ...`; changed to `e.company + e.role`
 - **Resume PDF** — created at `app/assets/data/MarkDeGuzman_Resume-2024.pdf`; HTML source at scratchpad `resume.html`; resume import + both CTA buttons **commented out pending finalization**
+
+> Updated v1.1.3.x (local, not yet deployed — 2026-09-19)
+- **NetworkScene full-width** — restructured `portfolio.tsx`: canvas now in `.portfolio-wrapper` (full-width, `position: relative`) as sibling to `.portfolio-page`; removed old `> *:not(canvas)` z-index rule; `.portfolio-page` gets `z-index: 1`
+- **Portfolio About** — Build/Solve/Learn/Explore pillars removed; replaced with "View full story →" link to `/about` (`.portfolio-about-link`, brand-red)
+- **`/about` page** — Instagram 2010-2015 aesthetic; sticky section nav (Story/Moments/Places/Now) with IntersectionObserver active tracking; sections: Profile, Story highlights, Story (2-col post card + text), Moments (3-col grid), Places (list), Now (2×2 cards); all text placeholder; `--ig-*` design tokens; `app/routes/about.tsx` + route wired in `app/routes.ts`
+- **`/cycling` page** — horizontal snap scroll, 5 panels (hero + 4 bikes), ratio-based dot sync, keyboard nav, vertical scroll locked via `body.page-cycling`
+- **`/projects` page** — auth-aware coming soon with bald icon
+- **`app/components/scenes/NetworkScene.tsx`** — Canvas 2D particle network; density-based count (`DENSITY = 1/9000`); mouse repulsion; ResizeObserver; reduced-motion support
+- **Nav wordmark** — hidden on desktop homepage (hero already shows MJMDG); always visible on all other pages; shows at ≤900px on homepage
+- **Smooth scroll CTAs** — "Explore my work" / "About me" on portfolio use JS `scrollIntoView` to bypass React Router anchor interception
+- **Footer Σ** — reversed via `scaleX(-1)` CSS transform on wrapping `<span>`
+- **`build: { sourcemap: false }`** in `vite.config.ts` — hides original TypeScript from DevTools Sources tab
+- **Catalogue** — 🚲 Cycling tile added
+- **`/financial` — v2 Personal Finance stub** — tab view: "Platform Costs" (v1 unchanged) + "Personal Finance" (v2); 5 sub-views: Overview, Budget, Net Worth, Debt, Calendar; TypeScript interfaces (`PayPeriod`, `Expense`, `SavingsBucket`, `Debt`, `Account`, `NetWorthPoint`, `KeyDate`) defined for future spreadsheet/loader wiring; mock data in module-level constants; Chart.js additions: `LineController`, `LineElement`, `PointElement`, `Filler` (net worth line chart); all new CSS under `fin-` prefix
 
 > Updated v1.1.3 (local, not yet deployed — 2026-09-14)
 - **Home hero redesign** — Nunavut.jpg full-bleed background; 3-equal-column grid (form | headline | branding); top/bottom image fade overlay; light-mode overlay softened; nav wordmark (JetBrains Mono) appears ≤900px when hero branding hides; `page-home` class locks screenContainer to `100dvh` on desktop only

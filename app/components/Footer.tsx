@@ -13,7 +13,7 @@ export default function Footer() {
 
   return (
     <footer className="footer">
-      <span className="footer-copyright">&copy; MJMDG — LAB&lt;3 Developments 2026</span>
+      <span className="footer-copyright">&copy; MJMDG — LAB&lt;<span style={{display:"inline-block",transform:"scaleX(-1)"}}>&Sigma;</span> Developments 2026</span>
       {versionLabel && <span className="footer-version">{versionLabel}</span>}
     </footer>
   );
