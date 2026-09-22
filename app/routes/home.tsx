@@ -268,7 +268,7 @@ export default function Home({ actionData, loaderData }: Route.ComponentProps) {
               alt="MJMDG"
               className="home-hero-branding-logo"
               onClick={handleLogoClick}
-              style={{ cursor: "pointer" }}
+              style={{ cursor: "default" }}
             />
             <span className="home-hero-branding-name">MJMDG</span>
           </div>
